@@ -1,4 +1,6 @@
-package Group2_Project_IS1220_part1_GharbiLaaboudi;
+package classes;
+
+import enums.UserRole;
 
 /**
  *  This class is the superclass for both the Chef and the Client class. Anyone attempting to login should have 

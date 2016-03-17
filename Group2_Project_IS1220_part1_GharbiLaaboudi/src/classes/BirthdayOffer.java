@@ -1,6 +1,8 @@
-package Group2_Project_IS1220_part1_GharbiLaaboudi;
+package classes;
 
 import java.util.Observable;
+
+import interfaces.Offer;
 
 /**
  * @author Fouad-Sams

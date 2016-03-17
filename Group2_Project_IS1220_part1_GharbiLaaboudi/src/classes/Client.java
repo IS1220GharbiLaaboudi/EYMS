@@ -1,15 +1,18 @@
-package Group2_Project_IS1220_part1_GharbiLaaboudi;
+package classes;
 
+import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
-import fr.ecp.IS1220.tutorial3.ex2a.StudentType;
+import interfaces.Offer;
 
 public class Client extends User implements Observer {
-	/** The fidelity card type, will be basic by default	 */
-	private CardType cardType;
+	/** The fidelity card type, will be basic by default. */
+	private Offer card;
 	/** The type of notifications the user accepts to receive. Will be set to Yes by default	 */
-	private AgreementType agreementType;
+	private Map<String, Boolean> agreements;
+	
+	private Map<String, String> contactInfo;
 	
 	/**
 	 * @param firstName The first name of the user.
@@ -21,43 +24,7 @@ public class Client extends User implements Observer {
 	 * This is the default constructor, the user will have a Basic Fidelity Card and he agrees to all kind of notification. 
 	 * 
 	 */
-	public Client(String firstName, String surName, String userName, String password) {
-		super(firstName, surName, userName, password);
-		this.cardType = CardType.Basic ;
-		this.agreementType = AgreementType.Yes ;
-	}
 	
-	
-
-	public CardType getCardType() {
-		return cardType;
-	}
-
-
-
-	public void setCardType(CardType cardType) {
-		this.cardType = cardType;
-	}
-
-
-
-	public AgreementType getAgreementType() {
-		return agreementType;
-	}
-
-
-
-	public void setAgreementType(AgreementType agreementType) {
-		this.agreementType = agreementType;
-	}
-
-	
-
-	@Override
-	public String toString() {
-		return "Client [cardType=" + cardType + ", agreementType=" + agreementType + "]";
-	}
-
 
 
 	@Override

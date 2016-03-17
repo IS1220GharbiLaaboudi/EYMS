@@ -1,4 +1,7 @@
-package Group2_Project_IS1220_part1_GharbiLaaboudi;
+package interfaces;
+
+import classes.Order;
+import classes.User;
 
 /**
  * @author Fouad-Sams
@@ -6,6 +9,6 @@ package Group2_Project_IS1220_part1_GharbiLaaboudi;
  */
 public interface Offer {
 
-	public static double finalPrice(User user, Order order){return 0;};
+	public double discountedPrice(User user, Order order){};
 	
 }
