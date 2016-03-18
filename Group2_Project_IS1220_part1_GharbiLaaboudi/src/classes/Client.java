@@ -20,6 +20,7 @@ public class Client extends User implements Observer {
 
 	/** The fidelity card type, will be basic by default. */
 	private Offer card;
+	
 	/** The type of notifications the user accepts to receive. All fields will be set to Yes by default.
 	 * The key will be the type of offer and the value is whether the client accepts the notifications or not.
 	 * for example : 	"SpecialOffer" -> true
@@ -138,8 +139,8 @@ public class Client extends User implements Observer {
 		this.birthdayDate = birthdayDate;
 	}
 	/**
-	 * This method handles the notification a client can get. For each kind of notification, there is a message that
-	 * is written on the client's notification wall.
+	 * This method handles the notification a client can get. For each kind of notification, there is a message
+	 * that is written on the client's notification wall.
 	 */
 	@Override
 	public void update(Observable o, Object arg) {

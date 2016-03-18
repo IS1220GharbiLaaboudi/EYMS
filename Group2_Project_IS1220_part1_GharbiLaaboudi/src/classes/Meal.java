@@ -43,9 +43,18 @@ public class Meal extends Observable {
 	 */
 	private boolean isSpecial;
 	
+	/**
+	 * This map acts as a counter : for each order that enters in a ordering criteria(the key), we increment 
+	 * the counter(the value)
+	 */
+	private Map<String, Integer> orderCounter;
 	
 	/**
-	 * 
+	 * This boolean is used to help count the number of meals ordered after being personalized
+	 */
+	private boolean isModified;
+	
+	/**
 	 * This constructor initializes the creation of a meal. The ingredients still need to be added.
 	 * By default, the special price is set as equal to the normal price.
 	 * 
@@ -57,6 +66,7 @@ public class Meal extends Observable {
 		this.price = price;
 		this.specialPrice = price;
 		this.isSpecial = false;
+		this.isModified = false;
 	}
 	
 	
@@ -74,12 +84,6 @@ public class Meal extends Observable {
 		this.name = name;
 	}
 
-	/**
-	 * @return the ingredientMap
-	 */
-	public Map<String, String> getIngredientMap() {
-		return ingredientMap;
-	}
 	
 	/**
 	 * 
@@ -88,6 +92,7 @@ public class Meal extends Observable {
 	 */
 	public void personalizeMeal(String ingredient, String quantity) {
 			ingredientMap.replace(ingredient, quantity);
+			setModified(true) ;
 	}
 	
 	/**
@@ -102,13 +107,6 @@ public class Meal extends Observable {
 		} else {
 			return "0g";
 		}
-	}
-
-	/**
-	 * @param ingredientMap the ingredientMap to set
-	 */
-	public void setIngredientMap(Map<String, String> ingredientMap) {
-		this.ingredientMap = ingredientMap;
 	}
 
 	/**
@@ -152,6 +150,62 @@ public class Meal extends Observable {
 	public void setSpecial(boolean isSpecial) {
 		this.isSpecial = isSpecial;
 	}
+	
+	/**
+	 * @param orderingCriteria The criteria chosen to analyse the behaviour of the clients
+	 * @return the number of times this meal has been ordered following this criteria
+	 */
+	public Integer getOrderCounter(String orderingCriteria) {
+		return orderCounter.get(orderingCriteria);
+	}
+
+
+	/**
+	 * @param ordering criteria for which we should add an order
+	 * It works even if the orgeringCriteria haven't been put as a key of the map.
+	 */
+	public void incrementOrderCounter(String orderingCriteria) {
+		if (orderCounter.containsKey(orderingCriteria)){
+			orderCounter.put(orderingCriteria, orderCounter.get(orderingCriteria) +1);
+		} else {
+			orderCounter.put(orderingCriteria, 1);
+		}
+		
+	}
+
+
+
+	/**
+	 * @return the orderCounter
+	 */
+	public Map<String, Integer> getOrderCounter() {
+		return orderCounter;
+	}
+
+
+	/**
+	 * @param orderCounter the orderCounter to set
+	 */
+	public void setOrderCounter(Map<String, Integer> orderCounter) {
+		this.orderCounter = orderCounter;
+	}
+
+
+	/**
+	 * @return true if the meal is modified
+	 */
+	public boolean isModified() {
+		return isModified;
+	}
+
+
+	/**
+	 * @param isModified set if the meal id modified or not
+	 */
+	public void setModified(boolean isModified) {
+		this.isModified = isModified;
+	}
+
 
 	@Override
 	public String toString() {
