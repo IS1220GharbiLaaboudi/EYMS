@@ -149,7 +149,7 @@ public class Client extends User implements Observer {
 		}
 		if (o instanceof Meal){
 			this.addToNotificationWall("There is a new special offer ! Enjoy Your Meal offers you "
-					+ "a tasty discount on the meal : " + o.getName() + ". ");
+					+ "a tasty discount on the meal : " + ((Meal) o).getName() + ". ");
 		}
 		
 	}
