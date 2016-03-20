@@ -3,6 +3,7 @@
  */
 package classes;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
 import java.util.regex.Matcher;
@@ -76,6 +77,7 @@ public class Meal extends Observable {
 		this.isSpecial = false;
 		this.isOnlySpecial = false;
 		this.isModified = false;
+		this.ingredientMap = new HashMap<String, String>();
 	}
 	/**
 	 * This constructor initializes the creation of a special offer meal. The ingredients still need to be added.
@@ -90,6 +92,7 @@ public class Meal extends Observable {
 		this.isSpecial = false;
 		this.isOnlySpecial = isOnlySpecial;
 		this.isModified = false;
+		this.ingredientMap = new HashMap<String, String>();
 	}
 	
 	

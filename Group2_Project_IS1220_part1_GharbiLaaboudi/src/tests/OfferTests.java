@@ -23,6 +23,8 @@ public class OfferTests {
 	public void BasicFidelityCardOfferWithoutOffer() {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
+		Date date = new Date();
+		date.setMonth(12);
 		BirthdayOffer bdo = new BirthdayOffer(new Date());
 		
 		// creation of a meal
@@ -40,7 +42,6 @@ public class OfferTests {
 		Offer[] offers = new Offer[1];	
 		offers[0] = bdo;
 		double price = order.getPrice(offers);
-		System.out.println("normal price" + price);
 		Assert.assertEquals(3*17, price);
 	}
 	

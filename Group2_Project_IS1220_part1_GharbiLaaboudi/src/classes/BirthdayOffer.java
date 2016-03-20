@@ -27,7 +27,6 @@ public class BirthdayOffer extends Observable implements Offer {
 	 * @Override 
 	 */	
 	public double discountedPrice(Order order) {
-		Date date = new Date();
 		Client client = order.getClient();
 		if(client.getBirthdayDate().getDate() == date.getDate() && 
 				client.getBirthdayDate().getMonth() == date.getMonth()){

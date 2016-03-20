@@ -1,5 +1,6 @@
 package classes;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -47,6 +48,7 @@ public class Order {
 		this.id = nextId;
 		nextId += 1;
 		this.client = client;
+		this.mealMap = new HashMap<Meal, Integer>();
 	}
 	
 	/**
@@ -134,7 +136,7 @@ public class Order {
 			discountedPrice += offer.discountedPrice(this);
 			currentPrice = normalPrice - discountedPrice;
 		}
-		System.out.println("cur price" + currentPrice);
+		System.out.println("cur price :" + currentPrice);
 		return  Math.max(currentPrice, (double) 0);
 		}
 	

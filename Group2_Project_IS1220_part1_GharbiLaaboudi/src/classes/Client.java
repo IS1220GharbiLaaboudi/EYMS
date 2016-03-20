@@ -1,5 +1,8 @@
 package classes;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -54,6 +57,7 @@ public class Client extends User implements Observer {
 	 * @param userName The username of the user. In order to register, the username selected must be different from 
 	 * all the other usernames.
 	 * @param password The password of the user. 
+	 * @throws ParseException 
 	 * 
 	 */
 	public Client(String firstName, String surName, String userName, String password) {
@@ -63,6 +67,8 @@ public class Client extends User implements Observer {
 		agreements = new HashMap<String, Boolean>(); 
 		this.setAgreement("BirthdayOffer", true);
 		this.setAgreement("SpecialOffer", true);
+		
+		this.birthdayDate = new Date();
 	}
 
 	public Offer getCard() {
