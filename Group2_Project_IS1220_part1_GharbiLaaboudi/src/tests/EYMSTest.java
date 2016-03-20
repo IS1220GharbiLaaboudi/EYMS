@@ -96,7 +96,7 @@ public class EYMSTest {
 	public void testSaveOrder(){
 		EYMS system = new EYMS();
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		Order order = new Order(bob);
+		Order order = new Order(bob,system.getDate());
 		system.saveOrder(order);
 		
 		Assert.assertEquals(system.getOrder(order.getId()), order);

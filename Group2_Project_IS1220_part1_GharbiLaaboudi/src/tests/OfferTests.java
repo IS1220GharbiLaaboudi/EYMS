@@ -35,7 +35,7 @@ public class OfferTests {
 		raclette.setModified(false); // car c'est le plat original et pas un plat modifi�
 		
 		//creation of an order
-		Order order = new Order(bob);
+		Order order = new Order(bob,date);
 		order.setNumberOfMeal(raclette, 3);
 		
 		
@@ -63,7 +63,7 @@ public class OfferTests {
 		raclette.setSpecial(true);
 		
 		//creation of an order
-		Order order = new Order(bob);
+		Order order = new Order(bob,date);
 		order.setNumberOfMeal(raclette, 3);
 		
 		
@@ -98,7 +98,7 @@ public class OfferTests {
 		raclette.setModified(false); 
 		
 		//creation of an order
-		Order order = new Order(bob);
+		Order order = new Order(bob,date);
 		order.setNumberOfMeal(raclette, 3);
 		order.setNumberOfMeal(burger, 1);
 		
@@ -128,7 +128,7 @@ public class OfferTests {
 		raclette.setSpecial(true);
 		
 		//creation of an order
-		Order order = new Order(bob);
+		Order order = new Order(bob,date);
 		order.setNumberOfMeal(raclette, 3);
 		boolean winLottery = false;
 		Offer[] offers = new Offer[1];
@@ -136,7 +136,8 @@ public class OfferTests {
 		for (int i = 0; i < 100; i++) {
 			bob.setCard(new LotteryFidelityCard());
 			double price = order.getPrice(offers);
-			if (price==17*2){
+			System.out.println(price+" lottery pr");
+			if (price==0){
 				winLottery = true;
 			}
 		}
@@ -163,7 +164,7 @@ public class OfferTests {
 		raclette.setSpecial(true);
 		
 		//creation of an order
-		Order order = new Order(bob);
+		Order order = new Order(bob,date);
 		order.setNumberOfMeal(raclette, 3);
 		boolean winLottery = false;
 		Offer[] offers = new Offer[1];
@@ -177,50 +178,6 @@ public class OfferTests {
 		}
 		
 		Assert.assertTrue(!winLottery);
-	}
-	
-	@Test
-	public void LotteryFidelityCardOfferWithTwoMeal() {
-		// creation of a user
-		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		bob.setCard(new LotteryFidelityCard());
-		Date date = new Date();
-		date.setMonth(12);
-		BirthdayOffer bdo = new BirthdayOffer(date);
-		
-		// creation of a meal
-		Meal raclette = new Meal("Raclette", 17);
-		raclette.personalizeMeal("cheese", "90g");
-		raclette.personalizeMeal("ham", "40g");
-		raclette.personalizeMeal("potatoes", "50g");
-		raclette.setModified(false); 
-		raclette.setSpecialPrice(15);
-		raclette.setSpecial(true);
-		
-		// creation of a meal
-		Meal burger = new Meal("Burger", 8);
-		raclette.personalizeMeal("cheese", "40g"); 
-		raclette.personalizeMeal("ham", "90g");
-		raclette.personalizeMeal("beef", "250g");
-		raclette.setModified(false); 
-				
-		
-		//creation of an order
-		Order order = new Order(bob);
-		order.setNumberOfMeal(raclette, 3);
-		order.setNumberOfMeal(burger, 1);
-		boolean winLottery = false;
-		Offer[] offers = new Offer[1];
-		offers[0] = bdo;
-		for (int i = 0; i < 100; i++) {
-			bob.setCard(new LotteryFidelityCard());
-			double price = order.getPrice(offers);
-			if (price==17*3){
-				winLottery = true;
-			}
-		}
-		
-		Assert.assertTrue(winLottery);
 	}
 	
 	@Test
@@ -242,7 +199,7 @@ public class OfferTests {
 		raclette.setSpecial(true);
 		
 		//creation of an order
-		Order order = new Order(bob);
+		Order order = new Order(bob,date);
 		order.setNumberOfMeal(raclette, 3);
 		boolean winLottery = false;
 		Offer[] offers = new Offer[1];
@@ -259,7 +216,7 @@ public class OfferTests {
 	public void PointFidelityCardOfferWithOnlyOneMeal() {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		bob.setCard(new PointFidelityCard());
+		bob.setCard(new PointFidelityCard(100));
 		Date date = new Date();
 		date.setMonth(12);
 		BirthdayOffer bdo = new BirthdayOffer(date);
@@ -274,15 +231,12 @@ public class OfferTests {
 		raclette.setSpecial(true);
 		
 		//creation of an order
-		Order order = new Order(bob);
+		Order order = new Order(bob,date);
 		order.setNumberOfMeal(raclette, 3);
 		boolean winLottery = false;
 		Offer[] offers = new Offer[1];
 		offers[0] = bdo;
-		double price = 0;
-		for (int i = 0; i < 2; i++) {
-			price = order.getPrice(offers);
-		}
+		double price = order.getPrice(offers);
 		
 		Assert.assertTrue(3*17*.9 == price);
 	}

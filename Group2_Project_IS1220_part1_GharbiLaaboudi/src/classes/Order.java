@@ -1,5 +1,6 @@
 package classes;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -41,14 +42,17 @@ public class Order {
 	 */
 	private double currentPrice;
 	
+	private Date date;
+	
 	/**
 	 * @param client The client the made the order
 	 */
-	public Order(Client client) {
+	public Order(Client client, Date date) {
 		this.id = nextId;
 		nextId += 1;
 		this.client = client;
 		this.mealMap = new HashMap<Meal, Integer>();
+		this.date = date;
 	}
 	
 	/**
@@ -116,6 +120,20 @@ public class Order {
 		}
 		System.out.println("normal price" + normalPrice);
 		return normalPrice;
+	}
+
+	/**
+	 * @return the date
+	 */
+	public Date getDate() {
+		return date;
+	}
+
+	/**
+	 * @param date the date to set
+	 */
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	/**

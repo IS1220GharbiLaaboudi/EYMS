@@ -22,7 +22,10 @@ public class LotteryFidelityCard implements Offer {
 	private final double probability = .1;
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 	
-	
+	public LotteryFidelityCard() {
+		lastOrder = new Date();
+		lastOrder.setYear(1900);
+	}
 	
 	/**
 	 * @return the lastOrder
@@ -48,12 +51,15 @@ public class LotteryFidelityCard implements Offer {
 	 */
 	public double discountedPrice(Order order) {
 		Random rand = new Random();
-		Date date = new Date();
+		Date date =  order.getDate();
+		boolean t = date.getTime() > (lastOrder.getTime() + (24 * 3600 * 1000));
 		lastOrder = date;
-		boolean t = date.getTime() > (lastOrder.getTime() + (24 * 3600 * 1000)); 
-		if(t && (rand.nextInt(101)/100)<probability){
+		double prob = Math.random();
+		if(t && prob <probability){
+			System.out.println("proba "+prob);
 			return order.getNormalPrice();
 		} else {
+			
 			return 0;
 		}
 	}
