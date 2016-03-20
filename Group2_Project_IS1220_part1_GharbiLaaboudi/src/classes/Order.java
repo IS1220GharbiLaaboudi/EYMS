@@ -64,6 +64,7 @@ public class Order {
 	 */
 	public Integer getQuantityMeal(Meal meal){
 		if (mealMap.containsKey(meal)){
+			System.out.println(mealMap.get(meal) + " " + meal.getPrice() + " " + meal.getName());
 			return mealMap.get(meal);
 		} else{
 			return 0;
@@ -129,11 +130,13 @@ public class Order {
 		Set<Meal> mealSet = getSetMeal(); 
 				
 		discountedPrice += card.discountedPrice(this);
+		System.out.println("card " + discountedPrice);
 		currentPrice = normalPrice - discountedPrice;
 		client.setCard(card);
 		
 		for(Offer offer : offers){
 			discountedPrice += offer.discountedPrice(this);
+			System.out.println("bd "+ discountedPrice);
 			currentPrice = normalPrice - discountedPrice;
 		}
 		System.out.println("cur price :" + currentPrice);

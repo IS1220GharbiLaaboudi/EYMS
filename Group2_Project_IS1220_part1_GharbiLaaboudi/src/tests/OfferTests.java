@@ -25,7 +25,7 @@ public class OfferTests {
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
 		Date date = new Date();
 		date.setMonth(12);
-		BirthdayOffer bdo = new BirthdayOffer(new Date());
+		BirthdayOffer bdo = new BirthdayOffer(date);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
@@ -39,17 +39,19 @@ public class OfferTests {
 		order.setNumberOfMeal(raclette, 3);
 		
 		
-		Offer[] offers = new Offer[1];	
+		Offer[] offers = new Offer[1];
 		offers[0] = bdo;
 		double price = order.getPrice(offers);
-		Assert.assertEquals(3*17, price);
+		Assert.assertTrue( 3*17.0 ==  price);
 	}
 	
 	@Test
 	public void BasicFidelityCardOfferWithSpecialOffer() {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		BirthdayOffer bdo = new BirthdayOffer(new Date());
+		Date date = new Date();
+		date.setMonth(12);
+		BirthdayOffer bdo = new BirthdayOffer(date);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
@@ -68,14 +70,16 @@ public class OfferTests {
 		Offer[] offers = new Offer[1];
 		offers[0] = bdo;
 		double price = order.getPrice(offers);
-		Assert.assertEquals(3*15, price);
+		Assert.assertTrue(3*15 ==  price);
 	}
 	
 	@Test
 	public void BasicFidelityCardOfferWithSpecialOfferOnOnlyOneMeal() {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		BirthdayOffer bdo = new BirthdayOffer(new Date());
+		Date date = new Date();
+		date.setMonth(12);
+		BirthdayOffer bdo = new BirthdayOffer(date);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
@@ -102,7 +106,7 @@ public class OfferTests {
 		Offer[] offers = new Offer[1];
 		offers[0] = bdo;
 		double price = order.getPrice(offers);
-		Assert.assertEquals(3*15+8, price);
+		Assert.assertTrue(3*15+8 == price);
 	}
 	
 	@Test
@@ -110,7 +114,9 @@ public class OfferTests {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
 		bob.setCard(new LotteryFidelityCard());
-		BirthdayOffer bdo = new BirthdayOffer(new Date());
+		Date date = new Date();
+		date.setMonth(12);
+		BirthdayOffer bdo = new BirthdayOffer(date);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
@@ -143,7 +149,9 @@ public class OfferTests {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
 		bob.setCard(new LotteryFidelityCard());
-		BirthdayOffer bdo = new BirthdayOffer(new Date());
+		Date date = new Date();
+		date.setMonth(12);
+		BirthdayOffer bdo = new BirthdayOffer(date);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
@@ -176,7 +184,9 @@ public class OfferTests {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
 		bob.setCard(new LotteryFidelityCard());
-		BirthdayOffer bdo = new BirthdayOffer(new Date());
+		Date date = new Date();
+		date.setMonth(12);
+		BirthdayOffer bdo = new BirthdayOffer(date);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
@@ -218,7 +228,9 @@ public class OfferTests {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
 		bob.setCard(new PointFidelityCard());
-		BirthdayOffer bdo = new BirthdayOffer(new Date());
+		Date date = new Date();
+		date.setMonth(12);
+		BirthdayOffer bdo = new BirthdayOffer(date);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
@@ -240,7 +252,7 @@ public class OfferTests {
 			price = order.getPrice(offers);
 		}
 		
-		Assert.assertEquals(3*17,price);
+		Assert.assertTrue(3*17 == price);
 	}
 	
 	@Test
@@ -248,7 +260,9 @@ public class OfferTests {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
 		bob.setCard(new PointFidelityCard());
-		BirthdayOffer bdo = new BirthdayOffer(new Date());
+		Date date = new Date();
+		date.setMonth(12);
+		BirthdayOffer bdo = new BirthdayOffer(date);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
@@ -270,7 +284,7 @@ public class OfferTests {
 			price = order.getPrice(offers);
 		}
 		
-		Assert.assertEquals(3*17*.9, price);
+		Assert.assertTrue(3*17*.9 == price);
 	}
 
 	@Test

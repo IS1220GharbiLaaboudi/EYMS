@@ -22,7 +22,7 @@ public class BasicFidelityCard extends Observable implements Offer {
 	public double discountedPrice(Order order) {
 		double sum = 0;
 		for (Meal meal : order.getSetMeal()){
-			sum += meal.getSpecialPrice();
+			sum += order.getQuantityMeal(meal)*meal.getSpecialPrice();
 		}
 		return order.getNormalPrice() - sum;
 	}
