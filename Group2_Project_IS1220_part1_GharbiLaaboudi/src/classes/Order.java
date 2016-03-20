@@ -73,7 +73,7 @@ public class Order {
 	 * @param n Number of this kind of meal in this order
 	 */
 	public void setNumberOfMeal(Meal meal, Integer n ){
-		mealMap.replace(meal, n);	
+		mealMap.put(meal, n);	
 	}
 	
 	/**
@@ -103,6 +103,16 @@ public class Order {
 	public void setCurrentPrice(double currentPrice) {
 		this.currentPrice = currentPrice;
 	}
+	
+	public double getNormalPrice(){
+		double normalPrice = 0;
+		Set<Meal> mealSet = getSetMeal(); 
+		
+		for (Meal meal : mealSet) {
+			normalPrice += getQuantityMeal(meal)*meal.getPrice();
+		}
+		return normalPrice;
+	}
 
 	/**
 	 * @param We have to put all the offers available in the list offers in order to be able to 
@@ -111,14 +121,10 @@ public class Order {
 	public double getPrice(Offer[] offers){
 		
 		Offer card =getClient().getCard() ;
+		double normalPrice = getNormalPrice();
 		double discountedPrice = 0;
-		double normalPrice = 0;
 		Set<Meal> mealSet = getSetMeal(); 
-		
-		
-		for (Meal meal : mealSet) {
-			normalPrice += getQuantityMeal(meal)*meal.getPrice();
-		}
+				
 		discountedPrice += card.discountedPrice(getClient(), this);
 		currentPrice = normalPrice - discountedPrice;
 		

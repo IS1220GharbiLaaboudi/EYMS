@@ -3,28 +3,38 @@
  */
 package classes;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Observable;
+import java.util.Random;
 
 import interfaces.Offer;
 
 /**
- * @author Fouad-Sams
+ * @author Achraf Gharbi
+ * @author Younes Laaboudi
  *
  */
-public class LotteryFideltyCard implements Offer {
-
-	/* (non-Javadoc)
-	 * @see Group2_Project_IS1220_part1_GharbiLaaboudi.Offer#finalPrice(Group2_Project_IS1220_part1_GharbiLaaboudi.Order)
-	 */
-	
+public class LotteryFidelityCard implements Offer {
 	private Date lastOrder;
 	private final double probability = .1;
+	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 	
 	@Override
-	public double finalPrice(Order order) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double discountedPrice(User user, Order order) {
+		Random rand = new Random();
+		Date date = new Date();
+		
+		Boolean t = date.getTime() > (lastOrder.getTime() + (24 * 3600 * 1000)); 
+		
+		if(t && (rand.nextInt(101)/100)<probability){
+			return order.getNormalPrice();
+		} else {
+			return 0;
+		}
 	}
+	
+
 
 }

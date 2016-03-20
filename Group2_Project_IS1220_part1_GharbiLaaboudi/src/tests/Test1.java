@@ -7,37 +7,37 @@ import org.junit.Test;
 
 import classes.CardType;
 import classes.Client;
-import classes.System;
+import classes.EYMS;
 import classes.Meal;
 
 public class Test1 {
 
 	@Test
 	public void UserNotFound() {
-		System.login("bobred","123456");
+		EYMS.login("bobred","123456");
 	}
 	
 	@Test
 	public void UserFoundButWrongPassword() {
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		System.register(bob); // choix à faire ( mettre register(bob) ou register("bob", "red", ....) )
-		// agreement etc à mettre en place séparement (valeurs à choisir par défaut) -> plusieurs méthodes
-		System.login("bobred","123456789");
-		// comment vérifer que le test marche ??
+		EYMS.register(bob); // choix ï¿½ faire ( mettre register(bob) ou register("bob", "red", ....) )
+		// agreement etc ï¿½ mettre en place sï¿½parement (valeurs ï¿½ choisir par dï¿½faut) -> plusieurs mï¿½thodes
+		EYMS.login("bobred","123456789");
+		// comment vï¿½rifer que le test marche ??
 	}
 	
 	@Test
 	public void UserFoundButWrongPassword2() {
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		System.register(bob);
-		System.login("bobred",123456);
+		EYMS.register(bob);
+		EYMS.login("bobred",123456);
 	}
 	
 	@Test
 	public void UserFoundAndRightPassword() {
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		System.register(bob);
-		System.login("bobred","123456789");
+		EYMS.register(bob);
+		EYMS.login("bobred","123456");
 	}
 	
 	@Test
@@ -45,7 +45,7 @@ public class Test1 {
 		Meal raclette = new Meal();
 		raclette.addIngredient("cheese", "90g");
 		raclette.addIngredient("ham", "40g");
-		raclette.addIngredient("potatoes", "50g"); //créer une classe Ingrédients ???
+		raclette.addIngredient("potatoes", "50g"); //crï¿½er une classe Ingrï¿½dients ???
 		
 		raclette.getListIngredients();
 		
@@ -56,7 +56,7 @@ public class Test1 {
 	@Test
 	public void addContactInfo() {
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		System.register(bob);
+		EYMS.register(bob);
 		Database.addContactInfo(bob, "email : bobred@gmail.com"); //ajouter fonction addContactInfo?
 		Database.addContactInfo(bob, "phone : 0650655047");
 	}
@@ -64,28 +64,28 @@ public class Test1 {
 	@Test
 	public void associateCard() {
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		System.register(bob);
-		Database.associateCard(bob, CardType.Basic); // choix à justifier dans le rapport
+		EYMS.register(bob);
+		Database.associateCard(bob, CardType.Basic); // choix ï¿½ justifier dans le rapport
 	}
 	
 	@Test
 	public void associateCard() {
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		System.register(bob);
+		EYMS.register(bob);
 		Database.associateCard(bob, CardType.Basic); 
 	}
 	
 	@Test
 	public void clientAgreement{
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		System.register(bob);
+		EYMS.register(bob);
 		Database.associateAgreement(bob, AgreementType.No);
 	}
 	
 	@Test
 	public void clientAgreement{
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		System.register(bob);
+		EYMS.register(bob);
 		Database.associateAgreement(bob, AgreementType.No);
 	}
 
@@ -107,7 +107,7 @@ public class Test1 {
 	
 	@Test
 	public void notifyBirthday{
-		Assert.assertArrayEquals(expecteds, actuals); // à quel moment on ajoute les dates d'anniversaire
+		Assert.assertArrayEquals(expecteds, actuals); // ï¿½ quel moment on ajoute les dates d'anniversaire
 	}
 	
 	@Test

@@ -5,6 +5,8 @@ package classes;
 
 import java.util.Map;
 import java.util.Observable;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * This class represents the meals that are on offer in the restaurant. A meal has a name, a price, and a list of 
@@ -44,8 +46,14 @@ public class Meal extends Observable {
 	private boolean isSpecial;
 	
 	/**
+	 * A boolean representing a meal when it is only special. 
+	 */
+	private boolean isOnlySpecial;
+	
+	/**
 	 * This map acts as a counter : for each order that enters in a ordering criteria(the key), we increment 
 	 * the counter(the value)
+	 * Keys used are : Modified, NotModified, OnSale, NotOnSale
 	 */
 	private Map<String, Integer> orderCounter;
 	
@@ -66,6 +74,21 @@ public class Meal extends Observable {
 		this.price = price;
 		this.specialPrice = price;
 		this.isSpecial = false;
+		this.isOnlySpecial = false;
+		this.isModified = false;
+	}
+	/**
+	 * This constructor initializes the creation of a special offer meal. The ingredients still need to be added.
+	 * 
+	 * @param name The meal's name. It's the main characteristic of the meal and will be used to refer to it.
+	 * @param price The price of the meal. This price is set by the chef.
+	 */
+	public Meal(String name, double price, boolean isOnlySpecial) {
+		this.name = name;
+		this.price = price;
+		this.specialPrice = price;
+		this.isSpecial = false;
+		this.isOnlySpecial = isOnlySpecial;
 		this.isModified = false;
 	}
 	
@@ -91,8 +114,15 @@ public class Meal extends Observable {
 	 * @param quantity The quantity needed for the given ingredient in this meal. To remove the ingredient, put "0g"
 	 */
 	public void personalizeMeal(String ingredient, String quantity) {
-			ingredientMap.replace(ingredient, quantity);
-			setModified(true) ;
+		Pattern pattern = Pattern.compile("/^0[^1-9]*$/");
+		Matcher matcher = pattern.matcher(quantity);
+		
+		if(matcher.matches()){ // if quantity given is 0, remove the ingredient
+			ingredientMap.remove(ingredient);
+		} else{
+			ingredientMap.put(ingredient, quantity);
+		}
+		setModified(true);
 	}
 	
 	/**
@@ -151,8 +181,23 @@ public class Meal extends Observable {
 		this.isSpecial = isSpecial;
 	}
 	
+	
 	/**
-	 * @param orderingCriteria The criteria chosen to analyse the behaviour of the clients
+	 * @return the isOnlySpecial
+	 */
+	public boolean isOnlySpecial() {
+		return isOnlySpecial;
+	}
+	
+	/**
+	 * @param isOnlySpecial the isOnlySpecial to set
+	 */
+	public void setOnlySpecial(boolean isOnlySpecial) {
+		this.isOnlySpecial = isOnlySpecial;
+	}
+	
+	/**
+	 * @param orderingCriteria The criteria chosen to analyze the behavior of the clients
 	 * @return the number of times this meal has been ordered following this criteria
 	 */
 	public Integer getOrderCounter(String orderingCriteria) {
@@ -161,7 +206,7 @@ public class Meal extends Observable {
 
 
 	/**
-	 * @param ordering criteria for which we should add an order
+	 * @param orderingCriteria ordering criteria for which we should add an order
 	 * It works even if the orgeringCriteria haven't been put as a key of the map.
 	 */
 	public void incrementOrderCounter(String orderingCriteria) {
@@ -204,6 +249,21 @@ public class Meal extends Observable {
 	 */
 	public void setModified(boolean isModified) {
 		this.isModified = isModified;
+	}
+
+	/**
+	 * @return the ingredientMap
+	 */
+	public Map<String, String> getIngredientMap() {
+		return ingredientMap;
+	}
+
+
+	/**
+	 * @param ingredientMap the ingredientMap to set
+	 */
+	public void setIngredientMap(Map<String, String> ingredientMap) {
+		this.ingredientMap = ingredientMap;
 	}
 
 

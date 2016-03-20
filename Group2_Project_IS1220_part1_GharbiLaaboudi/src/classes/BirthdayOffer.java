@@ -5,18 +5,18 @@ import java.util.Observable;
 import interfaces.Offer;
 
 /**
- * @author Fouad-Sams
+ * @author Achraf Ghabri
+ * 
+ * @author Younes Laaboudi
  *
  */
 public class BirthdayOffer extends Observable implements Offer {
-
-	/* (non-Javadoc)
-	 * @see Group2_Project_IS1220_part1_GharbiLaaboudi.Offer#finalPrice(Group2_Project_IS1220_part1_GharbiLaaboudi.Order)
-	 */
+	private final double percentage = .5;
+	
 	@Override
-	public double finalPrice(Order order) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double discountedPrice(User user, Order order) {
+		return order.getNormalPrice() * percentage;
 	}
+	
 
 }

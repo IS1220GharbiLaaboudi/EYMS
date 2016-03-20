@@ -5,10 +5,13 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.text.ParseException;
+
 import org.junit.Assert;
 import org.junit.Test;
 
 import classes.*;
+import enums.FidelityCard;
 import enums.UserRole;
 import interfaces.Offer;
 
@@ -16,12 +19,12 @@ import interfaces.Offer;
  * @author Fouad-Sams
  *
  */
-public class SystemTest {
+public class EYMSTest {
 	
 	public void testRegisterClient(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Client);
-		Client bob1 = system.getUser("bobred");
+		Client bob1 = (Client) system.getUser("bobred");
 		
 		Client bob2 = new Client("Bob", "Red", "bobred", "123456");
 		
@@ -34,7 +37,7 @@ public class SystemTest {
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Client);		
 		system.login("bobred", "123456");
-		Client bob1 = system.getCurrentUser();
+		Client bob1 = (Client) system.getCurrentUser();
 		
 		Client bob2 = new Client("Bob", "Red", "bobred", "123456");
 		
@@ -57,9 +60,10 @@ public class SystemTest {
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);		
 		system.login("bobred", "123456");
-		User bob2 = system.getCurrentUser();
-		
+		User bob1 = system.getCurrentUser();
 		User bob2 = new User("Bob", "Red", "bobred", "123456", UserRole.Chef);
+		
+		Assert.assertEquals(bob1,bob2);
 	}
 	
 	public void testRegisterSameUsername(){
@@ -72,11 +76,30 @@ public class SystemTest {
 		Assert.assertEquals("Bob", bob.getFirstName());
 	}
 	
-	
-	
-	public void testPersonalizeMeal(){}
+	public void testPersonalizeMeal(){
+		EYMS system = new EYMS();
+		system.setCurrentMeal(new Meal("Raclette", 15));
+		system.addIngredient("patate", "20g");
+		system.saveMeal();
+		
+		system.setCurrentMeal(new Meal("Hamburger", 15));
+		system.addIngredient("thon", "20g");
+		system.saveMeal();
+		
+		system.personalizeMeal("Raclette", "patate", "300g");
+		system.personalizeMeal("Hamburger", "thon", "0.0g");
+		
+		Assert.assertEquals("300g",system.listIngredients("Raclette").get("patate"));
+		Assert.assertEquals("",system.listIngredients("Hamburger").get("thon"));
+	}
 	
 	public void testSaveOrder(){
+		EYMS system = new EYMS();
+		Client bob = new Client("Bob", "Red", "bobred", "123456");
+		Order order = new Order(bob);
+		system.saveOrder(order);
+		
+		Assert.assertEquals(system.getOrder(order.getId()), order);
 	}
 	
 	public void addInfo(){
@@ -85,7 +108,7 @@ public class SystemTest {
 		system.login("bobred", "123456");
 		system.addInfo("email", "bobred@gmail.com");
 		
-		Client bob = system.getCurrentUser();
+		Client bob = (Client) system.getCurrentUser();
 		String mailAdress = bob.getContactInfo("email");
 		Assert.assertEquals("bobred@gmail.com", mailAdress);
 	}
@@ -94,9 +117,9 @@ public class SystemTest {
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Client);		
 		system.login("bobred", "123456");
-		system.associateCard("Lottery");
+		system.associateCard(FidelityCard.Lottery);
 		
-		Client bob = system.getCurrentUser();
+		Client bob = (Client) system.getCurrentUser();
 		Offer card = bob.getCard();
 		Assert.assertTrue(card instanceof LotteryFidelityCard);
 	}
@@ -105,16 +128,16 @@ public class SystemTest {
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Client);		
 		system.login("bobred", "123456");
-		system.associateAgreement(); // set specialoffer agreement to false
+		system.associateAgreement("bobred","SpecialOffer",false); // set specialoffer agreement to false
 		
-		Client bob = system.getCurrentUser();
+		Client bob = (Client) system.getCurrentUser();
 		boolean agree = bob.getAgreement("SpecialOffer");
 		Assert.assertTrue(!agree);
 	}
 	
 	public void testShowMealWithoutLoggingIn(){
 		EYMS system = new EYMS();
-		system.ShowMeal();
+		
 	}
 	public void createMealClient(){
 		EYMS system = new EYMS();
@@ -138,15 +161,6 @@ public class SystemTest {
 	
 	}
 	
-	public void testShowMealWhileLoggedIn(){
-		EYMS system = new EYMS();
-		system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);		
-		system.login("bobred", "123456");
-		
-		system.createMeal("Raclette", 17);
-		system.ShowMeal();
-	}
-	
 	public void testAddIngredient(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);		
@@ -154,7 +168,10 @@ public class SystemTest {
 		
 		system.createMeal("Raclette", 17);
 		system.addIngredient("Cheese", "50g");
-		system.showMeal();
+		system.saveMeal();
+		
+		Assert.assertEquals("50g", system.getMeal("Raclette").getQuantity("Cheese"));
+		
 	}
 	
 	public void testListIngredients(){
@@ -164,7 +181,9 @@ public class SystemTest {
 	
 		system.createMeal("Raclette", 17);
 		system.addIngredient("Cheese", "50g");
-		system.listIngredient();
+		system.saveMeal();
+		
+		assertEquals("50g",system.listIngredients("Raclette").get("Cheese"));
 	}
 	
 
@@ -176,9 +195,11 @@ public class SystemTest {
 		system.createMeal("Raclette", 17);
 		system.addIngredient("Cheese", "50g");
 		system.saveMeal();
+		
+		assertEquals("50g",system.listIngredients("Raclette").get("Cheese"));
 	}
 	
-	public void testPutInSpecialOffer(){
+	public void testputInSpecialOffer(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);		
 		system.login("bobred", "123456");
@@ -187,7 +208,7 @@ public class SystemTest {
 		system.addIngredient("Cheese", "50g");
 		system.saveMeal();
 		
-		System.PutInSpecialOffer("Raclette", 15);
+		system.putInSpecialOffer("Raclette", 15);
 		Meal raclette = system.currentMeal();
 		Assert.assertTrue(raclette.isSpecial());
 	
@@ -202,7 +223,7 @@ public class SystemTest {
 		system.addIngredient("Cheese", "50g");
 		system.saveMeal();
 		
-		System.PutInSpecialOffer("Raclette", 15);
+		system.putInSpecialOffer("Raclette", 15);
 		system.removeFromSpecialOffer("Raclette");
 		
 		Meal raclette = system.currentMeal();
@@ -214,75 +235,74 @@ public class SystemTest {
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);		
 		system.login("bobred", "123456");
 		
-		system.InsertOffer("Raclette", 15);
-		system.addIngredient("Cheese", "50g");
-		system.saveMeal();
-		
+		system.insertOffer("Raclette", 15);
 		Meal raclette = system.currentMeal();
-		Assert.assertTrue(raclette.isSpecial());
 		
-		
-		
+		Assert.assertTrue(raclette.isOnlySpecial());
 	}
 	
-	public void testInsertOffer2(){
+	public void testNotifyAdClientWhoAgrees(){
 		EYMS system = new EYMS();
-		system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);		
+		system.register("Bob", "Red", "bobred2", "123456", UserRole.Client);
+		system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);
+		
+		system.login("bobred2", "123456");
+		system.associateAgreement("bobred2","SpecialOffer",true);
+		
 		system.login("bobred", "123456");
-		
-		system.InsertOffer("Raclette", 15);
+		system.createMeal("Raclette", 17);
 		system.addIngredient("Cheese", "50g");
-		system.saveMeal();
+		system.saveMeal();	
 		
-		system.removeFromSpecialOffer("Raclette"); //ça devrait pas marcher ? : Insert offer -> plat special		
-		Meal raclette = system.currentMeal();
-		Assert.assertTrue(raclette.isSpecial());
+		system.notifyAd("The best Raclette in the world !","Raclette",15);
 		
-		
-		
+		system.login("bobred2", "123456");
+		Client bob = (Client) system.getCurrentUser();
+		assertEquals("There is a new special offer ! Enjoy Your Meal offers you "
+				+ "a tasty discount on the meal : " + "Raclette" + ". " + "The best Raclette in the world !"
+				, bob.getNotificationWall());
 	}
 	
-	public void testNotifyAdClientWhoAgrees(){EYMS system = new EYMS();
-	system.register("Bob", "Red", "bobred2", "123456", UserRole.Client);
-	system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);		
-	system.login("bobred", "123456");
-	
-	system.createMeal("Raclette", 17);
-	system.addIngredient("Cheese", "50g");
-	system.saveMeal();
-	
-	System.PutInSpecialOffer("Raclette", 15);
-	
-	system.notifyAd();
-	system.login("bobred2", "123456");
-	Client bob = system.currentUser();
-	System.out.println(bob.getNotificationWall());
-	
-	
+	public void testNotifyAdClientWhoDisagrees(){
+		EYMS system = new EYMS();
+		system.register("Bob", "Red", "bobred2", "123456", UserRole.Client);
+		system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);
+		
+		system.login("bobred2", "123456");
+		system.associateAgreement("bobred2","SpecialOffer",false);
+		
+		system.login("bobred", "123456");
+		system.createMeal("Raclette", 17);
+		system.addIngredient("Cheese", "50g");
+		system.saveMeal();	
+		
+		system.notifyAd("The best Raclette in the world !","Raclette",15);
+		
+		system.login("bobred2", "123456");
+		Client bob = (Client) system.getCurrentUser();
+		assertEquals(""
+				, bob.getNotificationWall());
 	}
 	
-	public void testNotifyAdClientWhoDisagrees(){EYMS system = new EYMS();
-	system.register("Bob", "Red", "bobred2", "123456", UserRole.Client);
-	system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);
-	system.login("bobred2", "123456");
-	system.associateAgreement();
-	system.login("bobred", "123456");
-	
-	system.createMeal("Raclette", 17);
-	system.addIngredient("Cheese", "50g");
-	system.saveMeal();
-	
-	System.PutInSpecialOffer("Raclette", 15);
-	
-	system.notifyAd();
-	 //Mettre non pour special offers
-	system.login("bobred2", "123456");
-	Client bob = system.currentUser();
-	System.out.println(bob.getNotificationWall());
-	
-	
+	public void testNotifyBirthday() throws ParseException{
+		EYMS system = new EYMS();
+		system.register("Bob", "Red", "bobred2", "123456", UserRole.Client);
+		system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);
+		
+		system.login("bobred2", "123456");
+		system.addBirthday("1994/03/20");
+		system.login("bobred", "123456");
+		system.createMeal("Raclette", 17);
+		system.addIngredient("Cheese", "50g");
+		system.saveMeal();	
+		
+		system.notifyBirthday();
+		
+		system.login("bobred2", "123456");
+		Client bob = (Client) system.getCurrentUser();
+		assertEquals("It's your birthday ! Enjoy Your Meal offers you "
+				+ "a tasty discount on your next order !"
+				, bob.getNotificationWall());
+		
 	}
-	
-	public void testNotifyBirthday(){}
-	// je sais pas comment on va mettre en place les dates
 }

@@ -61,8 +61,6 @@ public class Client extends User implements Observer {
 		this.notificationWall = this.getFirstName() + " " + this.getSurName() +"'s notification wall : ";
 		this.setAgreement("BirthdayOffer", true);
 		this.setAgreement("SpecialOffer", true);
-		
-		
 	}
 
 	public Offer getCard() {
@@ -89,7 +87,7 @@ public class Client extends User implements Observer {
 	 * @param agreement Agreement to receive notification related to the offer.
 	 */
 	public void setAgreement(String offerType, Boolean agreement) {
-		(this.agreements).replace(offerType, agreement);
+		(this.agreements).put(offerType, agreement);
 	}
 
 	/**
@@ -108,7 +106,7 @@ public class Client extends User implements Observer {
 	 * @param agreement Agreement to receive notification related to the offer.
 	 */
 	public void setContactInfo(String contactType, String contact) {
-		(this.contactInfo).replace(contactType, contact);
+		(this.contactInfo).put(contactType, contact);
 	}
 
 	public String getFavoriteContactInfo() {
@@ -150,11 +148,9 @@ public class Client extends User implements Observer {
 		}
 		if (o instanceof Meal){
 			this.addToNotificationWall("There is a new special offer ! Enjoy Your Meal offers you "
-					+ "a tasty discount on the meal : " + ((Meal) o).getName() + ". ");
+					+ "a tasty discount on the meal : " + ((Meal) o).getName() + ". " + (String) arg);
 		}
 		
 	}
 	
-	
-
 }

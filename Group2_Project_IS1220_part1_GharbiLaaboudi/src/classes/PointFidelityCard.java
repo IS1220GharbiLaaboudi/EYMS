@@ -19,15 +19,21 @@ public class PointFidelityCard implements Offer {
 	/**
 	 * @param points
 	 */
-	public PointOffer(int points) {
+	public PointFidelityCard(int points) {
+		// TODO Auto-generated constructor stub
 		this.points = points;
 	}
 	
-
-	
+	/**
+	 * @param points
+	 */
+	public PointFidelityCard() {
+		// TODO Auto-generated constructor stub
+		this.points = 0;
+	}
 	
 	@Override
-	public double discountedPrice(Order order) {
+	public double discountedPrice(User user, Order order) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
