@@ -113,8 +113,6 @@ public class User {
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
 		User other = (User) obj;
 		if (password == null) {
 			if (other.password != null)

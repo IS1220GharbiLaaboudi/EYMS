@@ -16,34 +16,35 @@ import enums.UserRole;
 import interfaces.Offer;
 
 /**
- * @author Fouad-Sams
+ * @author Achraf Gharbi
+ * @author Younes Laaboudi
  *
  */
 public class EYMSTest {
 	
+	@Test
 	public void testRegisterClient(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Client);
 		Client bob1 = (Client) system.getUser("bobred");
-		
-		Client bob2 = new Client("Bob", "Red", "bobred", "123456");
-		
-		Assert.assertEquals(bob2, bob1);
-		
-		
-	}
-
-	public void testLoginClient(){
-		EYMS system = new EYMS();
-		system.register("Bob", "Red", "bobred", "123456", UserRole.Client);		
-		system.login("bobred", "123456");
-		Client bob1 = (Client) system.getCurrentUser();
-		
 		Client bob2 = new Client("Bob", "Red", "bobred", "123456");
 		
 		Assert.assertEquals(bob2, bob1);
 	}
 	
+	@Test
+	public void testLoginClient(){
+		EYMS system = new EYMS();
+		system.register("Bob", "Red", "bobred", "123456", UserRole.Client);		
+		system.login("bobred", "123456");
+		User bob1 = system.getCurrentUser();
+		User bob2 = new Client("Bob", "Red", "bobred", "123456");
+		System.out.println(system.getCurrentUser());
+		System.out.println(bob2);
+		Assert.assertEquals(bob2, bob1);
+	}
+	
+	@Test
 	public void testRegisterChef(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);
@@ -55,7 +56,7 @@ public class EYMSTest {
 		
 		
 	}
-
+	@Test
 	public void testLoginChef(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);		
@@ -65,7 +66,7 @@ public class EYMSTest {
 		
 		Assert.assertEquals(bob1,bob2);
 	}
-	
+	@Test
 	public void testRegisterSameUsername(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Client);
@@ -75,7 +76,7 @@ public class EYMSTest {
 		
 		Assert.assertEquals("Bob", bob.getFirstName());
 	}
-	
+	@Test
 	public void testPersonalizeMeal(){
 		EYMS system = new EYMS();
 		system.setCurrentMeal(new Meal("Raclette", 15));
@@ -92,7 +93,7 @@ public class EYMSTest {
 		Assert.assertEquals("300g",system.listIngredients("Raclette").get("patate"));
 		Assert.assertEquals("",system.listIngredients("Hamburger").get("thon"));
 	}
-	
+	@Test
 	public void testSaveOrder(){
 		EYMS system = new EYMS();
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
@@ -101,7 +102,7 @@ public class EYMSTest {
 		
 		Assert.assertEquals(system.getOrder(order.getId()), order);
 	}
-	
+	@Test
 	public void addInfo(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Client);		
@@ -112,7 +113,7 @@ public class EYMSTest {
 		String mailAdress = bob.getContactInfo("email");
 		Assert.assertEquals("bobred@gmail.com", mailAdress);
 	}
-	
+	@Test
 	public void testAssociateCard(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Client);		
@@ -123,7 +124,7 @@ public class EYMSTest {
 		Offer card = bob.getCard();
 		Assert.assertTrue(card instanceof LotteryFidelityCard);
 	}
-	
+	@Test
 	public void associateAgreement(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Client);		
@@ -134,11 +135,12 @@ public class EYMSTest {
 		boolean agree = bob.getAgreement("SpecialOffer");
 		Assert.assertTrue(!agree);
 	}
-	
+	@Test
 	public void testShowMealWithoutLoggingIn(){
 		EYMS system = new EYMS();
 		
 	}
+	@Test
 	public void createMealClient(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Client);		

@@ -3,6 +3,7 @@ package classes;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -40,6 +41,9 @@ public class EYMS {
 		offers = new Offer[1];
 		BirthdayOffer bdo = new BirthdayOffer(date);
 		offers[0] = bdo;
+		mapUsers = new HashMap<String, User>();
+		mapMeal = new HashMap<String, Meal>();
+		mapOrders = new HashMap<Integer, Order>();
 	}
 	
 	/*
@@ -49,6 +53,7 @@ public class EYMS {
 	 */
 	
 	public User getCurrentUser() {
+		System.out.println("get curr:"+currentUser);
 		return currentUser;
 	}
 
@@ -117,7 +122,8 @@ public class EYMS {
 		User u = mapUsers.get(userName);
 		User user = new User(userName, pwd);
 		if(u.equals(user)){
-			currentUser = user;
+			System.out.println(u);
+			setCurrentUser(u);
 		}
 		return u.equals(user);
 	}
@@ -137,8 +143,15 @@ public class EYMS {
 	public boolean register(String firstName, String lastName, String username, String pwd, UserRole role){
 		// if the user doesn't exist and all the
 		if (firstName != "" && lastName != "" && username !="" && pwd != "" && mapUsers.get(username) == null){
-			User user = new User(firstName,lastName,username,pwd,role);
-			mapUsers.put(username, user);
+			
+			if (role == UserRole.Chef){
+				User user = new User(firstName,lastName,username,pwd,role);
+				mapUsers.put(username, user);
+			}
+			else if(role == UserRole.Client){
+				Client client= new Client(firstName,lastName,username,pwd);
+				mapUsers.put(username, client);
+			}
 			return true;
 		}
 		return false;
