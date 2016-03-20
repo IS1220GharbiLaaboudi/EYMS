@@ -9,12 +9,9 @@ import interfaces.Offer;
  *
  */
 public class PointFidelityCard implements Offer {
-	/* (non-Javadoc)
-	 * @see Group2_Project_IS1220_part1_GharbiLaaboudi.Offer#finalPrice(Group2_Project_IS1220_part1_GharbiLaaboudi.Order)
-	 */
-	
 	private int points;
 	public final int maxPoints = 100;
+	public final double percentage = 0.1;
 	
 	/**
 	 * @param points
@@ -32,10 +29,23 @@ public class PointFidelityCard implements Offer {
 		this.points = 0;
 	}
 	
-	@Override
-	public double discountedPrice(User user, Order order) {
-		// TODO Auto-generated method stub
-		return 0;
+	
+	/**
+	 * 
+	 * @param points the points of the client. One point added per 10euros. 100 points grants a discount.
+	 * @Override
+	 */
+	public double discountedPrice(Order order) {
+		if(points >= 100){
+			points = 0;
+			return order.getNormalPrice() * percentage;
+		} else{
+			points += Math.floor(order.getNormalPrice() / 10);
+			if(points > 100)
+				points = 100;
+			return 0;
+		}
+		
 	}
 	
 }

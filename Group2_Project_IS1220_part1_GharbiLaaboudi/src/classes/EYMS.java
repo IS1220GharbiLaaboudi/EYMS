@@ -25,11 +25,22 @@ public class EYMS {
 	
 	private Order CurrentOrder;
 	
+	private Date date;
+	
 	private Map<String, User> mapUsers;
 	
 	private Map<String, Meal> mapMeal;
 	
 	private Map<Integer, Order> mapOrders;
+	
+	private Offer[] offers;
+	
+	public EYMS(){
+		date =  new Date();
+		offers = new Offer[1];
+		BirthdayOffer bdo = new BirthdayOffer(date);
+		offers[0] = bdo;
+	}
 	
 	/*
 	 * Ordinary getters and setters
@@ -78,6 +89,23 @@ public class EYMS {
 		return mapOrders.get(orderId);
 	}
 	
+	
+	/**
+	 * @return the date
+	 */
+	public Date getDate() {
+		return date;
+	}
+
+
+	/**
+	 * @param date the date to set
+	 */
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+
 	/**
 	 * 
 	 * @param userName user name of the user
@@ -136,14 +164,17 @@ public class EYMS {
 	
 	/**
 	 * Saves a non null order in the order map and incrementing the order counter of each meal in it 
-	 * if the current user is a chef.
+	 * if the current user is a client.
 	 * 
 	 * @param order the order to store.
-	 * @return true if the order was stored in the map and current user is a chef,
+	 * @return true if the order was stored in the map and current user is a client,
 	 * false otherwise.
 	 */
 	public boolean saveOrder(Order order){
-		if (order != null && currentUser.getRole() == UserRole.Chef){ 
+		if (order != null && currentUser != null && currentUser.getRole() == UserRole.Client){
+			double finalPrice = order.getPrice(offers);
+			currentUser = order.getClient();
+			mapUsers.put(currentUser.getUserName(), currentUser);
 			for(Meal meal : order.getSetMeal()){
 				if(meal.isOnlySpecial() || meal.isSpecial())
 					meal.incrementOrderCounter("OnSale");
@@ -444,8 +475,7 @@ public class EYMS {
 	 */
 	public boolean notifyBirthday(){
 		if(currentUser.getRole() == UserRole.Chef){
-			Date date = new Date();
-			BirthdayOffer bd = new BirthdayOffer();
+			BirthdayOffer bd = new BirthdayOffer(date);
 			for(User user : mapUsers.values()){
 				Client client = (Client) user;
 				if(client.getBirthdayDate().getDate() == date.getDate() && client.getBirthdayDate().getMonth() == date.getMonth()){

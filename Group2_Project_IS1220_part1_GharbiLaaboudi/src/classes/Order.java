@@ -111,31 +111,31 @@ public class Order {
 		for (Meal meal : mealSet) {
 			normalPrice += getQuantityMeal(meal)*meal.getPrice();
 		}
+		System.out.println("normal price" + normalPrice);
 		return normalPrice;
 	}
 
 	/**
-	 * @param We have to put all the offers available in the list offers in order to be able to 
-	 * @return
+	 * @param We have to put all the offers available in the list offers.
+	 * @return the final price of the order after discounts.
 	 */
 	public double getPrice(Offer[] offers){
-		
-		Offer card =getClient().getCard() ;
+		Client client = getClient();
+		Offer card = client.getCard() ;
 		double normalPrice = getNormalPrice();
 		double discountedPrice = 0;
 		Set<Meal> mealSet = getSetMeal(); 
 				
-		discountedPrice += card.discountedPrice(getClient(), this);
+		discountedPrice += card.discountedPrice(this);
 		currentPrice = normalPrice - discountedPrice;
-		
+		client.setCard(card);
 		
 		for(Offer offer : offers){
-			discountedPrice += offer.discountedPrice(getClient(), this);
+			discountedPrice += offer.discountedPrice(this);
 			currentPrice = normalPrice - discountedPrice;
 		}
+		System.out.println("cur price" + currentPrice);
 		return  Math.max(currentPrice, (double) 0);
 		}
 	
-	
-
 }

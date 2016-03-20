@@ -13,15 +13,18 @@ import interfaces.Offer;
  */
 public class BasicFidelityCard extends Observable implements Offer {
 	
-	
-	/** 
-	 * 
+	/**
+	 * Returns the discounted price from an order. 
+	 * @param order
+	 * @return the discounted price.
+	 * @Override 
 	 */
-
-	@Override
-	public double discountedPrice(User user, Order order) {
-		
-		return 0;
+	public double discountedPrice(Order order) {
+		double sum = 0;
+		for (Meal meal : order.getSetMeal()){
+			sum += meal.getSpecialPrice();
+		}
+		return order.getNormalPrice() - sum;
 	}
 	
 }

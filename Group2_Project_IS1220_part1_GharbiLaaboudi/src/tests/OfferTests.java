@@ -5,6 +5,8 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -21,14 +23,14 @@ public class OfferTests {
 	public void BasicFidelityCardOfferWithoutOffer() {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		BirthdayOffer bdo = new BirthdayOffer();
+		BirthdayOffer bdo = new BirthdayOffer(new Date());
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
 		raclette.personalizeMeal("cheese", "90g"); // personalizeMeal permet aussi de rajouter des ingredients
 		raclette.personalizeMeal("ham", "40g");
 		raclette.personalizeMeal("potatoes", "50g");
-		raclette.setModified(false); // car c'est le plat original et pas un plat modifié
+		raclette.setModified(false); // car c'est le plat original et pas un plat modifiï¿½
 		
 		//creation of an order
 		Order order = new Order(bob);
@@ -38,6 +40,7 @@ public class OfferTests {
 		Offer[] offers = new Offer[1];	
 		offers[0] = bdo;
 		double price = order.getPrice(offers);
+		System.out.println("normal price" + price);
 		Assert.assertEquals(3*17, price);
 	}
 	
@@ -45,7 +48,7 @@ public class OfferTests {
 	public void BasicFidelityCardOfferWithSpecialOffer() {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		BirthdayOffer bdo = new BirthdayOffer();
+		BirthdayOffer bdo = new BirthdayOffer(new Date());
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
@@ -71,7 +74,7 @@ public class OfferTests {
 	public void BasicFidelityCardOfferWithSpecialOfferOnOnlyOneMeal() {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		BirthdayOffer bdo = new BirthdayOffer();
+		BirthdayOffer bdo = new BirthdayOffer(new Date());
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
@@ -106,7 +109,7 @@ public class OfferTests {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
 		bob.setCard(new LotteryFidelityCard());
-		BirthdayOffer bdo = new BirthdayOffer();
+		BirthdayOffer bdo = new BirthdayOffer(new Date());
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
@@ -139,7 +142,7 @@ public class OfferTests {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
 		bob.setCard(new LotteryFidelityCard());
-		BirthdayOffer bdo = new BirthdayOffer();
+		BirthdayOffer bdo = new BirthdayOffer(new Date());
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
@@ -158,7 +161,7 @@ public class OfferTests {
 		offers[0] = bdo;
 		double price = order.getPrice(offers);
 		for (int i = 0; i < 100; i++) {
-			double price = order.getPrice(offers);
+			price = order.getPrice(offers);
 			if (price==17*2){
 				winLottery = true;
 			}
@@ -172,7 +175,7 @@ public class OfferTests {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
 		bob.setCard(new LotteryFidelityCard());
-		BirthdayOffer bdo = new BirthdayOffer();
+		BirthdayOffer bdo = new BirthdayOffer(new Date());
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
@@ -214,7 +217,7 @@ public class OfferTests {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
 		bob.setCard(new PointFidelityCard());
-		BirthdayOffer bdo = new BirthdayOffer();
+		BirthdayOffer bdo = new BirthdayOffer(new Date());
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
@@ -244,7 +247,7 @@ public class OfferTests {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
 		bob.setCard(new PointFidelityCard());
-		BirthdayOffer bdo = new BirthdayOffer();
+		BirthdayOffer bdo = new BirthdayOffer(new Date());
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);

@@ -1,6 +1,7 @@
 package classes;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
@@ -59,6 +60,7 @@ public class Client extends User implements Observer {
 		super(firstName, surName, userName, password, UserRole.Client);
 		this.card = new BasicFidelityCard();
 		this.notificationWall = this.getFirstName() + " " + this.getSurName() +"'s notification wall : ";
+		agreements = new HashMap<String, Boolean>(); 
 		this.setAgreement("BirthdayOffer", true);
 		this.setAgreement("SpecialOffer", true);
 	}

@@ -1,5 +1,6 @@
 package classes;
 
+import java.util.Date;
 import java.util.Observable;
 
 import interfaces.Offer;
@@ -12,10 +13,28 @@ import interfaces.Offer;
  */
 public class BirthdayOffer extends Observable implements Offer {
 	private final double percentage = .5;
+	private Date date;
 	
-	@Override
-	public double discountedPrice(User user, Order order) {
-		return order.getNormalPrice() * percentage;
+	public BirthdayOffer(Date date){
+		this.date = date;
+	}
+	
+	/**
+	 * Returns the discounted price from an order.
+	 *  
+	 * @param order
+	 * @return the discounted price.
+	 * @Override 
+	 */	
+	public double discountedPrice(Order order) {
+		Date date = new Date();
+		Client client = order.getClient();
+		if(client.getBirthdayDate().getDate() == date.getDate() && 
+				client.getBirthdayDate().getMonth() == date.getMonth()){
+			return order.getNormalPrice() * percentage;
+		} else {
+			return 0;
+		}
 	}
 	
 
