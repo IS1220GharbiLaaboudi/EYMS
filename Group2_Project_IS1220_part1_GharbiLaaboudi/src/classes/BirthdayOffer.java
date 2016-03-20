@@ -1,22 +1,40 @@
 package classes;
 
+import java.util.Date;
 import java.util.Observable;
 
 import interfaces.Offer;
 
 /**
- * @author Fouad-Sams
+ * @author Achraf Ghabri
+ * 
+ * @author Younes Laaboudi
  *
  */
 public class BirthdayOffer extends Observable implements Offer {
-
-	/* (non-Javadoc)
-	 * @see Group2_Project_IS1220_part1_GharbiLaaboudi.Offer#finalPrice(Group2_Project_IS1220_part1_GharbiLaaboudi.Order)
-	 */
-	@Override
-	public double finalPrice(Order order) {
-		// TODO Auto-generated method stub
-		return 0;
+	private final double percentage = .5;
+	private Date date;
+	
+	public BirthdayOffer(Date date){
+		this.date = date;
 	}
+	
+	/**
+	 * Returns the discounted price from an order.
+	 *  
+	 * @param order
+	 * @return the discounted price.
+	 * @Override 
+	 */	
+	public double discountedPrice(Order order) {
+		Client client = order.getClient();
+		if(client.getBirthdayDate().getDate() == date.getDate() && 
+				client.getBirthdayDate().getMonth() == date.getMonth()){
+			return order.getCurrentPrice() * percentage;
+		} else {
+			return 0;
+		}
+	}
+	
 
 }

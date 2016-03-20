@@ -1,5 +1,7 @@
 package classes;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -40,13 +42,17 @@ public class Order {
 	 */
 	private double currentPrice;
 	
+	private Date date;
+	
 	/**
 	 * @param client The client the made the order
 	 */
-	public Order(Client client) {
+	public Order(Client client, Date date) {
 		this.id = nextId;
 		nextId += 1;
 		this.client = client;
+		this.mealMap = new HashMap<Meal, Integer>();
+		this.date = date;
 	}
 	
 	/**
@@ -62,6 +68,7 @@ public class Order {
 	 */
 	public Integer getQuantityMeal(Meal meal){
 		if (mealMap.containsKey(meal)){
+			System.out.println(mealMap.get(meal) + " " + meal.getPrice() + " " + meal.getName());
 			return mealMap.get(meal);
 		} else{
 			return 0;
@@ -73,7 +80,7 @@ public class Order {
 	 * @param n Number of this kind of meal in this order
 	 */
 	public void setNumberOfMeal(Meal meal, Integer n ){
-		mealMap.replace(meal, n);	
+		mealMap.put(meal, n);	
 	}
 	
 	/**
@@ -103,33 +110,55 @@ public class Order {
 	public void setCurrentPrice(double currentPrice) {
 		this.currentPrice = currentPrice;
 	}
-
-	/**
-	 * @param We have to put all the offers available in the list offers in order to be able to 
-	 * @return
-	 */
-	public double getPrice(Offer[] offers){
-		
-		Offer card =getClient().getCard() ;
-		double discountedPrice = 0;
+	
+	public double getNormalPrice(){
 		double normalPrice = 0;
 		Set<Meal> mealSet = getSetMeal(); 
-		
 		
 		for (Meal meal : mealSet) {
 			normalPrice += getQuantityMeal(meal)*meal.getPrice();
 		}
-		discountedPrice += card.discountedPrice(getClient(), this);
+		System.out.println("normal price" + normalPrice);
+		return normalPrice;
+	}
+
+	/**
+	 * @return the date
+	 */
+	public Date getDate() {
+		return date;
+	}
+
+	/**
+	 * @param date the date to set
+	 */
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	/**
+	 * @param We have to put all the offers available in the list offers.
+	 * @return the final price of the order after discounts.
+	 */
+	public double getPrice(Offer[] offers){
+		Client client = getClient();
+		Offer card = client.getCard() ;
+		double normalPrice = getNormalPrice();
+		double discountedPrice = 0;
+		Set<Meal> mealSet = getSetMeal(); 
+				
+		discountedPrice += card.discountedPrice(this);
+		System.out.println("card " + discountedPrice);
 		currentPrice = normalPrice - discountedPrice;
-		
+		client.setCard(card);
 		
 		for(Offer offer : offers){
-			discountedPrice += offer.discountedPrice(getClient(), this);
+			discountedPrice += offer.discountedPrice(this);
+			System.out.println("bd "+ discountedPrice);
 			currentPrice = normalPrice - discountedPrice;
 		}
+		System.out.println("cur price :" + currentPrice);
 		return  Math.max(currentPrice, (double) 0);
 		}
 	
-	
-
 }

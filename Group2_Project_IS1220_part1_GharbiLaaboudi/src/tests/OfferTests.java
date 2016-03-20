@@ -5,6 +5,8 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -21,31 +23,35 @@ public class OfferTests {
 	public void BasicFidelityCardOfferWithoutOffer() {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		BirthdayOffer bdo = new BirthdayOffer();
+		Date date = new Date();
+		date.setMonth(12);
+		BirthdayOffer bdo = new BirthdayOffer(date);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
 		raclette.personalizeMeal("cheese", "90g"); // personalizeMeal permet aussi de rajouter des ingredients
 		raclette.personalizeMeal("ham", "40g");
 		raclette.personalizeMeal("potatoes", "50g");
-		raclette.setModified(false); // car c'est le plat original et pas un plat modifié
+		raclette.setModified(false); // car c'est le plat original et pas un plat modifiï¿½
 		
 		//creation of an order
-		Order order = new Order(bob);
+		Order order = new Order(bob,date);
 		order.setNumberOfMeal(raclette, 3);
 		
 		
-		Offer[] offers = new Offer[1];	
+		Offer[] offers = new Offer[1];
 		offers[0] = bdo;
 		double price = order.getPrice(offers);
-		Assert.assertEquals(3*17, price);
+		Assert.assertTrue( 3*17.0 ==  price);
 	}
 	
 	@Test
 	public void BasicFidelityCardOfferWithSpecialOffer() {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		BirthdayOffer bdo = new BirthdayOffer();
+		Date date = new Date();
+		date.setMonth(12);
+		BirthdayOffer bdo = new BirthdayOffer(date);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
@@ -57,21 +63,23 @@ public class OfferTests {
 		raclette.setSpecial(true);
 		
 		//creation of an order
-		Order order = new Order(bob);
+		Order order = new Order(bob,date);
 		order.setNumberOfMeal(raclette, 3);
 		
 		
 		Offer[] offers = new Offer[1];
 		offers[0] = bdo;
 		double price = order.getPrice(offers);
-		Assert.assertEquals(3*15, price);
+		Assert.assertTrue(3*15 ==  price);
 	}
 	
 	@Test
 	public void BasicFidelityCardOfferWithSpecialOfferOnOnlyOneMeal() {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		BirthdayOffer bdo = new BirthdayOffer();
+		Date date = new Date();
+		date.setMonth(12);
+		BirthdayOffer bdo = new BirthdayOffer(date);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
@@ -90,7 +98,7 @@ public class OfferTests {
 		raclette.setModified(false); 
 		
 		//creation of an order
-		Order order = new Order(bob);
+		Order order = new Order(bob,date);
 		order.setNumberOfMeal(raclette, 3);
 		order.setNumberOfMeal(burger, 1);
 		
@@ -98,7 +106,7 @@ public class OfferTests {
 		Offer[] offers = new Offer[1];
 		offers[0] = bdo;
 		double price = order.getPrice(offers);
-		Assert.assertEquals(3*15+8, price);
+		Assert.assertTrue(3*15+8 == price);
 	}
 	
 	@Test
@@ -106,7 +114,9 @@ public class OfferTests {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
 		bob.setCard(new LotteryFidelityCard());
-		BirthdayOffer bdo = new BirthdayOffer();
+		Date date = new Date();
+		date.setMonth(12);
+		BirthdayOffer bdo = new BirthdayOffer(date);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
@@ -118,7 +128,7 @@ public class OfferTests {
 		raclette.setSpecial(true);
 		
 		//creation of an order
-		Order order = new Order(bob);
+		Order order = new Order(bob,date);
 		order.setNumberOfMeal(raclette, 3);
 		boolean winLottery = false;
 		Offer[] offers = new Offer[1];
@@ -126,7 +136,8 @@ public class OfferTests {
 		for (int i = 0; i < 100; i++) {
 			bob.setCard(new LotteryFidelityCard());
 			double price = order.getPrice(offers);
-			if (price==17*2){
+			System.out.println(price+" lottery pr");
+			if (price==0){
 				winLottery = true;
 			}
 		}
@@ -139,7 +150,9 @@ public class OfferTests {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
 		bob.setCard(new LotteryFidelityCard());
-		BirthdayOffer bdo = new BirthdayOffer();
+		Date date = new Date();
+		date.setMonth(12);
+		BirthdayOffer bdo = new BirthdayOffer(date);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
@@ -151,14 +164,14 @@ public class OfferTests {
 		raclette.setSpecial(true);
 		
 		//creation of an order
-		Order order = new Order(bob);
+		Order order = new Order(bob,date);
 		order.setNumberOfMeal(raclette, 3);
 		boolean winLottery = false;
 		Offer[] offers = new Offer[1];
 		offers[0] = bdo;
 		double price = order.getPrice(offers);
 		for (int i = 0; i < 100; i++) {
-			double price = order.getPrice(offers);
+			price = order.getPrice(offers);
 			if (price==17*2){
 				winLottery = true;
 			}
@@ -168,53 +181,13 @@ public class OfferTests {
 	}
 	
 	@Test
-	public void LotteryFidelityCardOfferWithTwoMeal() {
-		// creation of a user
-		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		bob.setCard(new LotteryFidelityCard());
-		BirthdayOffer bdo = new BirthdayOffer();
-		
-		// creation of a meal
-		Meal raclette = new Meal("Raclette", 17);
-		raclette.personalizeMeal("cheese", "90g");
-		raclette.personalizeMeal("ham", "40g");
-		raclette.personalizeMeal("potatoes", "50g");
-		raclette.setModified(false); 
-		raclette.setSpecialPrice(15);
-		raclette.setSpecial(true);
-		
-		// creation of a meal
-		Meal burger = new Meal("Burger", 8);
-		raclette.personalizeMeal("cheese", "40g"); 
-		raclette.personalizeMeal("ham", "90g");
-		raclette.personalizeMeal("beef", "250g");
-		raclette.setModified(false); 
-				
-		
-		//creation of an order
-		Order order = new Order(bob);
-		order.setNumberOfMeal(raclette, 3);
-		order.setNumberOfMeal(burger, 1);
-		boolean winLottery = false;
-		Offer[] offers = new Offer[1];
-		offers[0] = bdo;
-		for (int i = 0; i < 100; i++) {
-			bob.setCard(new LotteryFidelityCard());
-			double price = order.getPrice(offers);
-			if (price==17*3){
-				winLottery = true;
-			}
-		}
-		
-		Assert.assertTrue(winLottery);
-	}
-	
-	@Test
 	public void PointFidelityCardOfferWithOnlyOneMealNoDiscount() {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
 		bob.setCard(new PointFidelityCard());
-		BirthdayOffer bdo = new BirthdayOffer();
+		Date date = new Date();
+		date.setMonth(12);
+		BirthdayOffer bdo = new BirthdayOffer(date);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
@@ -226,7 +199,7 @@ public class OfferTests {
 		raclette.setSpecial(true);
 		
 		//creation of an order
-		Order order = new Order(bob);
+		Order order = new Order(bob,date);
 		order.setNumberOfMeal(raclette, 3);
 		boolean winLottery = false;
 		Offer[] offers = new Offer[1];
@@ -236,15 +209,17 @@ public class OfferTests {
 			price = order.getPrice(offers);
 		}
 		
-		Assert.assertEquals(3*17,price);
+		Assert.assertTrue(3*17 == price);
 	}
 	
 	@Test
 	public void PointFidelityCardOfferWithOnlyOneMeal() {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		bob.setCard(new PointFidelityCard());
-		BirthdayOffer bdo = new BirthdayOffer();
+		bob.setCard(new PointFidelityCard(100));
+		Date date = new Date();
+		date.setMonth(12);
+		BirthdayOffer bdo = new BirthdayOffer(date);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
@@ -256,17 +231,14 @@ public class OfferTests {
 		raclette.setSpecial(true);
 		
 		//creation of an order
-		Order order = new Order(bob);
+		Order order = new Order(bob,date);
 		order.setNumberOfMeal(raclette, 3);
 		boolean winLottery = false;
 		Offer[] offers = new Offer[1];
 		offers[0] = bdo;
-		double price = 0;
-		for (int i = 0; i < 2; i++) {
-			price = order.getPrice(offers);
-		}
+		double price = order.getPrice(offers);
 		
-		Assert.assertEquals(3*17*.9, price);
+		Assert.assertTrue(3*17*.9 == price);
 	}
 
 	@Test

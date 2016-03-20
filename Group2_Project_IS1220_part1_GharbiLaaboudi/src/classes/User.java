@@ -40,6 +40,17 @@ public class User {
 		this.password = password;
 		this.role = role;
 	}
+	/**
+	 * Quick constructor for the User class. Used for login.
+	 * 
+	 * @param userName The username of the user. In order to register, the username selected must be different from 
+	 * all the other usernames.
+	 * @param password The password of the user.
+	 */
+	public User(String userName, String password){
+		this.userName = userName;
+		this.password = password;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -89,6 +100,31 @@ public class User {
 	public String toString() {
 		return "User [firstName=" + firstName + ", surName=" + surName + ", userName=" + userName + ", password="
 				+ "*********" + "]";
+	}
+	
+	/**
+	 * Compares the username and the password.
+	 * 
+	 */
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		User other = (User) obj;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (userName == null) {
+			if (other.userName != null)
+				return false;
+		} else if (!userName.equals(other.userName))
+			return false;
+		return true;
 	}
 	
 	

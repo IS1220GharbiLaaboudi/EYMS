@@ -1,6 +1,10 @@
 package classes;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
@@ -53,16 +57,18 @@ public class Client extends User implements Observer {
 	 * @param userName The username of the user. In order to register, the username selected must be different from 
 	 * all the other usernames.
 	 * @param password The password of the user. 
+	 * @throws ParseException 
 	 * 
 	 */
 	public Client(String firstName, String surName, String userName, String password) {
 		super(firstName, surName, userName, password, UserRole.Client);
 		this.card = new BasicFidelityCard();
 		this.notificationWall = this.getFirstName() + " " + this.getSurName() +"'s notification wall : ";
+		agreements = new HashMap<String, Boolean>(); 
 		this.setAgreement("BirthdayOffer", true);
 		this.setAgreement("SpecialOffer", true);
 		
-		
+		this.birthdayDate = new Date();
 	}
 
 	public Offer getCard() {
@@ -89,7 +95,7 @@ public class Client extends User implements Observer {
 	 * @param agreement Agreement to receive notification related to the offer.
 	 */
 	public void setAgreement(String offerType, Boolean agreement) {
-		(this.agreements).replace(offerType, agreement);
+		(this.agreements).put(offerType, agreement);
 	}
 
 	/**
@@ -108,7 +114,7 @@ public class Client extends User implements Observer {
 	 * @param agreement Agreement to receive notification related to the offer.
 	 */
 	public void setContactInfo(String contactType, String contact) {
-		(this.contactInfo).replace(contactType, contact);
+		(this.contactInfo).put(contactType, contact);
 	}
 
 	public String getFavoriteContactInfo() {
@@ -150,11 +156,9 @@ public class Client extends User implements Observer {
 		}
 		if (o instanceof Meal){
 			this.addToNotificationWall("There is a new special offer ! Enjoy Your Meal offers you "
-					+ "a tasty discount on the meal : " + ((Meal) o).getName() + ". ");
+					+ "a tasty discount on the meal : " + ((Meal) o).getName() + ". " + (String) arg);
 		}
 		
 	}
 	
-	
-
 }

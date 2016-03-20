@@ -8,20 +8,23 @@ import java.util.Observable;
 import interfaces.Offer;
 
 /**
- * @author Fouad-Sams
- *
+ * @author Achraf Gharbi
+ * @author Younes Laaboudi
  */
 public class BasicFidelityCard extends Observable implements Offer {
 	
-	
-	/** 
-	 * 
+	/**
+	 * Returns the discounted price from an order. 
+	 * @param order
+	 * @return the discounted price.
+	 * @Override 
 	 */
-	@Override
 	public double discountedPrice(Order order) {
-		// TODO Auto-generated method stub
-		return 0;
+		double sum = 0;
+		for (Meal meal : order.getSetMeal()){
+			sum += order.getQuantityMeal(meal)*meal.getSpecialPrice();
+		}
+		return order.getNormalPrice() - sum;
 	}
-
 	
 }

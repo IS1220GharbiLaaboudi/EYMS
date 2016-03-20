@@ -9,6 +9,5 @@ import classes.User;
  */
 public interface Offer {
 
-	public double discountedPrice(User user, Order order){};
-	
+	public double discountedPrice(Order order);	
 }
