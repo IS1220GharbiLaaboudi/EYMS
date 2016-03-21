@@ -53,11 +53,9 @@ public class LotteryFidelityCard implements Offer {
 		Random rand = new Random();
 		Date date =  order.getDate();
 		boolean t = date.getTime() > (lastOrder.getTime() + (24 * 3600));
-		System.out.println("t " + date.getTime() + " > " + lastOrder.getTime() + (24 * 3600 * 1000));
 		lastOrder = date;
 		double prob = Math.random();
 		if(t && prob <probability){
-			System.out.println("proba "+prob);
 			return order.getNormalPrice();
 		} else {
 			

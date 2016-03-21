@@ -135,7 +135,6 @@ public class OfferTests {
 			Order order = new Order(bob,date);
 			order.setNumberOfMeal(raclette, 3);
 			double price = order.getPrice(offers);
-			System.out.println(price+" lottery pr");
 			if (price==0){
 				winLottery = true;
 			}
