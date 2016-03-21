@@ -39,8 +39,6 @@ public class EYMSTest {
 		system.login("bobred", "123456");
 		User bob1 = system.getCurrentUser();
 		User bob2 = new Client("Bob", "Red", "bobred", "123456");
-		System.out.println(system.getCurrentUser());
-		System.out.println(bob2);
 		Assert.assertEquals(bob2, bob1);
 	}
 	
@@ -79,25 +77,29 @@ public class EYMSTest {
 	@Test
 	public void testPersonalizeMeal(){
 		EYMS system = new EYMS();
+		system.register("bob", "red", "bobred", "123456", UserRole.Chef);
+		system.login("bobred", "123456");
 		system.setCurrentMeal(new Meal("Raclette", 15));
 		system.addIngredient("patate", "20g");
 		system.saveMeal();
-		
 		system.setCurrentMeal(new Meal("Hamburger", 15));
 		system.addIngredient("thon", "20g");
 		system.saveMeal();
-		
 		system.personalizeMeal("Raclette", "patate", "300g");
+		
+		system.register("bob", "red", "bobred5", "123456", UserRole.Client);
+		system.login("bobred5", "123456");
 		system.personalizeMeal("Hamburger", "thon", "0.0g");
 		
 		Assert.assertEquals("300g",system.listIngredients("Raclette").get("patate"));
-		Assert.assertEquals("",system.listIngredients("Hamburger").get("thon"));
+		Assert.assertEquals(null,system.listIngredients("Hamburger").get("thon"));
 	}
 	@Test
 	public void testSaveOrder(){
 		EYMS system = new EYMS();
-		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		Order order = new Order(bob,system.getDate());
+		system.register("Bob", "Red", "bobred", "123456", UserRole.Client);		
+		system.login("bobred", "123456");
+		Order order = new Order((Client) system.getCurrentUser(),system.getDate());
 		system.saveOrder(order);
 		
 		Assert.assertEquals(system.getOrder(order.getId()), order);
@@ -148,10 +150,10 @@ public class EYMSTest {
 		
 		system.createMeal("Raclette", 17);
 		Meal raclette = system.currentMeal();
-		Assert.assertTrue(raclette.getName() == "Raclette");
-	
+		Assert.assertTrue(raclette == null);
 	}
 	
+	@Test
 	public void createMealChef(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);		
