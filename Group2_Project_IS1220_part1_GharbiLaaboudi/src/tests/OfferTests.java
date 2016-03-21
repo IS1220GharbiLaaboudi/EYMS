@@ -196,7 +196,6 @@ public class OfferTests {
 		//creation of an order
 		Order order = new Order(bob,date);
 		order.setNumberOfMeal(raclette, 3);
-		boolean winLottery = false;
 		Offer[] offers = new Offer[1];
 		offers[0] = bdo;
 		double price = order.getPrice(offers);
@@ -206,11 +205,56 @@ public class OfferTests {
 
 	@Test
 	public void BirthdayOfferWithOnlyOneMeal() {
-		
+		// creation of a user
+		Client bob = new Client("Bob", "Red", "bobred", "123456");
+		bob.setCard(new PointFidelityCard());
+		Date date = new Date();
+		BirthdayOffer bdo = new BirthdayOffer(date);
+				
+		// creation of a meal
+		Meal raclette = new Meal("Raclette", 17);
+		raclette.personalizeMeal("cheese", "90g");
+		raclette.personalizeMeal("ham", "40g");
+		raclette.personalizeMeal("potatoes", "50g");
+		raclette.setModified(false); 
+		raclette.setSpecialPrice(15);
+		raclette.setSpecial(true);
+				
+		//creation of an order
+		Order order = new Order(bob,date);
+		order.setNumberOfMeal(raclette, 3);
+		Offer[] offers = new Offer[1];
+		offers[0] = bdo;
+		double price = order.getPrice(offers);
+				
+		Assert.assertTrue(3*17*.5 == price);
 	}
-	
+		
 	@Test
-	public void BirthdayOfferWithTwoMeal() {
+	public void BirthdayOfferAndSpecialOffer() {
+		// creation of a user
+				Client bob = new Client("Bob", "Red", "bobred", "123456");
+				bob.setCard(new BasicFidelityCard());
+				Date date = new Date();
+				BirthdayOffer bdo = new BirthdayOffer(date);
+						
+				// creation of a meal
+				Meal raclette = new Meal("Raclette", 17);
+				raclette.personalizeMeal("cheese", "90g");
+				raclette.personalizeMeal("ham", "40g");
+				raclette.personalizeMeal("potatoes", "50g");
+				raclette.setModified(false); 
+				raclette.setSpecialPrice(15);
+				raclette.setSpecial(true);
+						
+				//creation of an order
+				Order order = new Order(bob,date);
+				order.setNumberOfMeal(raclette, 3);
+				Offer[] offers = new Offer[1];
+				offers[0] = bdo;
+				double price = order.getPrice(offers);
+						
+				Assert.assertTrue(3*15*.5 == price);
 		
 	}
 }
