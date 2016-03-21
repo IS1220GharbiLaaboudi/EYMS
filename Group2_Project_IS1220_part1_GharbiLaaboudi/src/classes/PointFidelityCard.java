@@ -1,12 +1,14 @@
 package classes;
 
-import java.util.Observable;
-
 import interfaces.Offer;
 
 /**
- * @author Fouad-Sams
- *
+ * 
+ * This class represents the point fidelity card. The maximum amount of points in a card is set at 100 points. When
+ * this limit is reach, the client gets a discount of a given percentage (here the discount is 10% off). The user
+ * will get a point for every 10 euros spent in the restaurant.
+ *  
+ *  
  */
 public class PointFidelityCard implements Offer {
 	private int points;
@@ -14,7 +16,9 @@ public class PointFidelityCard implements Offer {
 	public final double percentage = 0.1;
 	
 	/**
-	 * @param points
+	 * Creates a point fidelity card with a certain amount of points.
+	 * 
+	 * @param points Number of points initially in the card. This should be inferior to 100 points.
 	 */
 	public PointFidelityCard(int points) {
 		// TODO Auto-generated constructor stub
@@ -22,7 +26,7 @@ public class PointFidelityCard implements Offer {
 	}
 	
 	/**
-	 * @param points
+	 * Basic constructor that creates a point fidelity card with initially 0 point.
 	 */
 	public PointFidelityCard() {
 		// TODO Auto-generated constructor stub
@@ -31,18 +35,17 @@ public class PointFidelityCard implements Offer {
 	
 	
 	/**
+	 * One point added per 10euros. 100 points grants a discount.
 	 * 
-	 * @param points the points of the client. One point added per 10euros. 100 points grants a discount.
-	 * @Override
+	 * @param order The order for which the discount applies.
+	 * 
 	 */
 	public double discountedPrice(Order order) {
 		if(points >= 100){
-			System.out.println("points "+points+"");
 			points = 0;
 			return order.getNormalPrice() * percentage;
 		} else{
 			points += Math.floor(order.getNormalPrice() / 10);
-			System.out.println("points "+points+"");
 			if(points > 100)
 				points = 100;
 			return 0;

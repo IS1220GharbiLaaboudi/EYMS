@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * @author Fouad-Sams
+ * 
  *
  */
 public class UserTests {

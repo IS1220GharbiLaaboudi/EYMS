@@ -84,6 +84,7 @@ public class Meal extends Observable {
 	 * 
 	 * @param name The meal's name. It's the main characteristic of the meal and will be used to refer to it.
 	 * @param price The price of the meal. This price is set by the chef.
+	 * @param isOnlySpecial Set to true is the meal is created through the insertOffer method.
 	 */
 	public Meal(String name, double price, boolean isOnlySpecial) {
 		this.name = name;
@@ -104,7 +105,7 @@ public class Meal extends Observable {
 	}
 
 	/**
-	 * @param mealName the mealName to set
+	 * @param name the mealName to set
 	 */
 	public void setName(String name) {
 		this.name = name;

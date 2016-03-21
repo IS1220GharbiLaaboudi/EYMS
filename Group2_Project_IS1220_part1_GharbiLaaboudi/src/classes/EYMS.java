@@ -7,17 +7,17 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import com.sun.jmx.remote.util.OrderClassLoaders;
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
-
 import enums.FidelityCard;
 import enums.OrderingCriteria;
 import enums.UserRole;
 import interfaces.Offer;
-
+/**
+ * 
+ * This class is the one containing all the methods that will be called by the Command Line Interface. It also 
+ * stores the data related to the users, the meals and the orders.
+ * 
+ *
+ */
 public class EYMS {
 	
 	private User currentUser;
@@ -113,7 +113,7 @@ public class EYMS {
 	/**
 	 * 
 	 * @param userName user name of the user
-	 * @param password password of the user
+	 * @param pwd password of the user
 	 * @return true if there is a user with the corresponding user name and password, 
 	 * false otherwise.
 	 */
@@ -132,7 +132,7 @@ public class EYMS {
 	 * 
 	 * @param firstName first name of the user.
 	 * @param lastName last name of the user.
-	 * @param userName user name of the user.
+	 * @param username user name of the user.
 	 * @param pwd password of the user.
 	 * @param role role of the user. (Client or Chef)
 	 * @return true if the user name isn't already taken and all the given information is not empty, 
@@ -197,6 +197,7 @@ public class EYMS {
 					meal.incrementOrderCounter("NotModified");
 			}
 			mapOrders.put(order.getId(), order);
+			System.out.println("The order have been successfully saved. The amount you have to pay is "+ finalPrice + " euros");
 			return true;
 		}
 		return false;
@@ -223,7 +224,7 @@ public class EYMS {
 	/**
 	 * Adds or updates current user's birthday. 
 	 * 
-	 * @param bd the birthday date in this format yyyy/MM/dd.
+	 * @param birthday the birthday date in this format yyyy/MM/dd.
 	 * @return true if correctly added or updated the contact info,
 	 * false otherwise.
 	 * @throws java.text.ParseException 
@@ -292,7 +293,8 @@ public class EYMS {
 	 * Given a certain criteria, returns the meals of meals respecting it. 
 	 * If the ordering criteria is not known, return all the meals.
 	 * 
-	 * @param OrderingCriteria a criteria to sort the meals. 
+	 * @param orderingCriteria a criteria to sort the meals. Usually "OnSale", "NotOnSale", "Modified" and 
+	 * "NotModified"
 	 * @return a set of meals respecting the ordering criteria.
 	 */
 	public Set<Meal> showMeal(OrderingCriteria orderingCriteria){
@@ -319,13 +321,13 @@ public class EYMS {
 				}
 			}
 		} else {
-			orderedSet = new HashSet(mapMeal.values());
+			orderedSet = new HashSet<Meal>(mapMeal.values());
 		}
 		return orderedSet;
 	}
 	
 	public Set<Meal> showMeal(){
-		return new HashSet(mapMeal.values());
+		return new HashSet<Meal>(mapMeal.values());
 	}
 	
 	/**
@@ -436,7 +438,7 @@ public class EYMS {
 	 * Creates a current meal with a new special offer if current user is a chef.
 	 * 
 	 * @param mealName the name of the meal.
-	 * @param Price the price of the meal.
+	 * @param price the price of the meal.
 	 * @return true if the meal does not already exist and current user is a chef,
 	 * false otherwise.
 	 */
@@ -453,6 +455,9 @@ public class EYMS {
 	/**
 	 * Notifies users that agreed to have notifications about special offers of a current special offer.
 	 * 
+	 * @param message Message related to the special offer.
+	 * @param mealName Name of the meal that is on sale
+	 * @param specialPrice The new price of the meal. Should be inferior to the normal price.
 	 * @return true if current user is a chef and a special offer was created,
 	 * false otherwise.
 	 */
@@ -478,6 +483,7 @@ public class EYMS {
 	 * @return true if current user is a chef,
 	 * false otherwise.
 	 */
+	@SuppressWarnings("deprecation")
 	public boolean notifyBirthday(){
 		if(currentUser.getRole() == UserRole.Chef){
 			BirthdayOffer bd = new BirthdayOffer(date);

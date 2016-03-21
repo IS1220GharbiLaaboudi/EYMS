@@ -3,13 +3,6 @@ package tests;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.junit.Assert;
-
-import classes.Client;
-import classes.EYMS;
-import classes.Meal;
-import classes.User;
-import enums.UserRole;
 
 public class Main {
 

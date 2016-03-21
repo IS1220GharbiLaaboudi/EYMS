@@ -6,14 +6,11 @@ package classes;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Observable;
-import java.util.Random;
-
 import interfaces.Offer;
 
 /**
- * @author Achraf Gharbi
- * @author Younes Laaboudi
+ * This class represents the lottery fidelity card. The lottery related to a given client can be run only once
+ *  every 24 hours.
  *
  */
 public class LotteryFidelityCard implements Offer {
@@ -45,12 +42,11 @@ public class LotteryFidelityCard implements Offer {
 
 	/**
 	 * Returns the discounted price from an order. 
-	 * @param order
+	 * @param order The order for which the offer may apply.
 	 * @return the discounted price.
-	 * @Override 
+	 * 
 	 */
 	public double discountedPrice(Order order) {
-		Random rand = new Random();
 		Date date =  order.getDate();
 		boolean t = date.getTime() > (lastOrder.getTime() + (24 * 3600));
 		lastOrder = date;

@@ -3,8 +3,6 @@
  */
 package tests;
 
-import static org.junit.Assert.*;
-
 import java.util.Date;
 
 import org.junit.Assert;
@@ -14,11 +12,12 @@ import classes.*;
 import interfaces.Offer;
 
 /**
- * @author Fouad-Sams
+ * 
  *
  */
 public class OfferTests {
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void BasicFidelityCardOfferWithoutOffer() {
 		// creation of a user
@@ -45,6 +44,7 @@ public class OfferTests {
 		Assert.assertTrue( 3*17.0 ==  price);
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void BasicFidelityCardOfferWithSpecialOffer() {
 		// creation of a user
@@ -73,6 +73,7 @@ public class OfferTests {
 		Assert.assertTrue(3*15 ==  price);
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void BasicFidelityCardOfferWithSpecialOfferOnOnlyOneMeal() {
 		// creation of a user
@@ -109,6 +110,7 @@ public class OfferTests {
 		Assert.assertTrue(3*15+8 == price);
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void LotteryFidelityCardOfferWithOnlyOneMeal() {
 		// creation of a user
@@ -143,6 +145,7 @@ public class OfferTests {
 		Assert.assertTrue(winLottery);
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void PointFidelityCardOfferWithOnlyOneMealNoDiscount() {
 		// creation of a user
@@ -164,7 +167,6 @@ public class OfferTests {
 		//creation of an order
 		Order order = new Order(bob,date);
 		order.setNumberOfMeal(raclette, 3);
-		boolean winLottery = false;
 		Offer[] offers = new Offer[1];
 		offers[0] = bdo;
 		double price = 0;
@@ -175,6 +177,7 @@ public class OfferTests {
 		Assert.assertTrue(3*17 == price);
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void PointFidelityCardOfferWithOnlyOneMeal() {
 		// creation of a user

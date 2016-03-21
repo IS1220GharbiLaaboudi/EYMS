@@ -45,7 +45,8 @@ public class Order {
 	private Date date;
 	
 	/**
-	 * @param client The client the made the order
+	 * @param client The client the made the order.
+	 * @param date The date at which the order have been made.
 	 */
 	public Order(Client client, Date date) {
 		this.id = nextId;
@@ -135,7 +136,7 @@ public class Order {
 	}
 
 	/**
-	 * @param We have to put all the offers available in the list offers.
+	 * @param offers We have to put all the offers available in the list offers.
 	 * @return the final price of the order after discounts.
 	 */
 	public double getPrice(Offer[] offers){
@@ -143,7 +144,6 @@ public class Order {
 		Offer card = client.getCard() ;
 		double normalPrice = getNormalPrice();
 		double discountedPrice = 0;
-		Set<Meal> mealSet = getSetMeal(); 
 				
 		discountedPrice += card.discountedPrice(this);
 		currentPrice = normalPrice - discountedPrice;

@@ -1,10 +1,10 @@
 package interfaces;
 
 import classes.Order;
-import classes.User;
 
 /**
- * @author Fouad-Sams
+ * This interface enables us to use the pattern strategy. The method discountedPrice returns for a given order the
+ * price that have been removed from the initial price.
  *
  */
 public interface Offer {

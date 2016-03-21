@@ -3,21 +3,18 @@
  */
 package classes;
 
-import java.util.Observable;
-
 import interfaces.Offer;
 
 /**
- * @author Achraf Gharbi
- * @author Younes Laaboudi
+ * This class handles the special offers. It only handles the discount operation, the notifications are the 
+ * responsibility of each meal.
  */
-public class BasicFidelityCard extends Observable implements Offer {
+public class BasicFidelityCard implements Offer {
 	
 	/**
 	 * Returns the discounted price from an order. 
-	 * @param order
+	 * @param order The order for which the discount may apply.
 	 * @return the discounted price.
-	 * @Override 
 	 */
 	public double discountedPrice(Order order) {
 		double sum = 0;

@@ -1,8 +1,6 @@
 package classes;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,7 +55,6 @@ public class Client extends User implements Observer {
 	 * @param userName The username of the user. In order to register, the username selected must be different from 
 	 * all the other usernames.
 	 * @param password The password of the user. 
-	 * @throws ParseException 
 	 * 
 	 */
 	public Client(String firstName, String surName, String userName, String password) {
@@ -110,8 +107,8 @@ public class Client extends User implements Observer {
 	/**
 	 * Replaces the setter, which is less relevant here. Only one contact information is possible for a type of contact
 	 * (only one email for example). If a value for the given type exists, it will be replaced by the new one.
-	 * @param offerType Usually "BirthdayOffer" or "SpecialOffer"
-	 * @param agreement Agreement to receive notification related to the offer.
+	 * @param contactType Usually "email" or "phone"
+	 * @param contact The contact information of the given type.
 	 */
 	public void setContactInfo(String contactType, String contact) {
 		(this.contactInfo).put(contactType, contact);

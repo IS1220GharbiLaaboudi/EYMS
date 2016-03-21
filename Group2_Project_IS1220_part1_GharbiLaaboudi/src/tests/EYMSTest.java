@@ -16,8 +16,7 @@ import enums.UserRole;
 import interfaces.Offer;
 
 /**
- * @author Achraf Gharbi
- * @author Younes Laaboudi
+ *
  *
  */
 public class EYMSTest {
@@ -137,11 +136,8 @@ public class EYMSTest {
 		boolean agree = bob.getAgreement("SpecialOffer");
 		Assert.assertTrue(!agree);
 	}
-	@Test
-	public void testShowMealWithoutLoggingIn(){
-		EYMS system = new EYMS();
-		
-	}
+	
+	
 	@Test
 	public void createMealClient(){
 		EYMS system = new EYMS();
