@@ -53,7 +53,6 @@ public class EYMS {
 	 */
 	
 	public User getCurrentUser() {
-		System.out.println("get curr:"+currentUser);
 		return currentUser;
 	}
 
@@ -122,7 +121,6 @@ public class EYMS {
 		User u = mapUsers.get(userName);
 		User user = new User(userName, pwd);
 		if(u.equals(user)){
-			System.out.println(u);
 			setCurrentUser(u);
 		}
 		return u.equals(user);
@@ -363,19 +361,13 @@ public class EYMS {
 	}
 	
 	/**
-	 * Add an ingredient with non-zero quantity to the current meal if current user is a chef.
+	 * Add an ingredient with non-zero quantity to the current meal.
 	 * 
 	 * @param ingredient name of the ingredient.
 	 * @param quantity quantity of the ingredient
-	 * @return true if the current user is chef,
-	 * false otherwise. 
 	 */
-	public boolean addIngredient(String ingredient, String quantity){
-		if(currentUser.getRole() == UserRole.Chef){
-			currentMeal.personalizeMeal(ingredient, quantity);
-			return true;
-		}
-		return false;
+	public void addIngredient(String ingredient, String quantity){
+		currentMeal.personalizeMeal(ingredient, quantity);
 	}
 	
 	/**
@@ -393,7 +385,7 @@ public class EYMS {
 	 * false otherwise.
 	 */
 	public boolean saveMeal(){
-		if(currentUser.getRole() == UserRole.Chef){
+		if(currentUser != null && currentUser.getRole() == UserRole.Chef && currentMeal != null){
 			mapMeal.put(currentMeal.getName(), currentMeal);
 			return true;
 		} 

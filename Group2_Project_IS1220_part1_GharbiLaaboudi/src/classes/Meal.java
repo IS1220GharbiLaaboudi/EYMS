@@ -117,7 +117,7 @@ public class Meal extends Observable {
 	 * @param quantity The quantity needed for the given ingredient in this meal. To remove the ingredient, put "0g"
 	 */
 	public void personalizeMeal(String ingredient, String quantity) {
-		Pattern pattern = Pattern.compile("/^0[^1-9]*$/");
+		Pattern pattern = Pattern.compile("^0[^1-9]*$");
 		Matcher matcher = pattern.matcher(quantity);
 		
 		if(matcher.matches()){ // if quantity given is 0, remove the ingredient
