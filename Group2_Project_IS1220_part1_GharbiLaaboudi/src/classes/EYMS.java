@@ -80,7 +80,12 @@ public class EYMS {
 	public void setCurrentOrder(Order currentOrder) {
 		CurrentOrder = currentOrder;
 	}
-
+	/**
+	 * Enables to get a User object stored in the system from his user name
+	 * 
+	 * @param username The username of the client we want to get
+	 * @return The user related to the username
+	 */
 	public User getUser(String username){
 		return mapUsers.get(username);
 	}
