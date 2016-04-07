@@ -125,10 +125,10 @@ public class EYMS {
 	public boolean login(String userName, String pwd){
 		User u = mapUsers.get(userName);
 		User user = new User(userName, pwd);
-		if(u.equals(user)){
+		if(user.equals(u)){
 			setCurrentUser(u);
 		}
-		return u.equals(user);
+		return user.equals(u);
 	}
 	
 	

@@ -23,11 +23,16 @@ public class CLUI {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		/*
+		 * Initialization of the variables
+		 */
 		Scanner ui = new Scanner(System.in);
 		EYMS system = new EYMS();
 		boolean exit = false;
 		String command = "";
 		ArrayList <String> arguments = new ArrayList<String>();
+		
+		
 		/*
 		 * Welcome display
 		 */
@@ -123,13 +128,16 @@ public class CLUI {
 			//parsing the input
 			String[] sarray = s.split(" ",2);
 			command = sarray[0];
-			String argums = sarray[1].substring(1, sarray[1].length() - 1);
-			System.out.println(argums);
-			String[] argarray = argums.split(", |,| , | ,"); // bug with the split TODO
-			for(String m : argarray){
-				System.out.println(m);
-				arguments.add(m);
+			arguments = new ArrayList<String>(); // we need to reinitialize it otherwise the same arguments will be called
+			if (sarray.length > 1){
+				String argums = sarray[1];
+				String[] argarray = argums.split(" ");
+				for(String m : argarray){
+					arguments.add(m);
+				}
 			}
+			
+		
 			
 			/*
 			 * Beginning of commands
@@ -161,7 +169,7 @@ public class CLUI {
 				System.out.println("showMeal (orderingCriteria): to see the list of the meals ordered according to a certain criteria ");
 			}
 			//login
-			else if (command.equalsIgnoreCase("login")){
+			else if (command.equalsIgnoreCase("login") && arguments.size() == 2){
 				boolean t = system.login(arguments.get(0), arguments.get(1));
 				if(t)
 					System.out.println("You've been correctly connected.");
@@ -169,31 +177,33 @@ public class CLUI {
 					System.out.println("Incorrect username or password given.");
 			}
 			//createMeal
-			else if (command.equalsIgnoreCase("createmeal")){
+			else if (command.equalsIgnoreCase("createmeal") && arguments.size() == 2){
+	
 				double price = Double.parseDouble(arguments.get(1));
-				boolean t = system.createMeal(arguments.get(0), price);
+				boolean t = system.createMeal(arguments.get(0), price);			
+				
 				if(t)
 					System.out.println("Meal correctly added");
 				else
 					System.out.println("Current user is not a chef to create a meal.");
 			}
 			//addIngredient
-			else if (command.equalsIgnoreCase("addingredient")){
-				boolean t = system.addIngredient(arguments.get(0), arguments.get(1));
+			else if (command.equalsIgnoreCase("addingredient")  && arguments.size() == 2){
+				boolean t = system.addIngredient(arguments.get(0), arguments.get(1));			
 				if(t)
 					System.out.println("Ingredient correctly added to the current meal.");
 				else
 					System.out.println("Verify that you added a non zero quantity of ingredient and that you created a current meal.");
 			}
 			//currentMeal
-			else if(command.equalsIgnoreCase("currentMeal")){
+			else if(command.equalsIgnoreCase("currentMeal")  && arguments.size() == 0){
 				if(system.getCurrentMeal() == null)
 					System.out.println("No current meal.");
 				else
 					System.out.println(system.getCurrentMeal());
 			}
 			//saveMeal
-			else if(command.equalsIgnoreCase("saveMeal")){
+			else if(command.equalsIgnoreCase("saveMeal")  && arguments.size() == 0){
 				boolean t = system.saveMeal();
 				if(t)
 					System.out.println("Current meal was well added to the meals list");
@@ -201,41 +211,44 @@ public class CLUI {
 					System.out.println("Cannot save meal. Current user is not a chef or no current meal.");
 			}
 			//selectMeal
-			else if(command.equalsIgnoreCase("selectmeal")){
+			else if(command.equalsIgnoreCase("selectmeal")  && arguments.size() == 2){
 				int quantity = Integer.parseInt(arguments.get(1));
-				boolean t = system.selectMeal(arguments.get(0), quantity);
+				boolean t = system.selectMeal(arguments.get(0), quantity);		
+				
 				if(t && quantity != 0)
 					System.out.println("Current meal was well added to the meals list");
 				else
 					System.out.println("Cannot save meal. Current user is not a chef or no current meal.");
 			}
 			//personalizeMeal
-			else if(command.equalsIgnoreCase("personalizemeal")){
-				boolean t = system.personalizeMeal(arguments.get(0), arguments.get(1), arguments.get(2));
+			else if(command.equalsIgnoreCase("personalizemeal")  && arguments.size() == 3){
+				boolean t = system.personalizeMeal(arguments.get(0), arguments.get(1), arguments.get(2));	
 				if(t)
 					System.out.println("The meal was correctly personalized");
 				else
 					System.out.println("Meal not known.");
 			}
 			//putInSpecialOffer
-			else if(command.equalsIgnoreCase("putinspecialoffer")){
+			else if(command.equalsIgnoreCase("putinspecialoffer")  && arguments.size() == 2){
 				double price = Double.parseDouble(arguments.get(1));
 				boolean t = system.putInSpecialOffer(arguments.get(0), price);
+		
 				if(t)
 					System.out.println("The selected meal has now a special offer.");
 				else
 					System.out.println("Cannot put meal in special offer. Meal is unknown or new price is equal to the normal price. Verify that current user is a chef.");
 			}
 			//removeFromSpecialOffer
-			else if(command.equalsIgnoreCase("removefromspecialoffer")){
+			else if(command.equalsIgnoreCase("removefromspecialoffer")  && arguments.size() == 1){
 				boolean t = system.removeFromSpecialOffer(arguments.get(0));
+
 				if(t)
 					System.out.println("The selected meal is now not in special offer.");
 				else
 					System.out.println("Cannot remove meal from special offer. Meal is unknown or current user is not a chef.");
 			}
 			//listIngredients
-			else if(command.equalsIgnoreCase("listIngredients")){
+			else if(command.equalsIgnoreCase("listIngredients")  && arguments.size() == 1){				
 				Map<String, String> myMap = system.listIngredients(arguments.get(0));
 				if(myMap != null){
 					System.out.println(arguments.get(0)+" is composed of : ");
@@ -247,7 +260,7 @@ public class CLUI {
 					System.out.println("Meal not known.");
 			}
 			//saveOrder
-			else if(command.equalsIgnoreCase("saveorder")){
+			else if(command.equalsIgnoreCase("saveorder")  && arguments.size() == 0){
 				boolean t = system.saveOrder();
 				if(t)
 					System.out.println("The selected meal is now not in special offer.");
@@ -255,7 +268,7 @@ public class CLUI {
 					System.out.println("Cannot remove meal from special offer. Meal is unknown or current user is not a chef.");
 			}
 			//insertOffer
-			else if(command.equalsIgnoreCase("insertoffer")){
+			else if(command.equalsIgnoreCase("insertoffer") && arguments.size() == 2){
 				double price = Double.parseDouble(arguments.get(1));
 				boolean t = system.insertOffer(arguments.get(0), price);
 				if(t)
@@ -264,7 +277,7 @@ public class CLUI {
 					System.out.println("An error occured : Please check that you're connected as a chef, and that the meal does not already exist");
 			}
 			//registerClient
-			else if(command.equalsIgnoreCase("registerClient")){
+			else if(command.equalsIgnoreCase("registerClient")  && arguments.size() == 4){
 				boolean t = system.register(arguments.get(0),arguments.get(1),arguments.get(2),arguments.get(3), UserRole.Client);
 				if(t)
 					System.out.println("Your account was correctly added. You can login now with the proper command.");
@@ -272,7 +285,7 @@ public class CLUI {
 					System.out.println("An error occured. The username is maybe already taken. Please check that you did not specify empty arguments");
 			}
 			//addContactInfo
-			else if(command.equalsIgnoreCase("addcontactinfo")){
+			else if(command.equalsIgnoreCase("addcontactinfo")  && arguments.size() == 3){
 				boolean bool = false;
 				
 				if(arguments.get(2).equalsIgnoreCase("yes"))
@@ -287,7 +300,7 @@ public class CLUI {
 					System.out.println("An error occured. Please be sure that you're connected as a client. Make sure that you did not provide empty arguments.");
 			}
 			//associateCard
-			else if(command.equalsIgnoreCase("associatecard")){
+			else if(command.equalsIgnoreCase("associatecard")  && arguments.size() == 1){
 				boolean t = false;
 				if(arguments.get(0).equalsIgnoreCase("basic"))
 					t = system.associateCard(FidelityCard.Basic);
@@ -302,7 +315,7 @@ public class CLUI {
 					System.out.println("Please be sure that you're connected as a client. Make sure that your argument was : basic, point or lottery.");					
 			}
 			//associateAgreement
-			else if(command.equalsIgnoreCase("associateagreement")){
+			else if(command.equalsIgnoreCase("associateagreement")  && arguments.size() == 2){
 				boolean t = system.associateAgreement(arguments.get(0), arguments.get(1), true);
 				if(t)
 					System.out.println("The agreement was correctly associated to the specified client account.");
@@ -310,7 +323,7 @@ public class CLUI {
 					System.out.println("A problem occured. Please check that the user exists and that the specified arguments are not empty");
 			}
 			//insertChef
-			else if(command.equalsIgnoreCase("insertchef")){
+			else if(command.equalsIgnoreCase("insertchef")  && arguments.size() == 4){
 				boolean t = system.register(arguments.get(0),arguments.get(1),arguments.get(2),arguments.get(3), UserRole.Chef);
 				if(t)
 					System.out.println("Your account was correctly added. You can login now with the proper command.");
@@ -318,7 +331,7 @@ public class CLUI {
 					System.out.println("An error occured. The username is maybe already taken. Please check that you did not specify empty arguments");
 			}
 			//notifyAd
-			else if(command.equalsIgnoreCase("notifyAd")){
+			else if(command.equalsIgnoreCase("notifyAd")  && arguments.size() == 3){
 				double price = Double.parseDouble(arguments.get(2));
 				boolean t = system.notifyAd(arguments.get(0), arguments.get(1), price);
 				if(t)
@@ -327,7 +340,7 @@ public class CLUI {
 					System.out.println("An error occured, please check that you're logged in as a chef and the meal was already created.");
 			}
 			//notifyBirthday
-			else if(command.equalsIgnoreCase("notifyBirthday")){
+			else if(command.equalsIgnoreCase("notifyBirthday")  && arguments.size() == 0){
 				boolean t = system.notifyBirthday();
 				if(t)
 					System.out.println("Birthday notifications correctly sent.");
@@ -335,7 +348,7 @@ public class CLUI {
 					System.out.println("Please verify that you are logged in as a chef.");
 			}
 			//showMeal
-			else if(command.equalsIgnoreCase("showmeal")){
+			else if(command.equalsIgnoreCase("showmeal") && arguments.size() == 1){
 				OrderingCriteria oc = null;
 				if(arguments.get(0).equalsIgnoreCase("JustOnSale"))
 					oc = OrderingCriteria.JustOnSale;
@@ -351,6 +364,8 @@ public class CLUI {
 				System.out.println("Unknown command, type h for the list of the commands.");
 			}
 		}
+		
+		ui.close();
 
 	}
 
