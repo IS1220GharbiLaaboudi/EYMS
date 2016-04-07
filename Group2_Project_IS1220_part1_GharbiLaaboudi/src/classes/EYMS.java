@@ -172,7 +172,7 @@ public class EYMS {
 	public boolean personalizeMeal(String mealName, String ingredient, String quantity){
 		Meal meal = mapMeal.get(mealName);  
 		if( meal != null){ //if the meal exists
-			meal.personalizeMeal(ingredient, quantity);
+			meal.personalizeMeal(ingredient, quantity, true);
 			return true;
 		}
 		return false;
@@ -186,20 +186,23 @@ public class EYMS {
 	 * @return true if the order was stored in the map and current user is a client,
 	 * false otherwise.
 	 */
-	public boolean saveOrder(Order order){
+	public boolean saveOrder(){
+		Order order = CurrentOrder;
 		if (order != null && currentUser != null && currentUser.getRole() == UserRole.Client){
 			double finalPrice = order.getPrice(offers);
 			currentUser = order.getClient();
-			mapUsers.put(currentUser.getUserName(), currentUser);
+			mapUsers.put(currentUser.getUserName(), currentUser); // in order to store his card chages (points..)
 			for(Meal meal : order.getSetMeal()){
+				System.out.println(meal);
+				int n = order.getQuantityMeal(meal);
 				if(meal.isOnlySpecial() || meal.isSpecial())
-					meal.incrementOrderCounter("OnSale");
+					meal.incrementOrderCounter("OnSale", n);
 				else
-					meal.incrementOrderCounter("NotOnSale");
-				if(meal.hasChanged())
-					meal.incrementOrderCounter("Modified");
+					meal.incrementOrderCounter("NotOnSale", n);
+				if(meal.isModified())
+					meal.incrementOrderCounter("Modified", n);
 				else
-					meal.incrementOrderCounter("NotModified");
+					meal.incrementOrderCounter("NotModified", n);
 			}
 			mapOrders.put(order.getId(), order);
 			System.out.println("The order have been successfully saved. The amount you have to pay is "+ finalPrice + " euros");
@@ -216,10 +219,12 @@ public class EYMS {
 	 * @return true if correctly added or updated the contact info,
 	 * false otherwise.
 	 */
-	public boolean addInfo(String typeContact, String info){
-		if(currentUser.getRole() == UserRole.Client){
+	public boolean addInfo(String typeContact, String info, boolean bool){
+		if(currentUser != null && currentUser.getRole() == UserRole.Client && typeContact != "" && info != ""){
 			Client client = (Client) currentUser;
 			client.setContactInfo(typeContact, info);
+			if(bool)
+				client.setFavoriteContactInfo(typeContact);
 			mapUsers.put(client.getUserName(), client);
 			return true;
 		}
@@ -238,7 +243,7 @@ public class EYMS {
 		Date date = null;
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		date = dateFormat.parse(birthday);
-		if(currentUser.getRole() == UserRole.Client && birthday.equals(dateFormat.format(date))){
+		if(currentUser != null && currentUser.getRole() == UserRole.Client && birthday.equals(dateFormat.format(date))){
 			Client client = (Client) currentUser;
 			client.setBirthdayDate(date);
 			mapUsers.put(client.getUserName(), client);
@@ -257,7 +262,7 @@ public class EYMS {
 	 */
 	public boolean associateCard(FidelityCard typeCard){
 		if((typeCard == FidelityCard.Lottery || typeCard == FidelityCard.Point || typeCard == FidelityCard.Basic)
-				&& currentUser.getRole() == UserRole.Client){
+				&& currentUser != null && currentUser.getRole() == UserRole.Client){
 			Client client = (Client) currentUser;
 			Offer card = new BasicFidelityCard(); //BasicFidelityCard by default.
 			if(typeCard == FidelityCard.Lottery){
@@ -284,7 +289,7 @@ public class EYMS {
 	 */
 	public boolean associateAgreement(String username, String agreementType, boolean agree){
 		User user = mapUsers.get(username);
-		if(user.getRole() == UserRole.Client){
+		if(user != null && agreementType != "" && user.getRole() == UserRole.Client){
 			Client client = (Client) user;
 			client.setAgreement(agreementType, agree);
 			return true;
@@ -373,8 +378,11 @@ public class EYMS {
 	 * @param ingredient name of the ingredient.
 	 * @param quantity quantity of the ingredient
 	 */
-	public void addIngredient(String ingredient, String quantity){
-		currentMeal.personalizeMeal(ingredient, quantity);
+	public boolean addIngredient(String ingredient, String quantity){
+		if(currentMeal != null){
+			return currentMeal.personalizeMeal(ingredient, quantity, false);
+		}
+		return false;
 	}
 	
 	/**
@@ -428,7 +436,7 @@ public class EYMS {
 	 */
 	public boolean removeFromSpecialOffer(String mealName){
 		Meal meal = mapMeal.get(mealName);
-		if(meal != null && currentUser.getRole() == UserRole.Chef){
+		if(meal != null && currentUser != null && currentUser.getRole() == UserRole.Chef){
 			meal.setSpecialPrice(meal.getPrice());
 			meal.setSpecial(false);
 			meal.setOnlySpecial(false);
@@ -449,7 +457,7 @@ public class EYMS {
 	 */
 	public boolean insertOffer(String mealName, double price ){
 		Meal meal = mapMeal.get(mealName);
-		if(meal == null && currentUser.getRole() == UserRole.Chef){
+		if(meal == null && currentUser != null && currentUser.getRole() == UserRole.Chef){
 			currentMeal = new Meal(mealName, price, true);
 			return true;
 		} else{
@@ -503,4 +511,24 @@ public class EYMS {
 		} 
 		return false;
 	}
+	
+	/**
+	 * Add a quantity of meal to the current order.
+	 * 
+	 * @param mealName the name of the meal
+	 * @param quantity the quantity of the meal
+	 * @return true if the meal name corresponds to an actual meal,
+	 * false otherwise.
+	 * */
+	 public boolean selectMeal(String mealName, int quantity){
+		 Meal meal = mapMeal.get(mealName);
+		 if(meal != null && currentUser != null && currentUser.getRole() == UserRole.Client){
+			 if(CurrentOrder == null){
+				 CurrentOrder = new Order((Client) currentUser, getDate());
+			 }	
+			 CurrentOrder.setNumberOfMeal(meal, quantity);
+			 return true;
+		 }
+		 return false;
+	 }
 }

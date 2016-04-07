@@ -96,19 +96,25 @@ public class EYMSTest {
 	@Test
 	public void testSaveOrder(){
 		EYMS system = new EYMS();
+		system.register("Bob", "Red", "bobre", "123456", UserRole.Chef);		
+		system.login("bobre", "123456");
+		system.createMeal("Raclette", 17);
+		system.saveMeal();
+		
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Client);		
 		system.login("bobred", "123456");
-		Order order = new Order((Client) system.getCurrentUser(),system.getDate());
-		system.saveOrder(order);
+
+		system.selectMeal("Raclette", 3);
 		
-		Assert.assertEquals(system.getOrder(order.getId()), order);
+		system.saveOrder();
+		Assert.assertEquals((int) system.getOrder(1).getQuantityMeal(system.getMeal("Raclette")), 3);
 	}
 	@Test
 	public void addInfo(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Client);		
 		system.login("bobred", "123456");
-		system.addInfo("email", "bobred@gmail.com");
+		system.addInfo("email", "bobred@gmail.com", true);
 		
 		Client bob = (Client) system.getCurrentUser();
 		String mailAdress = bob.getContactInfo("email");

@@ -3,16 +3,24 @@ package tests;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import classes.EYMS;
+import enums.UserRole;
+
 
 public class Main {
 
 	public static void main(String[] args) {
-		Pattern pattern = Pattern.compile("^0[^1-9]*$");
-		Matcher matcher = pattern.matcher("0.0g");
-		
-		if(matcher.matches()){ // if quantity given is 0, remove the ingredient
-			System.out.println("abc");
-		}
+		EYMS system = new EYMS();
+		system.register("Bob", "Red", "bobre", "123456", UserRole.Chef);		
+		system.login("bobre", "123456");
+		system.createMeal("Raclette", 17);
+		system.saveMeal();
+		system.register("Bob", "Red", "bobred", "123456", UserRole.Client);		
+		system.login("bobred", "123456");
+
+		system.selectMeal("Raclette", 3);
+		system.saveOrder();
+		//System.out.println(t);
 	}
 
 }

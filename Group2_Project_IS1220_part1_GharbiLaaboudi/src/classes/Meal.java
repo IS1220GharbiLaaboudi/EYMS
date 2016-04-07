@@ -78,6 +78,7 @@ public class Meal extends Observable {
 		this.isOnlySpecial = false;
 		this.isModified = false;
 		this.ingredientMap = new HashMap<String, String>();
+		this.orderCounter = new HashMap<String, Integer>();
 	}
 	/**
 	 * This constructor initializes the creation of a special offer meal. The ingredients still need to be added.
@@ -117,7 +118,8 @@ public class Meal extends Observable {
 	 * @param ingredient An ingredient of the meal.
 	 * @param quantity The quantity needed for the given ingredient in this meal. To remove the ingredient, put "0g"
 	 */
-	public void personalizeMeal(String ingredient, String quantity) {
+	public boolean personalizeMeal(String ingredient, String quantity, boolean isModified) {
+		boolean t = false;
 		Pattern pattern = Pattern.compile("^0[^1-9]*$");
 		Matcher matcher = pattern.matcher(quantity);
 		
@@ -125,8 +127,10 @@ public class Meal extends Observable {
 			ingredientMap.remove(ingredient);
 		} else{
 			ingredientMap.put(ingredient, quantity);
+			t = true;
 		}
-		setModified(true);
+		setModified(isModified);
+		return t;
 	}
 	
 	/**
@@ -213,11 +217,11 @@ public class Meal extends Observable {
 	 * @param orderingCriteria ordering criteria for which we should add an order
 	 * It works even if the orgeringCriteria haven't been put as a key of the map.
 	 */
-	public void incrementOrderCounter(String orderingCriteria) {
+	public void incrementOrderCounter(String orderingCriteria, int number) {
 		if (orderCounter.containsKey(orderingCriteria)){
-			orderCounter.put(orderingCriteria, orderCounter.get(orderingCriteria) +1);
+			orderCounter.put(orderingCriteria, orderCounter.get(orderingCriteria) + number);
 		} else {
-			orderCounter.put(orderingCriteria, 1);
+			orderCounter.put(orderingCriteria, number);
 		}
 		
 	}

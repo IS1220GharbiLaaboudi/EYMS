@@ -155,5 +155,15 @@ public class Order {
 		}
 		return  Math.max(currentPrice, (double) 0);
 		}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", mealMap=" + mealMap + ", date=" + date + "]";
+	}
+	
+	
 	
 }
