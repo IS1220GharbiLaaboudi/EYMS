@@ -198,6 +198,7 @@ public class CLUI {
 				System.out.println("notifyBirthday (): send a special offer to the users that celebrate their birthday ");
 				System.out.println("showMeal (orderingCriteria): to see the list of the meals ordered according to a certain criteria ");
 				System.out.println("importFile (fileName): imports the commands of a given text file (for exemple fileName = eval_1) ");
+				System.out.println("setDate (YYYY/MM/DD): sets the date of the system ");
 
 			}
 			//login
@@ -398,9 +399,17 @@ public class CLUI {
 				try{
 					commandsList.addAll(0, CLUI.importfile(arguments.get(0))); // in case a command from the file is importfile
 					readFromFile = !commandsList.isEmpty();
-				}catch(Exception e){
+				}catch(IOException e){
 					System.out.println("Unable to import file");
 				}
+				System.out.println("The file have been successfully imported");
+			}else if(command.equalsIgnoreCase("setdate") && arguments.size() == 1){
+				try {
+					system.setDate(arguments.get(0));
+				} catch (ParseException e) {
+					System.out.println("The date could not be changed. Please respect the format given.");
+				}
+				System.out.println("The date has been successfully changed");
 			}
 			//other
 			else{

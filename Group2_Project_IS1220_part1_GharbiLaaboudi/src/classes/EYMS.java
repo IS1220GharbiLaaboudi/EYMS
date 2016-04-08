@@ -1,6 +1,7 @@
 package classes;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -109,9 +110,12 @@ public class EYMS {
 
 	/**
 	 * @param date the date to set
+	 * @throws ParseException if the beginning of the specified string cannot be parsed.
 	 */
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDate(String date) throws ParseException {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		Date date1 = dateFormat.parse(date);
+		this.date = date1;
 	}
 
 
