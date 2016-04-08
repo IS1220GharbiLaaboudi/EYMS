@@ -1,5 +1,5 @@
-insertChef Bob Red bobred 123456
-login bobred 123456
+insertChef Gordon Ramsey grams 123456
+login grams 123456
 createMeal Raclette 17
 addIngredient cheese 90g
 addIngredient ham 40g
@@ -99,21 +99,3 @@ addIngredient salad 10g
 addIngredient chicken 120g
 addIngredient bagel bread 30g
 saveMeal
-listIngredients Raclette
-registerClient Mario Rossi Mario 345678
-associateCard Mario Basic
-associateAgreement Mario YesToAll
-login Mario 345678
-email, mario@itsme.mario
-1995/09/25
-addContactInfo phone 0699562366 no
-listIngredients Raclette
-selectMeal Raclette 1 
-personalizeMeal Raclette cheese 100g
-personalizeMeal Raclette ham 0g
-selectMeal Raclette 2
-saveOrder
-login bobred 123456
-notifyBirthday
-putInSpecialOffer Raclette 15
-notifyAd "The best Raclette in the world" Raclette 15

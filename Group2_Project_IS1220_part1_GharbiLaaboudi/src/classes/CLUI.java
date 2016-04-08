@@ -317,9 +317,9 @@ public class CLUI {
 			//listIngredients
 			else if(command.equalsIgnoreCase("listIngredients")  && arguments.size() > 0){				
 				String mealName = "";
-				for (int i = 0; i< arguments.size()-1; i++){
+				for (int i = 0; i< arguments.size(); i++){
 					mealName += arguments.get(i);
-					if (i != arguments.size() - 2){
+					if (i != arguments.size() - 1){
 						mealName += " ";
 					}
 				}
