@@ -125,7 +125,7 @@ public class EYMSTest {
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Client);		
 		system.login("bobred", "123456");
-		system.associateCard(FidelityCard.Lottery);
+		system.associateCard(system.getCurrentUser(), FidelityCard.Lottery);
 		
 		Client bob = (Client) system.getCurrentUser();
 		Offer card = bob.getCard();

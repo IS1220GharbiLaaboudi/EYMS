@@ -161,7 +161,7 @@ public class Order {
 	 */
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", mealMap=" + mealMap + ", date=" + date + "]";
+		return "[ OrderId = " + id + "; Meals Selected =" + mealMap+ " ]";
 	}
 	
 	

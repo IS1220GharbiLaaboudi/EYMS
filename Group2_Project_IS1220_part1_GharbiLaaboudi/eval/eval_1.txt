@@ -1,119 +1,119 @@
-insertChef Bob Red bobred 123456
-login bobred 123456
-createMeal Raclette 17
-addIngredient cheese 90g
-addIngredient ham 40g
-addIngredient potatoes 50g
-currentMeal
-saveMeal
-createMeal Burger 8
-addIngredient cheese 90g
-addIngredient meat 140g
-addIngredient tomato 50g
-saveMeal
-createMeal Lemon Cake 5
-addIngredient lemon 60g
-addIngredient sugar 40g
-saveMeal
-createMeal Gyu Cheese 6
-addIngredient cheese 90g
-addIngredient beef 90g
-addIngredient teriaki sauce 10ml
-saveMeal
-createMeal Suchi 2
-addIngredient rice 80g
-addIngredient salmon 80g
-saveMeal
-createMeal Apple Pie 3
-addIngredient apple 80g
-addIngredient sugar 20g
-addIngredient cream 50g
-saveMeal
-createMeal Chocolate Cake 5
-addIngredient chocolate 80g
-addIngredient sugar 10g
-saveMeal
-createMeal Tajine 12
-addIngredient chiken 80g
-addIngredient potato 120g
-addIngredient olive 30g
-saveMeal
-createMeal Couscous 16
-addIngredient meat 120g
-addIngredient carrot 120g
-addIngredient semoulina 150g
-saveMeal
-createMeal Sweet Sour Chicken 11
-addIngredient chicken 120g
-addIngredient pineapple 120g
-addIngredient rice 120g
-addIngredient soy sauce 20ml
-saveMeal
-createMeal Milka Chocolate Bar 3
-addIngredient chocolate 220g
-saveMeal
-createMeal Pizza 4 cheeses 4
-addIngredient mozzarella 50g
-addIngredient gouda 40g
-addIngredient roquefort 20g
-addIngredient camembert 30g
-saveMeal
-createMeal Pizza royal 3
-addIngredient tomato 30g
-addIngredient mozzarella 50g
-addIngredient ham 60g
-saveMeal
-createMeal Lasagna 6
-addIngredient tomato 30g
-addIngredient béchamel sauce 30 ml
-addIngredient meat 60g
-saveMeal
-createMeal Spaghetti bolognese 3
-addIngredient tomato 30g
-addIngredient spaghetti 100g
-addIngredient meat 60g
-saveMeal
-createMeal Kebab 3.50
-addIngredient tomato 50g
-addIngredient oninon 30g
-addIngredient salad 10g
-addIngredient samurai sauce 5.5g
-addIngredient meat 125g
-saveMeal
-createMeal Spaghetti Pesto 4
-addIngredient spaghetti 100g
-addIngredient pesto 45g
-saveMeal
-createMeal Curry Chiken 6.5
-addIngredient chicken 126g
-addIngredient curry 15g
-saveMeal
-createMeal Strawberry Smoothie 2.3
-addIngredient strawberry 34.5g
-addIngredient milk 45cl
-saveMeal
-createMeal Bagel 5.8
-addIngredient tomato 50g
-addIngredient oninon 30g
-addIngredient salad 10g
-addIngredient chicken 120g
-addIngredient bagel bread 30g
-saveMeal
-listIngredients Raclette
-registerClient Mario Rossi Mario 345678
-associateCard Mario Basic
-associateAgreement Mario YesToAll
-login Mario 345678
+insertChef (Bob, Red, bobred, 123456)
+login (bobred, 123456)
+createMeal (Raclette, 17)
+addIngredient (cheese, 90g)
+addIngredient (ham ,40g)
+addIngredient (potatoes, 50g)
+currentMeal ()
+saveMeal ()
+createMeal (Burger, 8)
+addIngredient (cheese, 90g)
+addIngredient (meat ,140g)
+addIngredient (tomato, 50g)
+saveMeal ()
+createMeal (Lemon Cake ,5)
+addIngredient (lemon, 60g)
+addIngredient (sugar, 40g)
+saveMeal ()
+createMeal (Gyu Cheese, 6)
+addIngredient (cheese, 90g)
+addIngredient (beef, 90g)
+addIngredient (teriaki sauce, 10ml)
+saveMeal ()
+createMeal (Suchi, 2)
+addIngredient (rice, 80g)
+addIngredient (salmon, 80g)
+saveMeal ()
+createMeal (Apple Pie, 3)
+addIngredient (apple, 80g)
+addIngredient (sugar, 20g)
+addIngredient (cream, 50g)
+saveMeal ()
+createMeal (Chocolate Cake, 5)
+addIngredient (chocolate, 80g)
+addIngredient (sugar, 10g)
+saveMeal ()
+createMeal (Tajine, 12)
+addIngredient (chiken, 80g)
+addIngredient (potato, 120g)
+addIngredient (olive ,30g)
+saveMeal ()
+createMeal (Couscous ,16)
+addIngredient (meat ,120g)
+addIngredient (carrot, 120g)
+addIngredient (semoulina ,150g)
+saveMeal ()
+createMeal (Sweet Sour Chicken, 11)
+addIngredient (chicken, 120g)
+addIngredient (pineapple, 120g)
+addIngredient (rice ,120g)
+addIngredient (soy sauce ,20ml)
+saveMeal ()
+createMeal (Milka Chocolate Bar, 3)
+addIngredient (chocolate, 220g)
+saveMeal ()
+createMeal (Pizza 4 cheeses, 4)
+addIngredient (mozzarella ,50g)
+addIngredient (gouda ,40g)
+addIngredient (roquefort,20g)
+addIngredient (camembert ,30g)
+saveMeal ()
+createMeal (Pizza royal, 3)
+addIngredient (tomato ,30g)
+addIngredient (mozzarella, 50g)
+addIngredient (ham ,60g)
+saveMeal ()
+createMeal (Lasagna, 6)
+addIngredient (tomato ,30g)
+addIngredient (béchamel sauce, 30 ml)
+addIngredient (meat, 60g)
+saveMeal ()
+createMeal (Spaghetti bolognese, 3)
+addIngredient (tomato, 30g)
+addIngredient (spaghetti, 100g)
+addIngredient (meat, 60g)
+saveMeal ()
+createMeal (Kebab, 3.50)
+addIngredient (tomato, 50g)
+addIngredient (oninon, 30g)
+addIngredient (salad, 10g)
+addIngredient (samurai sauce, 5.5g)
+addIngredient (meat, 125g)
+saveMeal ()
+createMeal (Spaghetti Pesto, 4)
+addIngredient (spaghetti, 100g)
+addIngredient (pesto, 45g)
+saveMeal ()
+createMeal (Curry Chiken, 6.5)
+addIngredient (chicken, 126g)
+addIngredient (curry, 15g)
+saveMeal ()
+createMeal (Strawberry Smoothie, 2.3)
+addIngredient (strawberry, 34.5g)
+addIngredient (milk, 45cl)
+saveMeal ()
+createMeal (Bagel, 5.8)
+addIngredient (tomato, 50g)
+addIngredient (oninon, 30g)
+addIngredient (salad, 10g)
+addIngredient (chicken, 120g)
+addIngredient (bagel, bread 30g)
+saveMeal ()
+listIngredients (Raclette)
+registerClient (Mario, Rossi, Mario, 345678)
+associateCard (Mario, Basic)
+associateAgreement (Mario, YesToAll)
+login (Mario, 345678)
 email, mario@itsme.mario
 1995/09/25
-addContactInfo phone 0699562366 no
-listIngredients Raclette
-selectMeal Raclette 1 
-personalizeMeal Raclette cheese 100g
-personalizeMeal Raclette ham 0g
-selectMeal Raclette 2
-saveOrder
-login bobred 123456
-notifyBirthday
-putInSpecialOffer Raclette 15
-notifyAd "The best Raclette in the world" Raclette 15
+addContactInfo (phone, 0699562366, no)
+listIngredients (Raclette)
+personalizeMeal (Raclette, cheese, 100g)
+personalizeMeal (Modified Raclette, ham, 0g)
+selectMeal (Modified Raclette, 1)
+selectMeal (Raclette, 2)
+saveOrder ()
+login (bobred, 123456)
+notifyBirthday ()
+putInSpecialOffer (Raclette, 15)
+notifyAd (The best Raclette in the world, Raclette, 15)

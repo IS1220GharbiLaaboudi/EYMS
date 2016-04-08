@@ -170,9 +170,21 @@ public class EYMS {
 	 * false otherwise.
 	 */
 	public boolean personalizeMeal(String mealName, String ingredient, String quantity){
-		Meal meal = mapMeal.get(mealName);  
-		if( meal != null){ //if the meal exists
-			meal.personalizeMeal(ingredient, quantity, true);
+		Meal meal = mapMeal.get(mealName);
+		//if the meal exists
+		if( meal != null){
+			Meal personalizedMeal ;
+			if (meal.getName().startsWith("Modified")){
+				personalizedMeal= new Meal(mealName, meal.getPrice());
+			}else{
+				personalizedMeal= new Meal("Modified " + mealName, meal.getPrice());
+			}
+			// A copy of the meal that isn't related to it
+			for (String ingredientName : meal.getIngredientMap().keySet()){
+				personalizedMeal.personalizeMeal(ingredientName, meal.getIngredientMap().get(ingredientName), false);
+			}
+			personalizedMeal.personalizeMeal(ingredient, quantity, true);
+			mapMeal.put(personalizedMeal.getName(), personalizedMeal);
 			return true;
 		}
 		return false;
@@ -206,6 +218,7 @@ public class EYMS {
 			}
 			mapOrders.put(order.getId(), order);
 			System.out.println("The order have been successfully saved. The amount you have to pay is "+ finalPrice + " euros");
+			CurrentOrder = null;
 			return true;
 		}
 		return false;
@@ -260,10 +273,10 @@ public class EYMS {
 	 * @return true if typeCard is a know type of card and current user is a client,
 	 * false otherwise.
 	 */
-	public boolean associateCard(FidelityCard typeCard){
+	public boolean associateCard(User user, FidelityCard typeCard){
 		if((typeCard == FidelityCard.Lottery || typeCard == FidelityCard.Point || typeCard == FidelityCard.Basic)
-				&& currentUser != null && currentUser.getRole() == UserRole.Client){
-			Client client = (Client) currentUser;
+				&& user != null && user.getRole() == UserRole.Client){
+			Client client = (Client) user;
 			Offer card = new BasicFidelityCard(); //BasicFidelityCard by default.
 			if(typeCard == FidelityCard.Lottery){
 				card = new LotteryFidelityCard();
@@ -271,7 +284,7 @@ public class EYMS {
 				card = new PointFidelityCard();
 			}
 			client.setCard(card);
-			mapUsers.put(currentUser.getUserName(), client);
+			mapUsers.put(user.getUserName(), client);
 			return true;
 		}else {
 			return false;
