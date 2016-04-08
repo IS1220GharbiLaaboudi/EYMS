@@ -105,18 +105,21 @@ public class CLUI {
 				// if no birthday
 				if(client.getBirthdayDate() == null){
 					System.out.println("You did not specify your birthday date yet. Please enter it following this format");
-					System.out.println("YYYY-MM-DD");
+					System.out.println("YYYY/MM/DD");
 					boolean t = false;
 					while(!t){
 						String s = ui.nextLine();
 						try {
 							t = system.addBirthday(s);
 						} catch (ParseException e) {
-							System.out.println("Please respect the format given.");
 							t = false;
 						}
-						if(!t)
+						if(!t){
 							System.out.println("Please respect the format given.");
+						}
+						else{
+							System.out.println("Thank you for your cooperation.");
+						}
 					}
 				}
 			}

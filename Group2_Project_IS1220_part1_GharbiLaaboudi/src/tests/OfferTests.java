@@ -22,19 +22,21 @@ public class OfferTests {
 	public void BasicFidelityCardOfferWithoutOffer() {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		Date date = new Date();
-		date.setMonth(12);
-		BirthdayOffer bdo = new BirthdayOffer(date);
+		Date date1 = new Date();
+		bob.setBirthdayDate(date1);
+		Date date2 = new Date();
+		date2.setMonth(12);
+		BirthdayOffer bdo = new BirthdayOffer(date2);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
-		raclette.personalizeMeal("cheese", "90g"); // personalizeMeal permet aussi de rajouter des ingredients
-		raclette.personalizeMeal("ham", "40g");
-		raclette.personalizeMeal("potatoes", "50g");
+		raclette.personalizeMeal("cheese", "90g", false); // personalizeMeal permet aussi de rajouter des ingredients
+		raclette.personalizeMeal("ham", "40g", false);
+		raclette.personalizeMeal("potatoes", "50g", false);
 		raclette.setModified(false); // car c'est le plat original et pas un plat modifi�
 		
 		//creation of an order
-		Order order = new Order(bob,date);
+		Order order = new Order(bob,date2);
 		order.setNumberOfMeal(raclette, 3);
 		
 		
@@ -49,21 +51,23 @@ public class OfferTests {
 	public void BasicFidelityCardOfferWithSpecialOffer() {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		Date date = new Date();
-		date.setMonth(12);
-		BirthdayOffer bdo = new BirthdayOffer(date);
+		Date date1 = new Date();
+		bob.setBirthdayDate(date1);
+		Date date2 = new Date();
+		date2.setMonth(12);
+		BirthdayOffer bdo = new BirthdayOffer(date2);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
-		raclette.personalizeMeal("cheese", "90g");
-		raclette.personalizeMeal("ham", "40g");
-		raclette.personalizeMeal("potatoes", "50g");
+		raclette.personalizeMeal("cheese", "90g", false);
+		raclette.personalizeMeal("ham", "40g", false);
+		raclette.personalizeMeal("potatoes", "50g", false);
 		raclette.setModified(false); 
 		raclette.setSpecialPrice(15);
 		raclette.setSpecial(true);
 		
 		//creation of an order
-		Order order = new Order(bob,date);
+		Order order = new Order(bob,date2);
 		order.setNumberOfMeal(raclette, 3);
 		
 		
@@ -78,28 +82,30 @@ public class OfferTests {
 	public void BasicFidelityCardOfferWithSpecialOfferOnOnlyOneMeal() {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
-		Date date = new Date();
-		date.setMonth(12);
-		BirthdayOffer bdo = new BirthdayOffer(date);
+		Date date1 = new Date();
+		bob.setBirthdayDate(date1);
+		Date date2 = new Date();
+		date2.setMonth(12);
+		BirthdayOffer bdo = new BirthdayOffer(date2);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
-		raclette.personalizeMeal("cheese", "90g");
-		raclette.personalizeMeal("ham", "40g");
-		raclette.personalizeMeal("potatoes", "50g");
+		raclette.personalizeMeal("cheese", "90g", false);
+		raclette.personalizeMeal("ham", "40g", false);
+		raclette.personalizeMeal("potatoes", "50g", false);
 		raclette.setModified(false); 
 		raclette.setSpecialPrice(15);
 		raclette.setSpecial(true);
 		
 		// creation of a meal
 		Meal burger = new Meal("Burger", 8);
-		raclette.personalizeMeal("cheese", "40g"); 
-		raclette.personalizeMeal("ham", "90g");
-		raclette.personalizeMeal("beef", "250g");
+		raclette.personalizeMeal("cheese", "40g", false); 
+		raclette.personalizeMeal("ham", "90g", false);
+		raclette.personalizeMeal("beef", "250g", false);
 		raclette.setModified(false); 
 		
 		//creation of an order
-		Order order = new Order(bob,date);
+		Order order = new Order(bob,date2);
 		order.setNumberOfMeal(raclette, 3);
 		order.setNumberOfMeal(burger, 1);
 		
@@ -117,14 +123,15 @@ public class OfferTests {
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
 		bob.setCard(new LotteryFidelityCard());
 		Date date = new Date();
+		bob.setBirthdayDate(date);
 		date.setMonth(12);
 		BirthdayOffer bdo = new BirthdayOffer(date);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
-		raclette.personalizeMeal("cheese", "90g");
-		raclette.personalizeMeal("ham", "40g");
-		raclette.personalizeMeal("potatoes", "50g");
+		raclette.personalizeMeal("cheese", "90g", false);
+		raclette.personalizeMeal("ham", "40g", false);
+		raclette.personalizeMeal("potatoes", "50g", false);
 		raclette.setModified(false); 
 		raclette.setSpecialPrice(15);
 		raclette.setSpecial(true);
@@ -151,21 +158,23 @@ public class OfferTests {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
 		bob.setCard(new PointFidelityCard());
-		Date date = new Date();
-		date.setMonth(12);
-		BirthdayOffer bdo = new BirthdayOffer(date);
+		Date date1 = new Date();
+		bob.setBirthdayDate(date1);
+		Date date2 = new Date();
+		date2.setMonth(12);
+		BirthdayOffer bdo = new BirthdayOffer(date2);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
-		raclette.personalizeMeal("cheese", "90g");
-		raclette.personalizeMeal("ham", "40g");
-		raclette.personalizeMeal("potatoes", "50g");
+		raclette.personalizeMeal("cheese", "90g", false);
+		raclette.personalizeMeal("ham", "40g", false);
+		raclette.personalizeMeal("potatoes", "50g", false);
 		raclette.setModified(false); 
 		raclette.setSpecialPrice(15);
 		raclette.setSpecial(true);
 		
 		//creation of an order
-		Order order = new Order(bob,date);
+		Order order = new Order(bob,date2);
 		order.setNumberOfMeal(raclette, 3);
 		Offer[] offers = new Offer[1];
 		offers[0] = bdo;
@@ -183,21 +192,23 @@ public class OfferTests {
 		// creation of a user
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
 		bob.setCard(new PointFidelityCard(100));
-		Date date = new Date();
-		date.setMonth(12);
-		BirthdayOffer bdo = new BirthdayOffer(date);
+		Date date1 = new Date();
+		bob.setBirthdayDate(date1);
+		Date date2 = new Date();
+		date2.setMonth(12);
+		BirthdayOffer bdo = new BirthdayOffer(date2);
 		
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
-		raclette.personalizeMeal("cheese", "90g");
-		raclette.personalizeMeal("ham", "40g");
-		raclette.personalizeMeal("potatoes", "50g");
+		raclette.personalizeMeal("cheese", "90g", false);
+		raclette.personalizeMeal("ham", "40g", false);
+		raclette.personalizeMeal("potatoes", "50g", false);
 		raclette.setModified(false); 
 		raclette.setSpecialPrice(15);
 		raclette.setSpecial(true);
 		
 		//creation of an order
-		Order order = new Order(bob,date);
+		Order order = new Order(bob,date2);
 		order.setNumberOfMeal(raclette, 3);
 		Offer[] offers = new Offer[1];
 		offers[0] = bdo;
@@ -212,13 +223,14 @@ public class OfferTests {
 		Client bob = new Client("Bob", "Red", "bobred", "123456");
 		bob.setCard(new PointFidelityCard());
 		Date date = new Date();
+		bob.setBirthdayDate(date);
 		BirthdayOffer bdo = new BirthdayOffer(date);
 				
 		// creation of a meal
 		Meal raclette = new Meal("Raclette", 17);
-		raclette.personalizeMeal("cheese", "90g");
-		raclette.personalizeMeal("ham", "40g");
-		raclette.personalizeMeal("potatoes", "50g");
+		raclette.personalizeMeal("cheese", "90g", false);
+		raclette.personalizeMeal("ham", "40g", false);
+		raclette.personalizeMeal("potatoes", "50g", false);
 		raclette.setModified(false); 
 		raclette.setSpecialPrice(15);
 		raclette.setSpecial(true);
@@ -239,13 +251,14 @@ public class OfferTests {
 				Client bob = new Client("Bob", "Red", "bobred", "123456");
 				bob.setCard(new BasicFidelityCard());
 				Date date = new Date();
+				bob.setBirthdayDate(date);
 				BirthdayOffer bdo = new BirthdayOffer(date);
 						
 				// creation of a meal
 				Meal raclette = new Meal("Raclette", 17);
-				raclette.personalizeMeal("cheese", "90g");
-				raclette.personalizeMeal("ham", "40g");
-				raclette.personalizeMeal("potatoes", "50g");
+				raclette.personalizeMeal("cheese", "90g",false);
+				raclette.personalizeMeal("ham", "40g", false);
+				raclette.personalizeMeal("potatoes", "50g", false);
 				raclette.setModified(false); 
 				raclette.setSpecialPrice(15);
 				raclette.setSpecial(true);

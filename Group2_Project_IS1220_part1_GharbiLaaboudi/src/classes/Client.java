@@ -64,7 +64,7 @@ public class Client extends User implements Observer {
 		this.setAgreement("BirthdayOffer", true);
 		this.setAgreement("SpecialOffer", true);
 		this.contactInfo = new HashMap<String,String>();
-		this.birthdayDate = new Date();
+		//this.birthdayDate = new Date();
 	}
 
 	public Offer getCard() {
