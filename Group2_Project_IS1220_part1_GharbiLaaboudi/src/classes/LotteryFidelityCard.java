@@ -54,7 +54,7 @@ public class LotteryFidelityCard implements Offer {
 		if(t && prob <probability){
 			return order.getNormalPrice();
 		} else {
-			
+			System.out.println("Congratulation you won the lottery !");
 			return 0;
 		}
 	}

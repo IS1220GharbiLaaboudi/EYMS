@@ -130,7 +130,7 @@ public class Client extends User implements Observer {
 	 * @param notification The notification that the user receives. 
 	 */
 	public void addToNotificationWall(String notification) {
-		this.notificationWall = this.notificationWall + "/n" + notification;
+		this.notificationWall = this.notificationWall + System.lineSeparator() + notification;
 	}
 	
 	public Date getBirthdayDate() {

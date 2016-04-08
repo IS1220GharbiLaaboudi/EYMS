@@ -192,7 +192,7 @@ public class CLUI {
 				System.out.println("registerClient (firstName, lastName, username, password): to add a user to the system ");
 				System.out.println("addContactInfo(contactInfoType, value, favoriteContactInfo): to add a contact info to the current user ");
 				System.out.println("associateCard (userName,cardType): to associate a  delity card to a user ");
-				System.out.println("associateAgreement (username,agreement): to associate an agreement to a user ");
+				System.out.println("associateAgreement (username,agreement): to associate an agreement to a user (Possibilities : YesToAll, SpecialOffersOnly, BirthayOffersOnly or NotoAll) ");
 				System.out.println("insertChef (firstName, lastName, username, password): to add a chef to the system ");
 				System.out.println("notifyAd (message, mealName, specialPrice): send a message to alert the users about an offer ");
 				System.out.println("notifyBirthday (): send a special offer to the users that celebrate their birthday ");
@@ -350,7 +350,25 @@ public class CLUI {
 			}
 			//associateAgreement
 			else if(command.equalsIgnoreCase("associateagreement")  && arguments.size() == 2){
-				boolean t = system.associateAgreement(arguments.get(0), arguments.get(1), true);
+				boolean t= false;
+				switch (arguments.get(1).toLowerCase()) {
+				case "yestoall":
+					t = system.associateAgreement(arguments.get(0), "BirthdayOffers", true)
+						&& system.associateAgreement(arguments.get(0), "SpecialOffers", true);
+					break;
+				case "notoall":
+					t = system.associateAgreement(arguments.get(0), "BirthdayOffers", false)
+						&& system.associateAgreement(arguments.get(0), "SpecialOffers", false);
+					break;
+				case "birthdayoffersonly":
+					t = system.associateAgreement(arguments.get(0), "BirthdayOffers", true)
+						&& system.associateAgreement(arguments.get(0), "SpecialOffers", false);
+					break;
+				case "specialoffersonly":
+					t = system.associateAgreement(arguments.get(0), "BirthdayOffers", false)
+						&& system.associateAgreement(arguments.get(0), "SpecialOffers", true);
+					break;
+				}
 				if(t)
 					System.out.println("The agreement was correctly associated to the specified client account.");
 				else

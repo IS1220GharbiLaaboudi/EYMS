@@ -79,6 +79,10 @@ public class Meal extends Observable {
 		this.isModified = false;
 		this.ingredientMap = new HashMap<String, String>();
 		this.orderCounter = new HashMap<String, Integer>();
+		incrementOrderCounter("OnSale", 0);
+		incrementOrderCounter("NotOnSale", 0);
+		incrementOrderCounter("Modified", 0);
+		incrementOrderCounter("NotModified", 0);
 	}
 	/**
 	 * This constructor initializes the creation of a special offer meal. The ingredients still need to be added.
@@ -95,6 +99,11 @@ public class Meal extends Observable {
 		this.isOnlySpecial = isOnlySpecial;
 		this.isModified = false;
 		this.ingredientMap = new HashMap<String, String>();
+		this.orderCounter = new HashMap<String, Integer>();
+		incrementOrderCounter("OnSale", 0);
+		incrementOrderCounter("NotOnSale", 0);
+		incrementOrderCounter("Modified", 0);
+		incrementOrderCounter("NotModified", 0);
 	}
 	
 	
@@ -274,7 +283,10 @@ public class Meal extends Observable {
 		this.ingredientMap = ingredientMap;
 	}
 
-
+	public void enableNotifications(){
+		setChanged();
+	}
+	
 	@Override
 	public String toString() {
 		if (this.isSpecial){

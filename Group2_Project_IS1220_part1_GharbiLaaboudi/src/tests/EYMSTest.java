@@ -166,7 +166,7 @@ public class EYMSTest {
 		Assert.assertTrue(raclette.getName() == "Raclette");
 	
 	}
-	
+	@Test
 	public void testAddIngredient(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);		
@@ -180,6 +180,7 @@ public class EYMSTest {
 		
 	}
 	
+	@Test
 	public void testListIngredients(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);		
@@ -192,7 +193,7 @@ public class EYMSTest {
 		assertEquals("50g",system.listIngredients("Raclette").get("Cheese"));
 	}
 	
-
+	@Test
 	public void testSaveMeal(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);		
@@ -204,7 +205,7 @@ public class EYMSTest {
 		
 		assertEquals("50g",system.listIngredients("Raclette").get("Cheese"));
 	}
-	
+	@Test
 	public void testputInSpecialOffer(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);		
@@ -219,7 +220,7 @@ public class EYMSTest {
 		Assert.assertTrue(raclette.isSpecial());
 	
 	}
-	
+	@Test
 	public void testRemoveFromSpecialOffer(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);		
@@ -235,7 +236,7 @@ public class EYMSTest {
 		Meal raclette = system.currentMeal();
 		Assert.assertTrue(!raclette.isSpecial());
 	}
-	
+	@Test
 	public void testInsertOffer(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);		
@@ -246,7 +247,7 @@ public class EYMSTest {
 		
 		Assert.assertTrue(raclette.isOnlySpecial());
 	}
-	
+	@Test
 	public void testNotifyAdClientWhoAgrees(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred2", "123456", UserRole.Client);
@@ -268,7 +269,7 @@ public class EYMSTest {
 				+ "a tasty discount on the meal : " + "Raclette" + ". " + "The best Raclette in the world !"
 				, bob.getNotificationWall());
 	}
-	
+	@Test
 	public void testNotifyAdClientWhoDisagrees(){
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred2", "123456", UserRole.Client);
@@ -290,6 +291,7 @@ public class EYMSTest {
 				, bob.getNotificationWall());
 	}
 	
+	@Test
 	public void testNotifyBirthday() throws ParseException{
 		EYMS system = new EYMS();
 		system.register("Bob", "Red", "bobred2", "123456", UserRole.Client);

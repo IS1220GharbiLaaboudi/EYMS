@@ -43,11 +43,13 @@ public class PointFidelityCard implements Offer {
 	public double discountedPrice(Order order) {
 		if(points >= 100){
 			points = 0;
+			System.out.println("Congratulation you have reached 100 points ! This order is dicounted !");
 			return order.getNormalPrice() * percentage;
 		} else{
 			points += Math.floor(order.getNormalPrice() / 10);
 			if(points > 100)
 				points = 100;
+			System.out.println("Your card has "+ points + " points.");
 			return 0;
 		}
 		

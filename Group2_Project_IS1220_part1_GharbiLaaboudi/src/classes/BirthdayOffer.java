@@ -17,6 +17,10 @@ public class BirthdayOffer extends Observable implements Offer {
 		this.date = date;
 	}
 	
+	public void enableNotifications(){
+		setChanged();
+	}
+	
 	/**
 	 * Returns the discounted price from an order.
 	 *  

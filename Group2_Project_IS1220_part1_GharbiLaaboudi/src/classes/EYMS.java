@@ -215,8 +215,10 @@ public class EYMS {
 					meal.incrementOrderCounter("OnSale", n);
 				else
 					meal.incrementOrderCounter("NotOnSale", n);
-				if(meal.isModified())
-					meal.incrementOrderCounter("Modified", n);
+				if(meal.isModified()){
+					Meal mealNotModified = getMeal(meal.getName().substring("Modified ".length()));
+					mealNotModified.incrementOrderCounter("Modified", n);
+				}
 				else
 					meal.incrementOrderCounter("NotModified", n);
 			}
@@ -504,7 +506,8 @@ public class EYMS {
 					}
 				}
 			}
-			meal.notifyObservers(message);;
+			meal.enableNotifications();
+			meal.notifyObservers(message);
 			return true;
 		}	
 		return false;
@@ -524,11 +527,13 @@ public class EYMS {
 				if (user instanceof Client){
 					Client client = (Client) user;
 				
-					if(client.getBirthdayDate().getDate() == date.getDate() && client.getBirthdayDate().getMonth() == date.getMonth()){
+					if(client.getBirthdayDate().getDate() == date.getDate() && client.getBirthdayDate().getMonth() == date.getMonth()
+							&& client.getAgreement("BirthdayOffer")){
 						bd.addObserver(client);
 					}
 				}
 			}
+			bd.enableNotifications();
 			bd.notifyObservers();
 			return true;
 		} 

@@ -105,7 +105,7 @@ associateCard (Mario, Basic)
 associateAgreement (Mario, YesToAll)
 login (Mario, 345678)
 email, mario@itsme.mario
-1995/09/25
+1995/05/18
 addContactInfo (phone, 0699562366, no)
 listIngredients (Raclette)
 personalizeMeal (Raclette, cheese, 100g)
@@ -114,6 +114,8 @@ selectMeal (Modified Raclette, 1)
 selectMeal (Raclette, 2)
 saveOrder ()
 login (bobred, 123456)
+setdate (2016/05/18)
 notifyBirthday ()
 putInSpecialOffer (Raclette, 15)
-notifyAd (The best Raclette in the world, Raclette, 15)
+notifyAd (The best Raclette in the world !, Raclette, 15)
+login (Mario, 345678)
