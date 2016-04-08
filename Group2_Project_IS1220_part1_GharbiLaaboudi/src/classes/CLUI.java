@@ -135,6 +135,7 @@ public class CLUI {
 			String s;
 			if (readFromFile){
 				s = commandsList.remove(0);
+				System.out.println("-- Executing command :" + s);
 				readFromFile = !commandsList.isEmpty();
 			}else{
 				s = ui.nextLine(); // like command (arg1, arg2, ...)
