@@ -99,7 +99,14 @@ public class CLUI {
 					System.out.println("Example : email, johnred@eyms.org");
 					boolean t = false;
 					while(!t){
-						String s = ui.nextLine();
+						String s;
+						if (readFromFile){
+							s = commandsList.remove(0);
+							System.out.println("-- Executing command : " + s);
+							readFromFile = !commandsList.isEmpty();
+						}else{
+							s = ui.nextLine(); 
+						}
 						String[] sarray = s.split(", |,| , | ,",2);
 						t = system.addInfo(sarray[0], sarray[1], true);
 						if(!t)
@@ -113,7 +120,14 @@ public class CLUI {
 					System.out.println("YYYY/MM/DD");
 					boolean t = false;
 					while(!t){
-						String s = ui.nextLine();
+						String s;
+						if (readFromFile){
+							s = commandsList.remove(0);
+							System.out.println("-- Executing command : " + s);
+							readFromFile = !commandsList.isEmpty();
+						}else{
+							s = ui.nextLine();
+						}
 						try {
 							t = system.addBirthday(s);
 						} catch (ParseException e) {
@@ -135,7 +149,7 @@ public class CLUI {
 			String s;
 			if (readFromFile){
 				s = commandsList.remove(0);
-				System.out.println("-- Executing command :" + s);
+				System.out.println("-- Executing command : " + s);
 				readFromFile = !commandsList.isEmpty();
 			}else{
 				s = ui.nextLine(); // like command (arg1, arg2, ...)
@@ -183,6 +197,8 @@ public class CLUI {
 				System.out.println("notifyAd (message, mealName, specialPrice): send a message to alert the users about an offer ");
 				System.out.println("notifyBirthday (): send a special offer to the users that celebrate their birthday ");
 				System.out.println("showMeal (orderingCriteria): to see the list of the meals ordered according to a certain criteria ");
+				System.out.println("importFile (fileName): imports the commands of a given text file (for exemple fileName = eval_1) ");
+
 			}
 			//login
 			else if (command.equalsIgnoreCase("login") && arguments.size() == 2){
@@ -193,10 +209,17 @@ public class CLUI {
 					System.out.println("Incorrect username or password given.");
 			}
 			//createMeal
-			else if (command.equalsIgnoreCase("createmeal") && arguments.size() == 2){
+			else if (command.equalsIgnoreCase("createmeal") && arguments.size() > 1 ){
 	
-				double price = Double.parseDouble(arguments.get(1));
-				boolean t = system.createMeal(arguments.get(0), price);			
+				double price = Double.parseDouble(arguments.get(arguments.size()-1)); 
+				String mealName = "";
+				for (int i = 0; i< arguments.size()-1; i++){
+					mealName += arguments.get(i);
+					if (i != arguments.size() - 2){
+						mealName += " ";
+					}
+				}
+				boolean t = system.createMeal(mealName, price);			
 				
 				if(t)
 					System.out.println("Meal correctly added");
@@ -227,9 +250,16 @@ public class CLUI {
 					System.out.println("Cannot save meal. Current user is not a chef or no current meal.");
 			}
 			//selectMeal
-			else if(command.equalsIgnoreCase("selectmeal")  && arguments.size() == 2){
-				int quantity = Integer.parseInt(arguments.get(1));
-				boolean t = system.selectMeal(arguments.get(0), quantity);		
+			else if(command.equalsIgnoreCase("selectmeal")  && arguments.size() > 1){
+				int quantity = Integer.parseInt(arguments.get(arguments.size()-1));
+				String mealName = "";
+				for (int i = 0; i< arguments.size()-1; i++){
+					mealName += arguments.get(i);
+					if (i != arguments.size() - 2){
+						mealName += " ";
+					}
+				}
+				boolean t = system.selectMeal(mealName, quantity);		
 				
 				if(t && quantity != 0)
 					System.out.println("Current meal was well added to the meals list");
@@ -237,17 +267,31 @@ public class CLUI {
 					System.out.println("Cannot save meal. Current user is not a chef or no current meal.");
 			}
 			//personalizeMeal
-			else if(command.equalsIgnoreCase("personalizemeal")  && arguments.size() == 3){
-				boolean t = system.personalizeMeal(arguments.get(0), arguments.get(1), arguments.get(2));	
+			else if(command.equalsIgnoreCase("personalizemeal")  && arguments.size() > 2){
+				String mealName = "";
+				for (int i = 0; i< arguments.size()-2; i++){
+					mealName += arguments.get(i);
+					if (i != arguments.size() - 3){
+						mealName += " ";
+					}
+				}
+				boolean t = system.personalizeMeal(mealName, arguments.get(arguments.size()-2), arguments.get(arguments.size()-1));	
 				if(t)
 					System.out.println("The meal was correctly personalized");
 				else
 					System.out.println("Meal not known.");
 			}
 			//putInSpecialOffer
-			else if(command.equalsIgnoreCase("putinspecialoffer")  && arguments.size() == 2){
-				double price = Double.parseDouble(arguments.get(1));
-				boolean t = system.putInSpecialOffer(arguments.get(0), price);
+			else if(command.equalsIgnoreCase("putinspecialoffer")  && arguments.size() > 1){
+				double price = Double.parseDouble(arguments.get(arguments.size()-1));
+				String mealName = "";
+				for (int i = 0; i< arguments.size()-1; i++){
+					mealName += arguments.get(i);
+					if (i != arguments.size() - 2){
+						mealName += " ";
+					}
+				}
+				boolean t = system.putInSpecialOffer(mealName, price);
 		
 				if(t)
 					System.out.println("The selected meal has now a special offer.");
@@ -255,8 +299,15 @@ public class CLUI {
 					System.out.println("Cannot put meal in special offer. Meal is unknown or new price is equal to the normal price. Verify that current user is a chef.");
 			}
 			//removeFromSpecialOffer
-			else if(command.equalsIgnoreCase("removefromspecialoffer")  && arguments.size() == 1){
-				boolean t = system.removeFromSpecialOffer(arguments.get(0));
+			else if(command.equalsIgnoreCase("removefromspecialoffer")  && arguments.size() > 0){
+				String mealName = "";
+				for (int i = 0; i< arguments.size()-1; i++){
+					mealName += arguments.get(i);
+					if (i != arguments.size() - 2){
+						mealName += " ";
+					}
+				}
+				boolean t = system.removeFromSpecialOffer(mealName);
 
 				if(t)
 					System.out.println("The selected meal is now not in special offer.");
@@ -264,8 +315,15 @@ public class CLUI {
 					System.out.println("Cannot remove meal from special offer. Meal is unknown or current user is not a chef.");
 			}
 			//listIngredients
-			else if(command.equalsIgnoreCase("listIngredients")  && arguments.size() == 1){				
-				Map<String, String> myMap = system.listIngredients(arguments.get(0));
+			else if(command.equalsIgnoreCase("listIngredients")  && arguments.size() > 0){				
+				String mealName = "";
+				for (int i = 0; i< arguments.size()-1; i++){
+					mealName += arguments.get(i);
+					if (i != arguments.size() - 2){
+						mealName += " ";
+					}
+				}
+				Map<String, String> myMap = system.listIngredients(mealName);
 				if(myMap != null){
 					System.out.println(arguments.get(0)+" is composed of : ");
 				
@@ -284,9 +342,16 @@ public class CLUI {
 					System.out.println("Cannot remove meal from special offer. Meal is unknown or current user is not a chef.");
 			}
 			//insertOffer
-			else if(command.equalsIgnoreCase("insertoffer") && arguments.size() == 2){
-				double price = Double.parseDouble(arguments.get(1));
-				boolean t = system.insertOffer(arguments.get(0), price);
+			else if(command.equalsIgnoreCase("insertoffer") && arguments.size() > 1){
+				double price = Double.parseDouble(arguments.get(arguments.size()-1));
+				String mealName = "";
+				for (int i = 0; i< arguments.size()-1; i++){
+					mealName += arguments.get(i);
+					if (i != arguments.size() - 2){
+						mealName += " ";
+					}
+				}
+				boolean t = system.insertOffer(mealName, price);
 				if(t)
 					System.out.println("New special offer meal created. Please add ingredients with the proper command.");
 				else
@@ -347,9 +412,24 @@ public class CLUI {
 					System.out.println("An error occured. The username is maybe already taken. Please check that you did not specify empty arguments");
 			}
 			//notifyAd
-			else if(command.equalsIgnoreCase("notifyAd")  && arguments.size() == 3){
-				double price = Double.parseDouble(arguments.get(2));
-				boolean t = system.notifyAd(arguments.get(0), arguments.get(1), price);
+			else if(command.equalsIgnoreCase("notifyAd")  && arguments.size() > 2){
+				double price = Double.parseDouble(arguments.get(arguments.size()-1));
+				String notifiactionText = arguments.get(0).substring(1, arguments.get(0).length() - 2);
+				int k = 1;
+				while (!arguments.get(k).contains("\"")){
+					notifiactionText += " " + arguments.get(k);
+					k += 1;
+				}
+				notifiactionText += " " + arguments.get(k).substring(0, arguments.get(0).length() - 2);
+				k += 1;
+				String mealName = "";
+				for (int i = k; i< arguments.size()-1; i++){
+					mealName += arguments.get(i);
+					if (i != arguments.size() - 2){
+						mealName += " ";
+					}
+				}
+				boolean t = system.notifyAd(notifiactionText, mealName, price);
 				if(t)
 					System.out.println("Notification sent to all the users");
 				else
@@ -387,6 +467,10 @@ public class CLUI {
 			else{
 				System.out.println("Unknown command, type h for the list of the commands.");
 			}
+			
+			//Skip 2 lines in order to have more visibility on the effect of each command
+			System.out.println();
+			System.out.println();
 		}
 		
 		ui.close();
@@ -397,7 +481,7 @@ public class CLUI {
 		ArrayList<String> commandsList = new ArrayList<String>();
 		FileReader file = null;
 		BufferedReader reader = null;
-		file = new FileReader(fileName);
+		file = new FileReader("eval\\"+fileName+".txt");
 			
 		reader = new BufferedReader(file);
 		String line = "";
@@ -406,7 +490,7 @@ public class CLUI {
 			commandsList.add(line);
 		}
 		
-		reader.close(); // toujours rajouter à la fin
+		reader.close(); 
 		
 		return commandsList ;
 	}

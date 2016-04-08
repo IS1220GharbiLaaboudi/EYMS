@@ -101,19 +101,19 @@ addIngredient bagel bread 30g
 saveMeal
 listIngredients Raclette
 registerClient Mario Rossi Mario 345678
-addContactInfo email mario@itsme.mario
-addContactInfo phone 0699562366
 associateCard Mario Basic
 associateAgreement Mario YesToAll
-login mario 345678
+login Mario 345678
+email, mario@itsme.mario
 1995/09/25
+addContactInfo phone 0699562366
 listIngredients Raclette
 selectMeal Raclette 1 
 personalizeMeal Raclette cheese 100g
-personalizeMeal Raclette ham 0
+personalizeMeal Raclette ham 0g
 selectMeal Raclette 2
 saveOrder
-notifyBirthday
 login bobred 123456
+notifyBirthday
 putInSpecialOffer Raclette 15
 notifyAd "The best Raclette in the world" Raclette 15

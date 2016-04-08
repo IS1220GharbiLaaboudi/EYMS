@@ -402,6 +402,7 @@ public class EYMS {
 	public boolean saveMeal(){
 		if(currentUser != null && currentUser.getRole() == UserRole.Chef && currentMeal != null){
 			mapMeal.put(currentMeal.getName(), currentMeal);
+			currentMeal = null;
 			return true;
 		} 
 		return false;
@@ -479,9 +480,11 @@ public class EYMS {
 		if(t && currentUser.getRole() == UserRole.Chef){
 			Meal meal = mapMeal.get(mealName);
 			for(User user : mapUsers.values()){
-				Client client = (Client) user;
-				if(client.getAgreement("SpecialOffer")){
-					meal.addObserver(client);
+				if (user instanceof Client){
+					Client client = (Client) user;
+					if(client.getAgreement("SpecialOffer")){
+						meal.addObserver(client);
+					}
 				}
 			}
 			meal.notifyObservers(message);;
@@ -501,9 +504,12 @@ public class EYMS {
 		if(currentUser.getRole() == UserRole.Chef){
 			BirthdayOffer bd = new BirthdayOffer(date);
 			for(User user : mapUsers.values()){
-				Client client = (Client) user;
-				if(client.getBirthdayDate().getDate() == date.getDate() && client.getBirthdayDate().getMonth() == date.getMonth()){
-					bd.addObserver(client);
+				if (user instanceof Client){
+					Client client = (Client) user;
+				
+					if(client.getBirthdayDate().getDate() == date.getDate() && client.getBirthdayDate().getMonth() == date.getMonth()){
+						bd.addObserver(client);
+					}
 				}
 			}
 			bd.notifyObservers();
