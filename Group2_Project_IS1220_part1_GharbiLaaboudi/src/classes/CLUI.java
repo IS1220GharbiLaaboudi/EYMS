@@ -3,6 +3,9 @@
  */
 package classes;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Map;
@@ -31,6 +34,8 @@ public class CLUI {
 		boolean exit = false;
 		String command = "";
 		ArrayList <String> arguments = new ArrayList<String>();
+		boolean readFromFile = false;
+		ArrayList<String> commandsList= new ArrayList<String>();
 		
 		
 		/*
@@ -127,7 +132,14 @@ public class CLUI {
 			/*
 			 * Input management
 			 */
-			String s = ui.nextLine(); // like command (arg1, arg2, ...)
+			String s;
+			if (readFromFile){
+				s = commandsList.remove(0);
+				readFromFile = !commandsList.isEmpty();
+			}else{
+				s = ui.nextLine(); // like command (arg1, arg2, ...)
+
+			}
 			//parsing the input
 			String[] sarray = s.split(" ",2);
 			command = sarray[0];
@@ -362,6 +374,14 @@ public class CLUI {
 				
 				System.out.println(system.showMeal(oc));
 			}
+			else if(command.equalsIgnoreCase("importfile") && arguments.size() == 1){
+				try{
+					commandsList = CLUI.importfile(arguments.get(0));
+					readFromFile = !commandsList.isEmpty();
+				}catch(Exception e){
+					System.out.println("Unable to import file");
+				}
+			}
 			//other
 			else{
 				System.out.println("Unknown command, type h for the list of the commands.");
@@ -370,6 +390,24 @@ public class CLUI {
 		
 		ui.close();
 
+	}
+
+	private static ArrayList<String> importfile(String fileName) throws IOException {
+		ArrayList<String> commandsList = new ArrayList<String>();
+		FileReader file = null;
+		BufferedReader reader = null;
+		file = new FileReader(fileName);
+			
+		reader = new BufferedReader(file);
+		String line = "";
+			
+		while((line = reader.readLine()) != null){
+			commandsList.add(line);
+		}
+		
+		reader.close(); // toujours rajouter à la fin
+		
+		return commandsList ;
 	}
 
 }
