@@ -331,14 +331,14 @@ public class EYMS {
 		if (orderingCriteria == OrderingCriteria.JustOnSale){
 			for(Order order : mapOrders.values()){ //to get only what was ordered
 				for(Meal meal : order.getSetMeal()){
-					if(meal.getOrderCounter("OnSale") != 0 && meal.getOrderCounter("NotOnSale") == 0 && !meal.isModified())
+					if(meal.getOrderCounter("OnSale") != 0 && meal.getOrderCounter("NotOnSale") == 0 )
 						orderedSet.add(meal);
 				}
 			}
 		} else if (orderingCriteria == OrderingCriteria.MostlyModified){
 			for(Order order : mapOrders.values()){ //to get only what was ordered
 				for(Meal meal : order.getSetMeal()){
-					if(meal.getOrderCounter("Modified") > meal.getOrderCounter("NotModified"))
+					if(meal.getOrderCounter("Modified") > meal.getOrderCounter("NotModified")&& !meal.isModified())
 						orderedSet.add(meal);
 				}
 			}
