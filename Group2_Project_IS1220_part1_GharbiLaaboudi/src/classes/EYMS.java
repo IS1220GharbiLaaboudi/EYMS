@@ -112,10 +112,11 @@ public class EYMS {
 	 * @param date the date to set
 	 * @throws ParseException if the beginning of the specified string cannot be parsed.
 	 */
-	public void setDate(String date) throws ParseException {
+	public void setDate(String dateString) throws ParseException {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-		Date date1 = dateFormat.parse(date);
+		Date date1 = dateFormat.parse(dateString);
 		this.date = date1;
+		offers[0] = new BirthdayOffer(date);
 	}
 
 
@@ -183,9 +184,13 @@ public class EYMS {
 			}else{
 				personalizedMeal= new Meal("Modified " + mealName, meal.getPrice());
 			}
-			// A copy of the meal that isn't related to it
+			// A copy of the meal that isn't related to it (not the same address in memory)
 			for (String ingredientName : meal.getIngredientMap().keySet()){
 				personalizedMeal.personalizeMeal(ingredientName, meal.getIngredientMap().get(ingredientName), true);
+			}
+			if (meal.isSpecial()){
+				personalizedMeal.setSpecial(true);
+				personalizedMeal.setSpecialPrice(meal.getSpecialPrice());
 			}
 			personalizedMeal.personalizeMeal(ingredient, quantity, true);
 			mapMeal.put(personalizedMeal.getName(), personalizedMeal);
@@ -209,7 +214,7 @@ public class EYMS {
 			currentUser = order.getClient();
 			mapUsers.put(currentUser.getUserName(), currentUser); // in order to store his card chages (points..)
 			for(Meal meal : order.getSetMeal()){
-				System.out.println(meal);
+				System.out.println(order.getQuantityMeal(meal)+" "+meal);
 				int n = order.getQuantityMeal(meal);
 				if(meal.isOnlySpecial() || meal.isSpecial())
 					meal.incrementOrderCounter("OnSale", n);
@@ -338,14 +343,14 @@ public class EYMS {
 		} else if (orderingCriteria == OrderingCriteria.MostlyModified){
 			for(Order order : mapOrders.values()){ //to get only what was ordered
 				for(Meal meal : order.getSetMeal()){
-					if(meal.getOrderCounter("Modified") > meal.getOrderCounter("NotModified")&& !meal.isModified())
+					if(meal.getOrderCounter("Modified") > meal.getOrderCounter("NotModified") )
 						orderedSet.add(meal);
 				}
 			}
-		} else if (orderingCriteria == OrderingCriteria.AsItIs){
+		} else if (orderingCriteria == OrderingCriteria.AsItIs ){
 			for(Order order : mapOrders.values()){ //to get only what was ordered
 				for(Meal meal : order.getSetMeal()){
-					if(meal.getOrderCounter("Modified") == 0)
+					if(meal.getOrderCounter("Modified") == 0 && !meal.isModified() )
 						orderedSet.add(meal);
 				}
 			}
@@ -457,10 +462,14 @@ public class EYMS {
 	public boolean removeFromSpecialOffer(String mealName){
 		Meal meal = mapMeal.get(mealName);
 		if(meal != null && currentUser != null && currentUser.getRole() == UserRole.Chef){
-			meal.setSpecialPrice(meal.getPrice());
-			meal.setSpecial(false);
-			meal.setOnlySpecial(false);
-			mapMeal.put(mealName, meal);
+			if (meal.isOnlySpecial()){
+				mapMeal.remove(meal);
+			}else{
+				meal.setSpecialPrice(meal.getPrice());
+				meal.setSpecial(false);
+				mapMeal.put(mealName, meal);
+			}
+			
 			return true;
 		} else{
 			return false;
@@ -522,7 +531,7 @@ public class EYMS {
 	@SuppressWarnings("deprecation")
 	public boolean notifyBirthday(){
 		if(currentUser.getRole() == UserRole.Chef){
-			BirthdayOffer bd = new BirthdayOffer(date);
+			BirthdayOffer bd = (BirthdayOffer) offers[0];
 			for(User user : mapUsers.values()){
 				if (user instanceof Client){
 					Client client = (Client) user;

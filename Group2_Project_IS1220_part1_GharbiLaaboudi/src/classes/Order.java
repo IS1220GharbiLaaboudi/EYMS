@@ -144,15 +144,18 @@ public class Order {
 		Offer card = client.getCard() ;
 		double normalPrice = getNormalPrice();
 		double discountedPrice = 0;
-				
-		discountedPrice += card.discountedPrice(this);
-		currentPrice = normalPrice - discountedPrice;
-		client.setCard(card);
+		currentPrice = normalPrice;
 		
 		for(Offer offer : offers){
 			discountedPrice += offer.discountedPrice(this);
 			currentPrice = normalPrice - discountedPrice;
 		}
+		
+		discountedPrice += card.discountedPrice(this);
+		currentPrice = normalPrice - discountedPrice;
+		client.setCard(card);
+		
+		
 		return  Math.max(currentPrice, (double) 0);
 		}
 

@@ -290,10 +290,10 @@ public class Meal extends Observable {
 	@Override
 	public String toString() {
 		if (this.isSpecial){
-			return "[ " +name + ": Ingredients =" + ingredientMap + ", Regular Price =" + price
-				+ ", Special Price=" + specialPrice+ " ]";
+			return "[ " +name + ": Ingredients = " + ingredientMap + ", Regular Price = " + price
+				+ ", Special Price = " + specialPrice+ " ]";
 		} else {
-			return "[ " + name + ": Ingredients =" + ingredientMap + ", Price =" + price+ " ]";
+			return "[ " + name + ": Ingredients = " + ingredientMap + ", Price = " + price+ " ]";
 		}
 	}
 }

@@ -269,8 +269,9 @@ public class OfferTests {
 				Offer[] offers = new Offer[1];
 				offers[0] = bdo;
 				double price = order.getPrice(offers);
-						
-				Assert.assertTrue(3*15*.5 == price);
+				System.out.println("********************************************");
+				System.out.println(price);
+				Assert.assertTrue(3*17*.5-3*(17-15) == price);
 		
 	}
 }

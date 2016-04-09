@@ -1,5 +1,9 @@
+// inserting the Chef and login
 insertChef (Bob, Red, bobred, 123456)
 login (bobred, 123456)
+
+// Creating 20 meals
+
 createMeal (Raclette, 17)
 addIngredient (cheese, 90g)
 addIngredient (ham ,40g)
@@ -75,7 +79,7 @@ addIngredient (meat, 60g)
 saveMeal ()
 createMeal (Kebab, 3.50)
 addIngredient (tomato, 50g)
-addIngredient (oninon, 30g)
+addIngredient (onion, 30g)
 addIngredient (salad, 10g)
 addIngredient (samurai sauce, 5.5g)
 addIngredient (meat, 125g)
@@ -94,21 +98,31 @@ addIngredient (milk, 45cl)
 saveMeal ()
 createMeal (Bagel, 5.8)
 addIngredient (tomato, 50g)
-addIngredient (oninon, 30g)
+addIngredient (onion, 30g)
 addIngredient (salad, 10g)
 addIngredient (chicken, 120g)
 addIngredient (bagel, bread 30g)
 saveMeal ()
+
+// -- The client Mario wants to make an order
+
 listIngredients (Raclette)
 registerClient (Mario, Rossi, Mario, 345678)
 associateCard (Mario, Basic)
 associateAgreement (Mario, YesToAll)
 login (Mario, 345678)
+
+// In our implementation, these information are given on the first login
+
 email, mario@itsme.mario
 1995/05/18
-addContactInfo (phone, 0699562366, no)
+
+addContactInfo (phone, 0699562366, yes)
 listIngredients (Raclette)
 personalizeMeal (Raclette, cheese, 100g)
+
+// In order to modify twice a meal, the second command has to specify "Modified MealName"
+
 personalizeMeal (Modified Raclette, ham, 0g)
 selectMeal (Modified Raclette, 1)
 selectMeal (Raclette, 2)
@@ -118,4 +132,7 @@ setdate (2016/05/18)
 notifyBirthday ()
 putInSpecialOffer (Raclette, 15)
 notifyAd (The best Raclette in the world !, Raclette, 15)
+
+// We can see that he recieved the notifications
+
 login (Mario, 345678)

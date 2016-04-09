@@ -1,0 +1,60 @@
+importfile (default_restaurant)
+associateAgreement (vladine, notoall)
+associateCard (vladine, point)
+
+// Poutine will buy enough meals in order to get a discount with his Point Fidelity Card
+
+login (grams, 123456)
+setdate (2016/02/17)
+notifyBirthday ()
+insertOffer (Big Tasty, 6.50)
+notifyAd (The classical Raclette is now on discount ! ,Raclette, 16)
+
+login (vladine, russiaForever)
+selectMeal (Raclette, 10)
+saveOrder ()
+// He will have 17 points
+
+
+
+// The birthday of Poutine
+login (grams, 123456)
+setdate (2016/10/22)
+notifyBirthday ()
+
+login (vladine, russiaForever)
+selectMeal (Raclette, 10)
+saveOrder ()
+//He will add 8 points : 25 points
+
+
+
+login (grams, 123456)
+setdate (2016/10/23)
+notifyBirthday ()
+
+
+login (vladine, russiaForever)
+selectMeal (Couscous, 10)
+saveOrder ()
+//He will add 16 points : 41 points
+
+
+selectMeal (Sweet Sour Chicken, 10)
+saveOrder ()
+//He will add 11 points : 52 points
+
+
+login (grams, 123456)
+setdate (2017/02/217)
+notifyBirthday ()
+
+
+login (vladine, russiaForever)
+selectMeal (Couscous, 31)
+saveOrder ()
+//He will add 49 points : 101 points => 100 points
+
+selectMeal (Raclette, 1)
+saveOrder ()
+// He will get a discount

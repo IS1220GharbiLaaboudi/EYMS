@@ -33,6 +33,7 @@ public class BirthdayOffer extends Observable implements Offer {
 		Client client = order.getClient();
 		if(client.getBirthdayDate().getDate() == date.getDate() && 
 				client.getBirthdayDate().getMonth() == date.getMonth()){
+			System.out.println("It's your birthday ! Enjoy a "+percentage*100+"% on your order !");
 			return order.getCurrentPrice() * percentage;
 		} else {
 			return 0;

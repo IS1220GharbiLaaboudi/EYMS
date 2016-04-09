@@ -21,7 +21,6 @@ public class PointFidelityCard implements Offer {
 	 * @param points Number of points initially in the card. This should be inferior to 100 points.
 	 */
 	public PointFidelityCard(int points) {
-		// TODO Auto-generated constructor stub
 		this.points = points;
 	}
 	
@@ -29,7 +28,6 @@ public class PointFidelityCard implements Offer {
 	 * Basic constructor that creates a point fidelity card with initially 0 point.
 	 */
 	public PointFidelityCard() {
-		// TODO Auto-generated constructor stub
 		this.points = 0;
 	}
 	
@@ -43,13 +41,14 @@ public class PointFidelityCard implements Offer {
 	public double discountedPrice(Order order) {
 		if(points >= 100){
 			points = 0;
-			System.out.println("Congratulation you have reached 100 points ! This order is dicounted !");
+			System.out.println("Congratulation you have reached 100 points ! This order has a "+ percentage*100 +"% dicount !");
 			return order.getNormalPrice() * percentage;
 		} else{
 			points += Math.floor(order.getNormalPrice() / 10);
-			if(points > 100)
+			if(points > 100){
 				points = 100;
-			System.out.println("Your card has "+ points + " points.");
+			}
+			System.out.println("Your card has reached "+ points + " points.");
 			return 0;
 		}
 		

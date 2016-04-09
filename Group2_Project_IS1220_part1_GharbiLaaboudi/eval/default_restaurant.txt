@@ -1,5 +1,7 @@
 insertChef (Gordon, Ramsey, grams, 123456)
 login (grams, 123456)
+
+
 createMeal (Raclette, 17)
 addIngredient (cheese, 90g)
 addIngredient (ham ,40g)
@@ -75,7 +77,7 @@ addIngredient (meat, 60g)
 saveMeal ()
 createMeal (Kebab, 3.50)
 addIngredient (tomato, 50g)
-addIngredient (oninon, 30g)
+addIngredient (onion, 30g)
 addIngredient (salad, 10g)
 addIngredient (samurai sauce, 5.5g)
 addIngredient (meat, 125g)
@@ -94,28 +96,36 @@ addIngredient (milk, 45cl)
 saveMeal ()
 createMeal (Bagel, 5.8)
 addIngredient (tomato, 50g)
-addIngredient (oninon, 30g)
+addIngredient (onion, 30g)
 addIngredient (salad, 10g)
 addIngredient (chicken, 120g)
 addIngredient (bagel, bread 30g)
 saveMeal ()
+
+
 registerClient (Barack, Obama, bobama, POTUS)
 registerClient (Vladimir, Poutine, vladine, russiaForever)
 registerClient (Michael, Jordan, airJordan, dunker)
 registerClient (Arsene, Wenger, awenger, arsenal)
 registerClient (Alan, Turing, aturing, 01010101)
+
+
 login (bobama, POTUS)
 email, barack@obama.nia
 1961/08/04
+
 login (vladine, russiaForever)
 email, myemail@vladimir.poutine
 1952/10/22
+
 login (airJordan, dunker)
 email, michael.jordan@gmail.com
 1963/02/17
+
 login (awenger, arsenal)
 email, arsenal@gmail.com
 1949/10/22
+
 login (aturing, 01010101)
 email, alan.turing@gmail.com
 1912/06/23

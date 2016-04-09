@@ -10,8 +10,9 @@ login (grams, 123456)
 setdate (2016/02/17)
 
 notifyBirthday ()
+// noti
 notifyAd (Discover our tasty new Bagels that are now on discount ! ,Bagel, 4.5)
-notifyAd (The classical Raclette that are now on discount ! ,Raclette, 16)
+notifyAd (The classical Raclette is now on discount ! ,Raclette, 16)
 notifyAd (Go on a culinary travel with our homemade Couscous !, Couscous, 15)
 
 login (airJordan, dunker)
@@ -61,24 +62,15 @@ saveOrder ()
 selectMeal (Spaghetti Pesto, 1)
 saveOrder ()
 
-
-
 login (grams, 123456)
-setdate (2016/10/22)
-notifyBirthday ()
+removeFromSpecialOffer (Big Tasty)
+login (bobama, POTUS)
 
+// the meal Big Tasty no longer exists
 
+selectMeal (Big Tasty, 2)
 
-login (grams, 123456)
-setdate (2016/10/23)
-notifyBirthday ()
-
-
-login (grams, 123456)
-setdate (2017/02/217)
-notifyBirthday ()
-
-
+// Display of the storing of orders
 
 showMeal (asitis)
 showMeal (mostlymodified)

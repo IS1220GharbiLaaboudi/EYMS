@@ -63,7 +63,7 @@ public class CLUI {
 				System.out.println("-------------------------");
 				if(user.getRole() == UserRole.Client){
 					Client client = (Client) user;
-					System.out.println("Last notification : " + client.getNotificationWall());
+					System.out.println("Latest notifications : " + client.getNotificationWall());
 					System.out.println("-------------------------");
 					System.out.println("Contact info : "+ client.getFavoriteContactInfo());
 					if(system.getCurrentOrder() != null){
@@ -276,7 +276,7 @@ public class CLUI {
 				boolean t = system.removeFromSpecialOffer(arguments.get(0));
 
 				if(t)
-					System.out.println("The selected meal is now not in special offer.");
+					System.out.println("The selected meal isn't in special offer anymore.");
 				else
 					System.out.println("Cannot remove meal from special offer. Meal is unknown or current user is not a chef.");
 			}
@@ -307,7 +307,7 @@ public class CLUI {
 				if(t)
 					System.out.println("New special offer meal created. Please add ingredients with the proper command.");
 				else
-					System.out.println("An error occured : Please check that you're connected as a chef, and that the meal does not already exist");
+					System.out.println("An error occured : Please check that you're connected as a chef, and that the meal does not already exist (if so use the command putInSpecialOffer). ");
 			}
 			//registerClient
 			else if(command.equalsIgnoreCase("registerClient")  && arguments.size() == 4){
@@ -353,20 +353,20 @@ public class CLUI {
 				boolean t= false;
 				switch (arguments.get(1).toLowerCase()) {
 				case "yestoall":
-					t = system.associateAgreement(arguments.get(0), "BirthdayOffers", true)
-						&& system.associateAgreement(arguments.get(0), "SpecialOffers", true);
+					t = system.associateAgreement(arguments.get(0), "BirthdayOffer", true)
+						&& system.associateAgreement(arguments.get(0), "SpecialOffer", true);
 					break;
 				case "notoall":
-					t = system.associateAgreement(arguments.get(0), "BirthdayOffers", false)
-						&& system.associateAgreement(arguments.get(0), "SpecialOffers", false);
+					t = system.associateAgreement(arguments.get(0), "BirthdayOffer", false)
+						&& system.associateAgreement(arguments.get(0), "SpecialOffer", false);
 					break;
 				case "birthdayoffersonly":
-					t = system.associateAgreement(arguments.get(0), "BirthdayOffers", true)
-						&& system.associateAgreement(arguments.get(0), "SpecialOffers", false);
+					t = system.associateAgreement(arguments.get(0), "BirthdayOffer", true)
+						&& system.associateAgreement(arguments.get(0), "SpecialOffer", false);
 					break;
 				case "specialoffersonly":
-					t = system.associateAgreement(arguments.get(0), "BirthdayOffers", false)
-						&& system.associateAgreement(arguments.get(0), "SpecialOffers", true);
+					t = system.associateAgreement(arguments.get(0), "BirthdayOffer", false)
+						&& system.associateAgreement(arguments.get(0), "SpecialOffer", true);
 					break;
 				}
 				if(t)
