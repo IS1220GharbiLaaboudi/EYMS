@@ -52,9 +52,9 @@ public class LotteryFidelityCard implements Offer {
 		lastOrder = date;
 		double prob = Math.random();
 		if(t && prob <probability){
+			System.out.println("Congratulation you won the lottery !");
 			return order.getNormalPrice();
 		} else {
-			System.out.println("Congratulation you won the lottery !");
 			return 0;
 		}
 	}

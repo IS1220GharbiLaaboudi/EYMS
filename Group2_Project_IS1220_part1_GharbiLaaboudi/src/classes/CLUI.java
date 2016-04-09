@@ -377,8 +377,6 @@ public class CLUI {
 			//insertChef
 			else if(command.equalsIgnoreCase("insertchef")  && arguments.size() == 4){
 				boolean t = system.register(arguments.get(0),arguments.get(1),arguments.get(2),arguments.get(3), UserRole.Chef);
-				System.out.println(arguments.get(0)+arguments.get(1)+arguments.get(2)+arguments.get(3));
-
 				if(t)
 					System.out.println("Your account was correctly added. You can login now with the proper command.");
 				else
@@ -410,8 +408,10 @@ public class CLUI {
 					oc = OrderingCriteria.MostlyModified;
 				else if(arguments.get(0).equalsIgnoreCase("AsItIs"))
 					oc = OrderingCriteria.AsItIs;
-				
-				System.out.println(system.showMeal(oc));
+
+				for (Meal meal : system.showMeal(oc)){
+					System.out.println(meal);
+				}
 			}
 			else if(command.equalsIgnoreCase("importfile") && arguments.size() == 1){
 				try{
@@ -457,7 +457,9 @@ public class CLUI {
 		String line = "";
 			
 		while((line = reader.readLine()) != null){
+			if (line.length() != 0 && !line.startsWith("//")){
 			commandsList.add(line);
+			}
 		}
 		
 		reader.close(); 

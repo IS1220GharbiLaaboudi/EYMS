@@ -185,7 +185,7 @@ public class EYMS {
 			}
 			// A copy of the meal that isn't related to it
 			for (String ingredientName : meal.getIngredientMap().keySet()){
-				personalizedMeal.personalizeMeal(ingredientName, meal.getIngredientMap().get(ingredientName), false);
+				personalizedMeal.personalizeMeal(ingredientName, meal.getIngredientMap().get(ingredientName), true);
 			}
 			personalizedMeal.personalizeMeal(ingredient, quantity, true);
 			mapMeal.put(personalizedMeal.getName(), personalizedMeal);
@@ -331,7 +331,7 @@ public class EYMS {
 		if (orderingCriteria == OrderingCriteria.JustOnSale){
 			for(Order order : mapOrders.values()){ //to get only what was ordered
 				for(Meal meal : order.getSetMeal()){
-					if(meal.getOrderCounter("OnSale") != 0 && meal.getOrderCounter("NotOnSale") == 0)
+					if(meal.getOrderCounter("OnSale") != 0 && meal.getOrderCounter("NotOnSale") == 0 && !meal.isModified())
 						orderedSet.add(meal);
 				}
 			}

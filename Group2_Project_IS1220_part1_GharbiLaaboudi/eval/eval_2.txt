@@ -1,0 +1,85 @@
+importfile (default_restaurant)
+associateAgreement (vladine, notoall)
+associateAgreement (airJordan, birthdayoffersonly)
+associateAgreement (awenger, Specialoffersonly)
+associateCard (bobama, Lottery)
+associateCard (vladine, point)
+associateCard (airJordan, Lottery)
+
+login (grams, 123456)
+setdate (2016/02/17)
+
+notifyBirthday ()
+notifyAd (Discover our tasty new Bagels that are now on discount ! ,Bagel, 4.5)
+notifyAd (The classical Raclette that are now on discount ! ,Raclette, 16)
+notifyAd (Go on a culinary travel with our homemade Couscous !, Couscous, 15)
+
+login (airJordan, dunker)
+personalizeMeal (Raclette, cheese, 100g)
+personalizeMeal (Modified Raclette, ham, 0g)
+selectMeal (Modified Raclette, 1)
+personalizeMeal (Raclette, cheese, 50g)
+selectMeal (Modified Raclette, 1)
+selectMeal (Raclette, 2)
+saveOrder ()
+
+login (vladine, russiaForever)
+selectMeal (Couscous, 2)
+selectMeal (Strawberry Smoothie, 1)
+saveOrder ()
+
+
+login (awenger, arsenal)
+selectMeal (Sweet Sour Chicken, 1)
+selectMeal (Milka Chocolate Bar, 1)
+saveorder ()
+
+login (aturing, 01010101)
+selectMeal (Bagel, 3)
+personalizeMeal (Kebab, onion, 0g)
+selectMeal (Modified Kebab, 1)
+saveOrder ()
+
+login (grams, 123456)
+setdate (2016/06/23)
+notifyBirthday ()
+removeFromSpecialOffer (Raclette)
+insertOffer (Big Tasty, 6.50)
+addingredient (bread, 50g)
+addingredient (meat, 100g)
+saveMeal ()
+
+login (bobama, POTUS)
+selectMeal (Big Tasty, 2)
+personalizeMeal (Raclette, ham, 100g)
+selectMeal (Modified Raclette, 3)
+saveOrder ()
+
+login (aturing, 01010101)
+selectMeal (Raclette, 2)
+saveOrder ()
+selectMeal (Spaghetti Pesto, 1)
+saveOrder ()
+
+
+
+login (grams, 123456)
+setdate (2016/10/22)
+notifyBirthday ()
+
+
+
+login (grams, 123456)
+setdate (2016/10/23)
+notifyBirthday ()
+
+
+login (grams, 123456)
+setdate (2017/02/217)
+notifyBirthday ()
+
+
+
+showMeal (asitis)
+showMeal (mostlymodified)
+showMeal (justonsale)
