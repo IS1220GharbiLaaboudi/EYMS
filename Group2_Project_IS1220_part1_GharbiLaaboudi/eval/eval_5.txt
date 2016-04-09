@@ -1,0 +1,69 @@
+// trying to open a non existant file
+
+importfile (nonExistantFile)
+
+importfile (default_restaurant)
+
+
+// trying non existant commands
+
+nonExistantCommand
+
+nonExistantCommand()
+
+nonExistantCommand ()
+
+nonExistantCommand (non, existant, argument)
+
+// trying to register a user with an already used username
+
+insertChef (A, Chef, bobama, POTUS)
+
+registerClient (A, Client, bobama, 12345)
+
+// Login with wrong name
+
+login (GRAMS, 123456)
+
+//create meal with negative price
+login (grams, 123456)
+createMeal (Roquefort, -2)
+saveMeal ()
+
+// save a non existant meal
+saveMeal ()
+
+//actions on inexistant meal
+
+listIngredients (Inexistant)
+
+putInSpecialOffer (Inexistant, 15)
+removeFromSpecialOffer (Inexistant)
+notifyAd (The best Inexistant meal in the world !, Inexistant, 15)
+
+// wrong arguments
+
+notifyBirthday (argument)
+
+setDate (02/05/1995)
+
+setDate (19950502)
+
+setDate (argument)
+
+associateAgreement (vladine, maybe)
+
+associateAgreement (nobody, YesToAll)
+
+associateCard (bobama, MasterCard)
+
+associateCard (nobody, Basic)
+
+login (vladine, russiaForever)
+selectMeal (Inexistant, 1)
+selectMeal (Raclette, -5)
+personalizeMeal (Inexistant, bread, 0g)
+
+// save a non existant order
+saveorder ()
+

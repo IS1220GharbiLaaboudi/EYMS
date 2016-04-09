@@ -12,6 +12,9 @@ import interfaces.Offer;
  * be personalized, and the final price of these orders will be computed according to the offers and discounts that
  * apply.
  *
+ * @author Achraf Gharbi
+ * 
+ * @author Younes Laaboudi
  */
 public class Order {
 	
@@ -41,7 +44,9 @@ public class Order {
 	 * applying a new one.
 	 */
 	private double currentPrice;
-	
+	/**
+	 * The date at which the order is made. It is useful for the Lottery Fidelity Card.
+	 */
 	private Date date;
 	
 	/**
@@ -57,13 +62,15 @@ public class Order {
 	}
 	
 	/**
-	 * @return the id
+	 * Ordinary getter
+	 * @return the id of the order
 	 */
 	public int getId() {
 		return id;
 	}
 
 	/**
+	 * Replaces the ordinary getter, and gives an easy access to the number of times a certain meal has been ordered 
 	 * @param meal One of the meals available in the restaurant
 	 * @return Number of this kind of meal in this order
 	 */
@@ -76,6 +83,7 @@ public class Order {
 	}
 	
 	/**
+	 * Replaces the ordinary setter and allows us to add a meal to the order.
 	 * @param meal One of the meals available in the restaurant
 	 * @param n Number of this kind of meal in this order
 	 */
@@ -84,33 +92,41 @@ public class Order {
 	}
 	
 	/**
-	 * @return A set of the meals ordered
+	 * Ordinary setter
+	 * @return The set of the meals ordered in this order
 	 */
 	public Set<Meal> getSetMeal(){
 		return mealMap.keySet();
 	}
 	
 	/**
-	 * @return the client
+	 * Ordinary getter
+	 * @return the client the has made the order
 	 */
 	public Client getClient() {
 		return client;
 	}
 
 	/**
-	 * @return the currentPrice
+	 * Ordinary setter
+	 * @return the currentPrice of the order given that a certain number of discounts have been applied.
 	 */
 	public double getCurrentPrice() {
 		return currentPrice;
 	}
 
 	/**
-	 * @param currentPrice the currentPrice to set
+	 * Ordinary setter
+	 * @param currentPrice the currentPrice of the order given that a certain number of discounts have been applied.
 	 */
 	public void setCurrentPrice(double currentPrice) {
 		this.currentPrice = currentPrice;
 	}
 	
+	/**
+	 * Ordinary getter
+	 * @return the normal price of the order (assuming that no discount is applied)
+	 */
 	public double getNormalPrice(){
 		double normalPrice = 0;
 		Set<Meal> mealSet = getSetMeal(); 
@@ -122,20 +138,25 @@ public class Order {
 	}
 
 	/**
-	 * @return the date
+	 * Ordinary getter
+	 * @return the date at which the order has been made
 	 */
 	public Date getDate() {
 		return date;
 	}
 
 	/**
-	 * @param date the date to set
+	 * Ordinary setter
+	 * @param date the date at which the order has been made
 	 */
 	public void setDate(Date date) {
 		this.date = date;
 	}
 
 	/**
+	 * This method is the one that computes the price the client will have to pay given that a certain number of 
+	 * discounts may apply.
+	 * 
 	 * @param offers We have to put all the offers available in the list offers.
 	 * @return the final price of the order after discounts.
 	 */
@@ -159,9 +180,7 @@ public class Order {
 		return  Math.max(currentPrice, (double) 0);
 		}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
+	
 	@Override
 	public String toString() {
 		return "[ OrderId = " + id + "; Meals Selected =" + mealMap+ " ]";

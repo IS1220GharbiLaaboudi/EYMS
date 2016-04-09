@@ -14,7 +14,10 @@ import interfaces.Offer;
  * also information on how the restaurant will interact with him/her (type of fidelity card, contact information, ...).
  * 
  * The methods that aren't documented are the classic getters and setters. 
- *
+ * 
+ * @author Achraf Gharbi
+ * 
+ * @author Younes Laaboudi 
  */
 public class Client extends User implements Observer {
 	
@@ -66,11 +69,18 @@ public class Client extends User implements Observer {
 		this.contactInfo = new HashMap<String,String>();
 		//this.birthdayDate = new Date();
 	}
-
+	
+	/**
+	 * Ordinary getter
+	 * @return the fidelity card of the user
+	 */
 	public Offer getCard() {
 		return card;
 	}
-
+	/**
+	 * Ordinary setter
+	 * @param card a fidelity card
+	 */
 	public void setCard(Offer card) {
 		this.card = card;
 	}
@@ -112,31 +122,49 @@ public class Client extends User implements Observer {
 	public void setContactInfo(String contactType, String contact) {
 		(this.contactInfo).put(contactType, contact);
 	}
-
+	/**
+	 * Ordinary getter
+	 * @return the contact information the user prefers in order to be contacted 
+	 */
 	public String getFavoriteContactInfo() {
 		return favoriteContactInfo;
 	}
-
+	/**
+	 * Ordinary setter
+	 * @param favoriteContactInfo the contact information the user prefers in order to be contacted 
+	 */
 	public void setFavoriteContactInfo(String favoriteContactInfo) {
 		this.favoriteContactInfo = favoriteContactInfo;
 	}
-
+	/**
+	 * Ordinary getter
+	 * @return the notification wall of the client where all the notifications he/she agreed to receive will be 
+	 * written
+	 */
 	public String getNotificationWall() {
 		return notificationWall;
 	}
 
 	/**
 	 * This method replaces the setter, which is less relevant here.
+	 * It will add a new line to the notification wall. This line will contain the information related to the new
+	 * notification.
 	 * @param notification The notification that the user receives. 
 	 */
 	public void addToNotificationWall(String notification) {
 		this.notificationWall = this.notificationWall + System.lineSeparator() + notification;
 	}
-	
+	/**
+	 * Ordinary getter
+	 * @return the birthday date of the client, that will be used for the birthday offer
+	 */
 	public Date getBirthdayDate() {
 		return birthdayDate;
 	}
-	
+	/**
+	 * Ordinary setter
+	 * @param birthdayDate the birthday date of the client, that will be used for the birthday offer
+	 */
 	public void setBirthdayDate(Date birthdayDate) {
 		this.birthdayDate = birthdayDate;
 	}

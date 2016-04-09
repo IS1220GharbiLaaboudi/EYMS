@@ -7,10 +7,10 @@ associateCard (vladine, point)
 associateCard (airJordan, Lottery)
 
 login (grams, 123456)
-setdate (2016/02/17)
+setdate (17/02/2016)
 
+// Birthday of Jordan
 notifyBirthday ()
-// noti
 notifyAd (Discover our tasty new Bagels that are now on discount ! ,Bagel, 4.5)
 notifyAd (The classical Raclette is now on discount ! ,Raclette, 16)
 notifyAd (Go on a culinary travel with our homemade Couscous !, Couscous, 15)

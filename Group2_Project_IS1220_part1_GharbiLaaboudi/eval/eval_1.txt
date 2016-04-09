@@ -115,7 +115,7 @@ login (Mario, 345678)
 // In our implementation, these information are given on the first login
 
 email, mario@itsme.mario
-1995/05/18
+18/05/1995
 
 addContactInfo (phone, 0699562366, yes)
 listIngredients (Raclette)
@@ -128,7 +128,7 @@ selectMeal (Modified Raclette, 1)
 selectMeal (Raclette, 2)
 saveOrder ()
 login (bobred, 123456)
-setdate (2016/05/18)
+setdate (18/05/2016)
 notifyBirthday ()
 putInSpecialOffer (Raclette, 15)
 notifyAd (The best Raclette in the world !, Raclette, 15)

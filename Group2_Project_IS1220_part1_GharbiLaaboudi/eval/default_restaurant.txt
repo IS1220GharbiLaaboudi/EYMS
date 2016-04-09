@@ -112,21 +112,21 @@ registerClient (Alan, Turing, aturing, 01010101)
 
 login (bobama, POTUS)
 email, barack@obama.nia
-1961/08/04
+04/08/1961
 
 login (vladine, russiaForever)
 email, myemail@vladimir.poutine
-1952/10/22
+22/10/1952
 
 login (airJordan, dunker)
 email, michael.jordan@gmail.com
-1963/02/17
+17/02/1963
 
 login (awenger, arsenal)
 email, arsenal@gmail.com
-1949/10/22
+22/10/1949
 
 login (aturing, 01010101)
 email, alan.turing@gmail.com
-1912/06/23
+23/06/1912
 

@@ -16,14 +16,24 @@ import enums.OrderingCriteria;
 import enums.UserRole;
 
 /**
+ * This class handles the Command Line User Interface of the Enjoy Your Meal System.
+ * 
  * @author Achraf Gharbi
+ * 
  * @author Younes Laaboudi
  *
  */
 public class CLUI {
 
 	/**
-	 * @param args
+	 * This method consists of a loop that displays a "header" with the information on the current user and the object
+	 * he is manipulating (Meal or Order). Then at any time, we can enter a command as a input. If the command has an 
+	 * argument or arguments, there has to be a space between the command and the bracket before the first argument.
+	 * 
+	 * The methods related to each command are executed from the EYMS class. This is requirement of the responsibility
+	 * driven development : this class only handles the interaction with the user.
+	 * 
+	 * @param args the arguments here don't have any influence on the way the static method will be executed.
 	 */
 	public static void main(String[] args) {
 		/*
@@ -73,7 +83,7 @@ public class CLUI {
 				}
 				else if(user.getRole() == UserRole.Chef){
 					if(system.getCurrentMeal() != null) {
-						System.out.println("Current meal : "+system.currentMeal());
+						System.out.println("Current meal : "+system.getCurrentMeal());
 						
 					} else {
 						System.out.println("No current meal you're working on.");
@@ -117,7 +127,7 @@ public class CLUI {
 				// if no birthday
 				if(client.getBirthdayDate() == null){
 					System.out.println("You did not specify your birthday date yet. Please enter it following this format");
-					System.out.println("YYYY/MM/DD");
+					System.out.println("DD/MM/YYYY");
 					boolean t = false;
 					while(!t){
 						String s;
@@ -196,7 +206,7 @@ public class CLUI {
 				System.out.println("insertChef (firstName, lastName, username, password): to add a chef to the system ");
 				System.out.println("notifyAd (message, mealName, specialPrice): send a message to alert the users about an offer ");
 				System.out.println("notifyBirthday (): send a special offer to the users that celebrate their birthday ");
-				System.out.println("showMeal (orderingCriteria): to see the list of the meals ordered according to a certain criteria ");
+				System.out.println("showMeal (orderingCriteria): to see the list of the meals ordered according to a certain criteria. If there is no ordering criteria, ");
 				System.out.println("importFile (fileName): imports the commands of a given text file (for exemple fileName = eval_1) ");
 				System.out.println("setDate (YYYY/MM/DD): sets the date of the system ");
 
@@ -413,6 +423,7 @@ public class CLUI {
 					System.out.println(meal);
 				}
 			}
+			// importfile
 			else if(command.equalsIgnoreCase("importfile") && arguments.size() == 1){
 				try{
 					commandsList.addAll(0, CLUI.importfile(arguments.get(0))); // in case a command from the file is importfile
@@ -421,13 +432,15 @@ public class CLUI {
 					System.out.println("Unable to import file");
 				}
 				System.out.println("The file have been successfully imported");
-			}else if(command.equalsIgnoreCase("setdate") && arguments.size() == 1){
+			} // setdate
+			else if(command.equalsIgnoreCase("setdate") && arguments.size() == 1){
 				try {
 					system.setDate(arguments.get(0));
+					System.out.println("The date has been successfully changed");
 				} catch (ParseException e) {
 					System.out.println("The date could not be changed. Please respect the format given.");
 				}
-				System.out.println("The date has been successfully changed");
+				
 			}
 			//other
 			else{
@@ -446,7 +459,14 @@ public class CLUI {
 		ui.close();
 
 	}
-
+	/**
+	 * 
+	 * This methods enables the user to read a file located in the eval directory. 
+	 * 
+	 * @param fileName The name of the file containing the commands, without its extension (for example : eval_1)
+	 * @return an array of the lines contained in the file (/!\ blank lines and comment lines are also in this array)
+	 * @throws IOException
+	 */
 	private static ArrayList<String> importfile(String fileName) throws IOException {
 		ArrayList<String> commandsList = new ArrayList<String>();
 		FileReader file = null;

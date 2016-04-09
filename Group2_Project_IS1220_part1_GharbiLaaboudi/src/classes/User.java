@@ -51,44 +51,74 @@ public class User {
 		this.userName = userName;
 		this.password = password;
 	}
-
+	/**
+	 * Ordinary getter
+	 * @return the first name of the user
+	 */
 	public String getFirstName() {
 		return firstName;
 	}
-
+	/**
+	 * Ordinary setter
+	 * @param firstName the first name of the user
+	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
+	/**
+	 * Ordinary getter
+	 * @return the surname of the user
+	 */
 	public String getSurName() {
 		return surName;
 	}
-
+	/**
+	 * Ordinary setter
+	 * @param surName the surname of the user
+	 */
 	public void setSurName(String surName) {
 		this.surName = surName;
 	}
-
+	/**
+	 * Ordinary getter
+	 * @return the username of the user
+	 */
 	public String getUserName() {
 		return userName;
 	}
-
+	/**
+	 * Ordinary setter
+	 * @param userName the username of the user
+	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
+	/**
+	 * Ordinary getter
+	 * @return the password of the user
+	 */
 	public String getPassword() {
 		return password;
 	}
-
+	/**
+	 * Ordinary setter
+	 * @param password the password of the user
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 	
-
+	/**
+	 * Ordinary getter
+	 * @return the role of the user (usually UserRole.Client or UserRole.Chef)
+	 */
 	public UserRole getRole() {
 		return role;
 	}
-
+	/**
+	 * Ordinary setter
+	 * @param role The role of the user (usually UserRole.Client or UserRole.Chef)
+	 */
 	public void setRole(UserRole role) {
 		this.role = role;
 	}

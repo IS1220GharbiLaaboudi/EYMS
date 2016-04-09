@@ -14,29 +14,57 @@ import enums.UserRole;
 import interfaces.Offer;
 /**
  * 
- * This class is the one containing all the methods that will be called by the Command Line Interface. It also 
+ * This class is the one containing all the methods that will be called by the Command Line User Interface. It also 
  * stores the data related to the users, the meals and the orders.
  * 
- *
+ * @author Achraf Gharbi
+ * 
+ * @author Younes Laaboudi
  */
 public class EYMS {
-	
+	/**
+	 * Usually the user that is logged in
+	 */
 	private User currentUser;
-	
+	/**
+	 * Usually the meal that is being created by the chef
+	 */
 	private Meal currentMeal ;
-	
-	private Order CurrentOrder;
-	
+	/**
+	 * Usually the order that is being made by the client
+	 */
+	private Order currentOrder;
+	/**
+	 * The date of the system, enables to deal with birthdays and avoids lottery cards to be used twice the same day
+	 */
 	private Date date;
-	
+	/**
+	 * A map of all the users registered (clients and chef alike). The key is the username and the value is an instance of the 
+	 * User or the Client class.
+	 */
 	private Map<String, User> mapUsers;
-	
+	/**
+	 * A map of all the meals created by the chef. The key is the name of the meal and the value is an instance of the 
+	 * Meal class.
+	 */
 	private Map<String, Meal> mapMeal;
-	
+	/**
+	 * A map of all the orders made by the clients. The key is the ID of the order (an integer) and the value is an
+	 * instance of the Order class.
+	 */
 	private Map<Integer, Order> mapOrders;
-	
+	/**
+	 * A list of all the offers available in the restaurant (not taking into account the fidelity cards). 
+	 * Here, it's a singleton : the only offer available is the birthday offer.
+	 */
 	private Offer[] offers;
 	
+	/**
+	 * The only constructor of the EYMS class.
+	 * The default date is the date at which the system is executed.
+	 * The offers list is initialized with only the birthday offer.
+	 * All the maps are empty in the beginning.
+	 */
 	public EYMS(){
 		date =  new Date();
 		offers = new Offer[1];
@@ -52,37 +80,55 @@ public class EYMS {
 	 * For the maps, no setters and the getters, given a certain key, return only a unique value.
 	 * 
 	 */
-	
+	/**
+	 * Ordinary getter
+	 * @return The current user (the one logged in)
+	 */
 	public User getCurrentUser() {
 		return currentUser;
 	}
 
-
+	/**
+	 * Ordinary setter
+	 * @param currentUser The current user (the one logged in)
+	 */
 	public void setCurrentUser(User currentUser) {
 		this.currentUser = currentUser;
 	}
 
-
+	/**
+	 * Ordinary getter
+	 * @return currentMeal The current meal (the one getting created)
+	 */
 	public Meal getCurrentMeal() {
 		return currentMeal;
 	}
 
-
+	/**
+	 * Ordinary setter
+	 * @param currentMeal The current meal (the one getting created)
+	 */
 	public void setCurrentMeal(Meal currentMeal) {
 		this.currentMeal = currentMeal;
 	}
 
-
+	/**
+	 * Ordinary getter
+	 * @return currentOrder The current order (the one getting created)
+	 */
 	public Order getCurrentOrder() {
-		return CurrentOrder;
+		return currentOrder;
 	}
 
-
+	/**
+	 * Ordinary setter
+	 * @param currentOrder The current order (the one getting created)
+	 */
 	public void setCurrentOrder(Order currentOrder) {
-		CurrentOrder = currentOrder;
+		this.currentOrder = currentOrder;
 	}
 	/**
-	 * Enables to get a User object stored in the system from his user name
+	 * Enables to get a User object stored in the system from his username
 	 * 
 	 * @param username The username of the client we want to get
 	 * @return The user related to the username
@@ -90,18 +136,29 @@ public class EYMS {
 	public User getUser(String username){
 		return mapUsers.get(username);
 	}
-	
+	/**
+	 * Enables to get a Meal object stored in the system from his name
+	 * 
+	 * @param mealName The name of the meal we want to get
+	 * @return The meal (instance of the Meal class) related to the name given
+	 */
 	public Meal getMeal(String mealName){
 		return mapMeal.get(mealName);
 	}
-	
+	/**
+	 * Enables to get a Order object stored in the system from his ID
+	 * 
+	 * @param orderId The ID of the order we want to get
+	 * @return The order (instance of the Order class) related to the ID given
+	 */
 	public Order getOrder(Integer orderId){
 		return mapOrders.get(orderId);
 	}
 	
 	
 	/**
-	 * @return the date
+	 * Ordinary getter
+	 * @return the date of the system
 	 */
 	public Date getDate() {
 		return date;
@@ -109,11 +166,14 @@ public class EYMS {
 
 
 	/**
-	 * @param date the date to set
+	 * Ordinary setter. It will also update the offers list. Therefore, the birthdays of the date can be 
+	 * correctly identified
+	 * 
+	 * @param dateString the date to set in the format dd/mm/yyyy (this is a string)
 	 * @throws ParseException if the beginning of the specified string cannot be parsed.
 	 */
 	public void setDate(String dateString) throws ParseException {
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date date1 = dateFormat.parse(dateString);
 		this.date = date1;
 		offers[0] = new BirthdayOffer(date);
@@ -121,6 +181,8 @@ public class EYMS {
 
 
 	/**
+	 * Login method of the system. It first performs a "logout" by reinitializing the current meal and order.
+	 * The login will be successful only if the username and the password match those of a registered user.
 	 * 
 	 * @param userName user name of the user
 	 * @param pwd password of the user
@@ -128,6 +190,10 @@ public class EYMS {
 	 * false otherwise.
 	 */
 	public boolean login(String userName, String pwd){
+		// Resets the objects that were handled (a kind of logout)
+		currentMeal = null;
+		currentOrder = null;
+		// Actual login
 		User u = mapUsers.get(userName);
 		User user = new User(userName, pwd);
 		if(user.equals(u)){
@@ -138,7 +204,7 @@ public class EYMS {
 	
 	
 	/**
-	 * Adds a user in the userMap.
+	 * Adds a user in the userMap. If a user of the same name already exists, the method will return false.
 	 * 
 	 * @param firstName first name of the user.
 	 * @param lastName last name of the user.
@@ -166,7 +232,12 @@ public class EYMS {
 	}
 	
 	/**
-	 * Personalize an ingredient in a certain meal.
+	 * Personalize an ingredient in a certain meal. If the ingredient doesn't exists, it will add it, and otherwise
+	 * it will only change the quantity of the ingredient specified.
+	 * In order to allow both the personnalized and the original meal to coexist in the system, a new meal will be
+	 * created with the name "Modified mealName". The ingredients will be exactly the same except for the one that
+	 * has been modified in the method.
+	 *
 	 * 
 	 * @param mealName the name of the meal.
 	 * @param ingredient the ingredient to change.
@@ -203,12 +274,11 @@ public class EYMS {
 	 * Saves a non null order in the order map and incrementing the order counter of each meal in it 
 	 * if the current user is a client.
 	 * 
-	 * @param order the order to store.
 	 * @return true if the order was stored in the map and current user is a client,
 	 * false otherwise.
 	 */
 	public boolean saveOrder(){
-		Order order = CurrentOrder;
+		Order order = currentOrder;
 		if (order != null && currentUser != null && currentUser.getRole() == UserRole.Client){
 			double finalPrice = order.getPrice(offers);
 			currentUser = order.getClient();
@@ -229,25 +299,26 @@ public class EYMS {
 			}
 			mapOrders.put(order.getId(), order);
 			System.out.println("The order have been successfully saved. The amount you have to pay is "+ finalPrice + " euros");
-			CurrentOrder = null;
+			currentOrder = null;
 			return true;
 		}
 		return false;
 	}
 	
 	/**
-	 * Adds or updates a contact information to the current user. 
+	 * Adds or updates a contact information to the current user (it can be the favorite contact information or not). 
 	 * 
 	 * @param typeContact the type of contact ("email", "telephone number",...)
 	 * @param info the actual information ("johnred@mymail.com","0601010101", ..)
+	 * @param favorite true if this information is the favorite contact information of the user. 
 	 * @return true if correctly added or updated the contact info,
 	 * false otherwise.
 	 */
-	public boolean addInfo(String typeContact, String info, boolean bool){
+	public boolean addInfo(String typeContact, String info, boolean favorite){
 		if(currentUser != null && currentUser.getRole() == UserRole.Client && typeContact != "" && info != ""){
 			Client client = (Client) currentUser;
 			client.setContactInfo(typeContact, info);
-			if(bool)
+			if(favorite)
 				client.setFavoriteContactInfo(typeContact);
 			mapUsers.put(client.getUserName(), client);
 			return true;
@@ -258,14 +329,15 @@ public class EYMS {
 	/**
 	 * Adds or updates current user's birthday. 
 	 * 
-	 * @param birthday the birthday date in this format yyyy/MM/dd.
+	 * @param birthday the birthday date in this format dd/MM/yyyy
 	 * @return true if correctly added or updated the contact info,
 	 * false otherwise.
-	 * @throws java.text.ParseException 
+	 * @throws java.text.ParseException if the beginning of the specified string
+     *            cannot be parsed.
 	 */
 	public boolean addBirthday(String birthday) throws java.text.ParseException{
 		Date date = null;
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		date = dateFormat.parse(birthday);
 		if(currentUser != null && currentUser.getRole() == UserRole.Client && birthday.equals(dateFormat.format(date))){
 			Client client = (Client) currentUser;
@@ -277,8 +349,9 @@ public class EYMS {
 	}
 	
 	/**
-	 * Associate a fidelity card to the current user.
+	 * Associate a fidelity card to any user.
 	 * 
+	 * @param user the user for which we want to associate a fidelity card
 	 * @param typeCard the type of the card to be associated to the current user. 
 	 * Can be "Lottery", "Point" or "Basic".
 	 * @return true if typeCard is a know type of card and current user is a client,
@@ -307,7 +380,7 @@ public class EYMS {
 	 * 
 	 * @param username user name of the client
 	 * @param agreementType the type of the agreement
-	 * @param agree 
+	 * @param agree true if the user agrees to this type of notification
 	 * @return true if the user is a registered client,
 	 * false otherwise.
 	 */
@@ -389,7 +462,7 @@ public class EYMS {
 	 * false otherwise.
 	 */
 	public boolean createMeal(String mealName, double price){
-		if(currentUser.getRole() == UserRole.Chef){
+		if(currentUser.getRole() == UserRole.Chef && price > 0){
 			currentMeal = new Meal(mealName, price);
 			return true;
 		}
@@ -401,6 +474,7 @@ public class EYMS {
 	 * 
 	 * @param ingredient name of the ingredient.
 	 * @param quantity quantity of the ingredient
+	 * @return true if the ingredient was well added
 	 */
 	public boolean addIngredient(String ingredient, String quantity){
 		if(currentMeal != null){
@@ -410,15 +484,8 @@ public class EYMS {
 	}
 	
 	/**
-	 * 
-	 * @return the current meal
-	 */
-	public Meal currentMeal(){
-		return currentMeal;
-	}
-	
-	/**
-	 * Saves the current meal to the meals map if the user is a chef.
+	 * Saves the current meal to the meals map if the user is a chef, then proceeds to reinitialize the current Meal
+	 * attribute.
 	 * 
 	 * @return true if current user is a chef,
 	 * false otherwise.
@@ -433,7 +500,9 @@ public class EYMS {
 	}
 	
 	/**
-	 * Puts an existing meal in a special offer if current user is a chef.
+	 * Puts an existing meal in a special offer if current user is a chef. The difference between the old and the 
+	 * new price is the discount that the client (with a basic fidelity card) will get each time he orders the meal
+	 * in question.
 	 * 
 	 * @param mealName the name of the meal.
 	 * @param newPrice the new price of the meal.
@@ -442,7 +511,7 @@ public class EYMS {
 	 */
 	public boolean putInSpecialOffer(String mealName, double newPrice){
 		Meal meal = mapMeal.get(mealName);
-		if(meal != null && newPrice != meal.getPrice() && currentUser.getRole() == UserRole.Chef){
+		if(meal != null && newPrice != meal.getPrice() && currentUser.getRole() == UserRole.Chef && newPrice > 0){
 			meal.setSpecialPrice(newPrice);
 			meal.setSpecial(true);
 			mapMeal.put(mealName, meal);
@@ -453,7 +522,9 @@ public class EYMS {
 	}
 	
 	/**
-	 * Removes a meal from special offers if current user is a chef.
+	 * Removes a meal from special offers if current user is a chef. 
+	 * If the meal is in a temporary special offer, it will only set it price back to the usual one.
+	 * However, if the meal has been added through the insertOffer method, it will be removed from the system.
 	 * 
 	 * @param mealName the name of the meal.
 	 * @return true if the meal exists and current user is a chef,
@@ -477,7 +548,10 @@ public class EYMS {
 	}
 	
 	/**
-	 * Creates a current meal with a new special offer if current user is a chef.
+	 * Creates a current meal with a new special offer if current user is a chef. The meals created through this 
+	 * method can be ordered by any client (not only by those with a Basic Fidelity Card).
+	 * These meals represent temporary offers that can be removed easily from the system with the method 
+	 * removeFromSpecialOffer.
 	 * 
 	 * @param mealName the name of the meal.
 	 * @param price the price of the meal.
@@ -486,7 +560,7 @@ public class EYMS {
 	 */
 	public boolean insertOffer(String mealName, double price ){
 		Meal meal = mapMeal.get(mealName);
-		if(meal == null && currentUser != null && currentUser.getRole() == UserRole.Chef){
+		if(meal == null && currentUser != null && currentUser.getRole() == UserRole.Chef && price > 0){
 			currentMeal = new Meal(mealName, price, true);
 			return true;
 		} else{
@@ -496,6 +570,7 @@ public class EYMS {
 	
 	/**
 	 * Notifies users that agreed to have notifications about special offers of a current special offer.
+	 * This method also puts the meal into a special offer.
 	 * 
 	 * @param message Message related to the special offer.
 	 * @param mealName Name of the meal that is on sale
@@ -505,7 +580,7 @@ public class EYMS {
 	 */
 	public boolean notifyAd(String message, String mealName, double specialPrice){ 
 		boolean t = putInSpecialOffer(mealName, specialPrice);
-		if(t && currentUser.getRole() == UserRole.Chef){
+		if(t && currentUser.getRole() == UserRole.Chef && specialPrice > 0){
 			Meal meal = mapMeal.get(mealName);
 			for(User user : mapUsers.values()){
 				if (user instanceof Client){
@@ -515,7 +590,6 @@ public class EYMS {
 					}
 				}
 			}
-			meal.enableNotifications();
 			meal.notifyObservers(message);
 			return true;
 		}	
@@ -523,7 +597,8 @@ public class EYMS {
 	}
 	
 	/**
-	 * Notifies users that have their birthdays of special discount.
+	 * Notifies the users that have their birthdays on the day specified to the system that they can enjoy a 
+	 * discount for this special occasion.
 	 * 
 	 * @return true if current user is a chef,
 	 * false otherwise.
@@ -542,7 +617,6 @@ public class EYMS {
 					}
 				}
 			}
-			bd.enableNotifications();
 			bd.notifyObservers();
 			return true;
 		} 
@@ -550,7 +624,7 @@ public class EYMS {
 	}
 	
 	/**
-	 * Add a quantity of meal to the current order.
+	 * Add a quantity of meal to the current order. If no order is currently being made, a new order will be created.
 	 * 
 	 * @param mealName the name of the meal
 	 * @param quantity the quantity of the meal
@@ -559,11 +633,11 @@ public class EYMS {
 	 * */
 	 public boolean selectMeal(String mealName, int quantity){
 		 Meal meal = mapMeal.get(mealName);
-		 if(meal != null && currentUser != null && currentUser.getRole() == UserRole.Client){
-			 if(CurrentOrder == null){
-				 CurrentOrder = new Order((Client) currentUser, getDate());
+		 if(meal != null && currentUser != null && currentUser.getRole() == UserRole.Client && quantity > 0){
+			 if(currentOrder == null){
+				 currentOrder = new Order((Client) currentUser, getDate());
 			 }	
-			 CurrentOrder.setNumberOfMeal(meal, quantity);
+			 currentOrder.setNumberOfMeal(meal, quantity);
 			 return true;
 		 }
 		 return false;

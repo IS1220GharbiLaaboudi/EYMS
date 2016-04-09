@@ -151,7 +151,7 @@ public class EYMSTest {
 		system.login("bobred", "123456");
 		
 		system.createMeal("Raclette", 17);
-		Meal raclette = system.currentMeal();
+		Meal raclette = system.getCurrentMeal();
 		Assert.assertTrue(raclette == null);
 	}
 	
@@ -162,7 +162,7 @@ public class EYMSTest {
 		system.login("bobred", "123456");
 		
 		system.createMeal("Raclette", 17);
-		Meal raclette = system.currentMeal();
+		Meal raclette = system.getCurrentMeal();
 		Assert.assertTrue(raclette.getName() == "Raclette");
 	
 	}
@@ -216,7 +216,7 @@ public class EYMSTest {
 		system.saveMeal();
 		
 		system.putInSpecialOffer("Raclette", 15);
-		Meal raclette = system.currentMeal();
+		Meal raclette = system.getCurrentMeal();
 		Assert.assertTrue(raclette.isSpecial());
 	
 	}
@@ -233,7 +233,7 @@ public class EYMSTest {
 		system.putInSpecialOffer("Raclette", 15);
 		system.removeFromSpecialOffer("Raclette");
 		
-		Meal raclette = system.currentMeal();
+		Meal raclette = system.getCurrentMeal();
 		Assert.assertTrue(!raclette.isSpecial());
 	}
 	@Test
@@ -243,7 +243,7 @@ public class EYMSTest {
 		system.login("bobred", "123456");
 		
 		system.insertOffer("Raclette", 15);
-		Meal raclette = system.currentMeal();
+		Meal raclette = system.getCurrentMeal();
 		
 		Assert.assertTrue(raclette.isOnlySpecial());
 	}

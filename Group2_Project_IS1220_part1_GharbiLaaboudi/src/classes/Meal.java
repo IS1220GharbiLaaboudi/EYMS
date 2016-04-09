@@ -14,6 +14,9 @@ import java.util.regex.Pattern;
  * ingredients.
  * If the meal is on a special offer, its special price has to be specified.
  *
+ * @author Achraf Gharbi
+ * 
+ * @author Younes Laaboudi
  */
 public class Meal extends Observable {
 	
@@ -31,7 +34,7 @@ public class Meal extends Observable {
 	private Map<String, String> ingredientMap;
 	
 	/**
-	 * The price of the meal. This price is set by the chef. 
+	 * The normal price of the meal (with no display applied). This price is set by the chef. 
 	 */
 	private double price;
 	
@@ -108,6 +111,7 @@ public class Meal extends Observable {
 	
 	
 	/**
+	 * Ordinary getter
 	 * @return the meal's name
 	 */
 	public String getName() {
@@ -115,7 +119,8 @@ public class Meal extends Observable {
 	}
 
 	/**
-	 * @param name the mealName to set
+	 * Ordinary setter
+	 * @param name the meal's name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -123,9 +128,13 @@ public class Meal extends Observable {
 
 	
 	/**
+	 * This method enables to add a new ingredient to the meal or to change its quantity.
 	 * 
 	 * @param ingredient An ingredient of the meal.
 	 * @param quantity The quantity needed for the given ingredient in this meal. To remove the ingredient, put "0g"
+	 * @param isModified true if it's a client that personalizes his meal, false if it's the chef that specifies the
+	 * ingredients of a new meal
+	 * @return true if the meal was well personalized
 	 */
 	public boolean personalizeMeal(String ingredient, String quantity, boolean isModified) {
 		boolean t = false;
@@ -143,6 +152,8 @@ public class Meal extends Observable {
 	}
 	
 	/**
+	 * Replaces the ordinary getter. For a given ingredient, it enables us to access easily to the quantity of this
+	 * ingredient in a meal. 
 	 * 
 	 * @param ingredient An ingredient of the meal. 
 	 * @return The quantity needed for the given ingredient in this meal. If the ingredient isn't found, it will
@@ -157,63 +168,81 @@ public class Meal extends Observable {
 	}
 
 	/**
-	 * @return the price
+	 * Ordinary getter
+	 * @return the normal price of the meal, without any discount
 	 */
 	public double getPrice() {
 		return price;
 	}
 
 	/**
-	 * @param price the price to set
+	 * Ordinary setter
+	 * @param price the normal price of the meal, without any discount
 	 */
 	public void setPrice(double price) {
 		this.price = price;
 	}
 
 	/**
-	 * @return the specialPrice
+	 * Ordinary getter
+	 * 
+	 * @return the discounted price of the meal when it's in a special offer 
 	 */
 	public double getSpecialPrice() {
 		return specialPrice;
 	}
 
 	/**
-	 * @param specialPrice the specialPrice to set
+	 * Ordinary setter
+	 * 
+	 * @param specialPrice the discounted price of the meal when it's in a special offer 
 	 */
 	public void setSpecialPrice(double specialPrice) {
+		if (this.specialPrice != specialPrice && specialPrice != this.price){
+			setChanged();
+		}
 		this.specialPrice = specialPrice;
 	}
 
 	/**
-	 * @return the isSpecial
+	 * Ordinary getter
+	 * @return true if the meal is in a special offer
 	 */
 	public boolean isSpecial() {
 		return isSpecial;
 	}
 
-	/**
-	 * @param isSpecial the isSpecial to set
+	/**Ordinary setter
+	 * @param isSpecial true if the meal is in a special offer
 	 */
 	public void setSpecial(boolean isSpecial) {
+		if (!this.isSpecial && isSpecial) {
+			setChanged();
+		}
 		this.isSpecial = isSpecial;
 	}
 	
 	
 	/**
-	 * @return the isOnlySpecial
+	 * Ordinary getter
+	 * @return true if the meal is in a temporary special offer
 	 */
 	public boolean isOnlySpecial() {
 		return isOnlySpecial;
 	}
 	
 	/**
-	 * @param isOnlySpecial the isOnlySpecial to set
+	 * Ordinary setter
+	 * @param isOnlySpecial true if the meal is in a temporary special offer
 	 */
 	public void setOnlySpecial(boolean isOnlySpecial) {
 		this.isOnlySpecial = isOnlySpecial;
 	}
 	
 	/**
+	 * Replaces the classic getter, and gives an easy access to the number of time a meal has been 
+	 * ordered following this criteria
+	 * 
 	 * @param orderingCriteria The criteria chosen to analyze the behavior of the clients
 	 * @return the number of times this meal has been ordered following this criteria
 	 */
@@ -223,8 +252,11 @@ public class Meal extends Observable {
 
 
 	/**
+	 * Replaces the classical setter, this method is a easy way to record that a meal has been ordered following
+	 * a certain criteria
 	 * @param orderingCriteria ordering criteria for which we should add an order
 	 * It works even if the orgeringCriteria haven't been put as a key of the map.
+	 * @param number the number of time the meal has been ordered 
 	 */
 	public void incrementOrderCounter(String orderingCriteria, int number) {
 		if (orderCounter.containsKey(orderingCriteria)){
@@ -238,7 +270,8 @@ public class Meal extends Observable {
 
 
 	/**
-	 * @return the orderCounter
+	 * Ordinary getter
+	 * @return the map storing how this meal is usually ordered (on sale or not, modified or not ...)
 	 */
 	public Map<String, Integer> getOrderCounter() {
 		return orderCounter;
@@ -246,7 +279,8 @@ public class Meal extends Observable {
 
 
 	/**
-	 * @param orderCounter the orderCounter to set
+	 * Ordinary setter
+	 * @param orderCounter the map storing how this meal is usually ordered (on sale or not, modified or not ...)
 	 */
 	public void setOrderCounter(Map<String, Integer> orderCounter) {
 		this.orderCounter = orderCounter;
@@ -254,6 +288,7 @@ public class Meal extends Observable {
 
 
 	/**
+	 * Ordinary getter
 	 * @return true if the meal is modified
 	 */
 	public boolean isModified() {
@@ -262,14 +297,17 @@ public class Meal extends Observable {
 
 
 	/**
-	 * @param isModified set if the meal id modified or not
+	 * Ordinary setter
+	 * @param isModified true if the meal is modified
 	 */
 	public void setModified(boolean isModified) {
 		this.isModified = isModified;
 	}
 
 	/**
-	 * @return the ingredientMap
+	 * Ordinary getter
+	 * @return the ingredientMap that contains all the ingredients names (keys) and their quantities in the 
+	 * meal (values)
 	 */
 	public Map<String, String> getIngredientMap() {
 		return ingredientMap;
@@ -277,15 +315,14 @@ public class Meal extends Observable {
 
 
 	/**
-	 * @param ingredientMap the ingredientMap to set
+	 * Ordinary setter
+	 * @param ingredientMap the ingredientMap that contains all the ingredients names (keys) and their quantities in the 
+	 * meal (values)
 	 */
 	public void setIngredientMap(Map<String, String> ingredientMap) {
 		this.ingredientMap = ingredientMap;
 	}
 
-	public void enableNotifications(){
-		setChanged();
-	}
 	
 	@Override
 	public String toString() {

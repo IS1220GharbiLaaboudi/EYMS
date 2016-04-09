@@ -8,16 +8,26 @@ import interfaces.Offer;
 /**
  * This class handles the birthday offers, from the notification to the discount in itself.
  *
+ * @author Achraf Gharbi
+ * 
+ * @author Younes Laaboudi
  */
 public class BirthdayOffer extends Observable implements Offer {
+	/**
+	 * The percentage that will be discounted if the client celebrates his birthday at the given date.
+	 */
 	private final double percentage = .5;
+	/**
+	 * Usually the date of the system, it will be compaed to the birthday of the client.
+	 */
 	private Date date;
-	
+	/**
+	 * Default constructor of the method. Only sets the date, and specifies that this observable instance has changed 
+	 * in order to allow notifications to be sent.
+	 * @param date the date of the system
+	 */
 	public BirthdayOffer(Date date){
 		this.date = date;
-	}
-	
-	public void enableNotifications(){
 		setChanged();
 	}
 	

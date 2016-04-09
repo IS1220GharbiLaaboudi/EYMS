@@ -5,7 +5,7 @@ associateCard (vladine, point)
 // Poutine will buy enough meals in order to get a discount with his Point Fidelity Card
 
 login (grams, 123456)
-setdate (2016/02/17)
+setdate (17/02/2016)
 notifyBirthday ()
 insertOffer (Big Tasty, 6.50)
 notifyAd (The classical Raclette is now on discount ! ,Raclette, 16)
@@ -19,7 +19,7 @@ saveOrder ()
 
 // The birthday of Poutine
 login (grams, 123456)
-setdate (2016/10/22)
+setdate (22/10/2016)
 notifyBirthday ()
 
 login (vladine, russiaForever)
@@ -30,7 +30,7 @@ saveOrder ()
 
 
 login (grams, 123456)
-setdate (2016/10/23)
+setdate (23/10/2016)
 notifyBirthday ()
 
 
@@ -46,7 +46,7 @@ saveOrder ()
 
 
 login (grams, 123456)
-setdate (2017/02/217)
+setdate (17/02/2017)
 notifyBirthday ()
 
 

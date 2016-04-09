@@ -8,6 +8,10 @@ import interfaces.Offer;
 /**
  * This class handles the special offers. It only handles the discount operation, the notifications are the 
  * responsibility of each meal.
+ * 
+ *  @author Achraf Gharbi
+ * 
+ * @author Younes Laaboudi
  */
 public class BasicFidelityCard implements Offer {
 	
