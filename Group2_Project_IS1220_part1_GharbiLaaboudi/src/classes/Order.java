@@ -89,8 +89,8 @@ public class Order {
 	 */
 	public void setNumberOfMeal(Meal meal, Integer n ){
 		if (n>0){
-			mealMap.put(meal, n);	
-		}else{
+			mealMap.put(meal, n);
+		}else if (n == 0){
 			mealMap.remove(meal);
 		}
 	}

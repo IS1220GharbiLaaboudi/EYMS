@@ -325,7 +325,7 @@ public class CLUI {
 				if(t)
 					System.out.println("Your account was correctly added. You can login now with the proper command.");
 				else
-					System.out.println("An error occured. The username is maybe already taken. Please check that you did not specify empty arguments");
+					System.out.println("An error occured. The username maybe already taken. Please check that you did not specify empty arguments");
 			}
 			//addContactInfo
 			else if(command.equalsIgnoreCase("addcontactinfo")  && arguments.size() == 3){
@@ -340,7 +340,7 @@ public class CLUI {
 				if(t)
 					System.out.println("The contact info you provided was correctly added.");
 				else
-					System.out.println("An error occured. Please be sure that you're connected as a client. Make sure that you did not provide empty arguments.");
+					System.out.println("An error occured. Please make sure that you're connected as a client or that you did not provide empty arguments.");
 			}
 			//associateCard
 			else if(command.equalsIgnoreCase("associatecard")  && arguments.size() == 2){
@@ -356,7 +356,7 @@ public class CLUI {
 				if(t)
 					System.out.println("The new card has successfly been associated to your account");
 				else
-					System.out.println("Please be sure that you're connected as a client. Make sure that your argument was : basic, point or lottery.");					
+					System.out.println("A problem occured. Please make sure that your argument was : basic, point or lottery.");					
 			}
 			//associateAgreement
 			else if(command.equalsIgnoreCase("associateagreement")  && arguments.size() == 2){

@@ -1,4 +1,5 @@
 importfile (default_restaurant)
+
 associateAgreement (bobama, BirthdayOffersonly)
 associateCard (bobama, Lottery)
 
@@ -54,10 +55,11 @@ saveOrder ()
 selectMeal (Raclette, 1)
 saveOrder ()
 
+
+// In general at least one of the following orders will be free.
 setdate (05/08/2016)
 selectMeal (Raclette, 1)
 saveOrder ()
-
 setdate (06/08/2016)
 selectMeal (Raclette, 1)
 saveOrder ()

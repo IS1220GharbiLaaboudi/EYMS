@@ -1,15 +1,24 @@
 importfile (default_restaurant)
+
+
+associateAgreement (bobama, yestoall)
 associateAgreement (vladine, notoall)
 associateAgreement (airJordan, birthdayoffersonly)
 associateAgreement (awenger, Specialoffersonly)
+associateAgreement (aturing, YesToAll)
+
 associateCard (bobama, Lottery)
 associateCard (vladine, point)
-associateCard (airJordan, Lottery)
+associateCard (airJordan, lottery)
+associateCard (awenger, Basic)
+associateCard (aturing, basic)
+
+// -- Day 1
 
 login (grams, 123456)
 setdate (17/02/2016)
 
-// Birthday of Jordan
+// Birthday of Micheal Jordan
 notifyBirthday ()
 notifyAd (Discover our tasty new Bagels that are now on discount ! ,Bagel, 4.5)
 notifyAd (The classical Raclette is now on discount ! ,Raclette, 16)
@@ -29,7 +38,6 @@ selectMeal (Couscous, 2)
 selectMeal (Strawberry Smoothie, 1)
 saveOrder ()
 
-
 login (awenger, arsenal)
 selectMeal (Sweet Sour Chicken, 1)
 selectMeal (Milka Chocolate Bar, 1)
@@ -41,14 +49,19 @@ personalizeMeal (Kebab, onion, 0g)
 selectMeal (Modified Kebab, 1)
 saveOrder ()
 
+// -- Day 2
+
 login (grams, 123456)
 setdate (2016/06/23)
+
+// Birthday of Alan Turing
 notifyBirthday ()
 removeFromSpecialOffer (Raclette)
 insertOffer (Big Tasty, 6.50)
 addingredient (bread, 50g)
 addingredient (meat, 100g)
 saveMeal ()
+
 
 login (bobama, POTUS)
 selectMeal (Big Tasty, 2)
@@ -60,14 +73,23 @@ login (aturing, 01010101)
 selectMeal (Raclette, 2)
 saveOrder ()
 selectMeal (Spaghetti Pesto, 1)
+
+// This sequence of cammands should not return 3 order lasagna but 1 then 2 then
+// remove the Lasagna meal from the order.
+
+selectMeal (Lasagna, 1)
+selectMeal (Lasagna, 2)
+selectMeal (Lasagna, 0)
+
 saveOrder ()
 
+// Removes this temporary special offer
 login (grams, 123456)
 removeFromSpecialOffer (Big Tasty)
-login (bobama, POTUS)
 
 // the meal Big Tasty no longer exists
 
+login (bobama, POTUS)
 selectMeal (Big Tasty, 2)
 
 // Display of the storing of orders

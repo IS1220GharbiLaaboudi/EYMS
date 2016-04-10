@@ -2,7 +2,8 @@ importfile (default_restaurant)
 associateAgreement (vladine, notoall)
 associateCard (vladine, point)
 
-// Poutine will buy enough meals in order to get a discount with his Point Fidelity Card
+// The client will buy enough meals in order to get a discount with his Point 
+// Fidelity Card
 
 login (grams, 123456)
 setdate (17/02/2016)
@@ -16,17 +17,17 @@ saveOrder ()
 // He will have 17 points
 
 
-
 // The birthday of Poutine
+
 login (grams, 123456)
 setdate (22/10/2016)
 notifyBirthday ()
 
+
 login (vladine, russiaForever)
 selectMeal (Raclette, 10)
 saveOrder ()
-//He will add 8 points : 25 points
-
+//It will add 8 points (because it's his birthday) : 25 points
 
 
 login (grams, 123456)
@@ -37,12 +38,12 @@ notifyBirthday ()
 login (vladine, russiaForever)
 selectMeal (Couscous, 10)
 saveOrder ()
-//He will add 16 points : 41 points
+//It will add 16 points : 41 points
 
 
 selectMeal (Sweet Sour Chicken, 10)
 saveOrder ()
-//He will add 11 points : 52 points
+//It will add 11 points : 52 points
 
 
 login (grams, 123456)
@@ -53,8 +54,8 @@ notifyBirthday ()
 login (vladine, russiaForever)
 selectMeal (Couscous, 31)
 saveOrder ()
-//He will add 49 points : 101 points => 100 points
+//It will add 49 points : 101 points => 100 points
 
 selectMeal (Raclette, 1)
 saveOrder ()
-// He will get a discount
+// He will get a 10% discount

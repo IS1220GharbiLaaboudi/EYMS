@@ -636,7 +636,7 @@ public class EYMS {
 	 * */
 	 public boolean selectMeal(String mealName, int quantity){
 		 Meal meal = mapMeal.get(mealName);
-		 if(meal != null && currentUser != null && currentUser.getRole() == UserRole.Client && quantity > 0){
+		 if(meal != null && currentUser != null && currentUser.getRole() == UserRole.Client && quantity >= 0){
 			 if(currentOrder == null){
 				 currentOrder = new Order((Client) currentUser, getDate());
 			 }	

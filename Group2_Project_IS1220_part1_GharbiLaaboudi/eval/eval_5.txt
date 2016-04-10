@@ -32,6 +32,7 @@ saveMeal ()
 
 // save a non existant meal
 saveMeal ()
+saveMeal (Argument)
 
 //actions on inexistant meal
 
@@ -44,8 +45,6 @@ notifyAd (The best Inexistant meal in the world !, Inexistant, 15)
 // wrong arguments
 
 notifyBirthday (argument)
-
-setDate (02/05/1995)
 
 setDate (19950502)
 
