@@ -90,24 +90,27 @@ public class EYMSTest {
 		system.login("bobred5", "123456");
 		system.personalizeMeal("Hamburger", "thon", "0.0g");
 		
-		Assert.assertEquals("300g",system.listIngredients("Raclette").get("patate"));
-		Assert.assertEquals(null,system.listIngredients("Hamburger").get("thon"));
+		Assert.assertEquals("300g",system.listIngredients("Modified Raclette").get("patate"));
+		Assert.assertEquals(null,system.listIngredients("Modified Hamburger").get("thon"));
 	}
 	@Test
 	public void testSaveOrder(){
 		EYMS system = new EYMS();
-		system.register("Bob", "Red", "bobre", "123456", UserRole.Chef);		
-		system.login("bobre", "123456");
+		system.register("Bob", "Green", "bobgreen", "123456", UserRole.Chef);
+		system.login("bobgreen", "123456");
 		system.createMeal("Raclette", 17);
 		system.saveMeal();
 		
-		system.register("Bob", "Red", "bobred", "123456", UserRole.Client);		
+		system.register("Bob", "Red", "bobred", "123456", UserRole.Client);	
 		system.login("bobred", "123456");
+		try {
+			system.addBirthday("17/09/1995");
+		} catch (ParseException e) {System.out.println("Error in testSaveOdrder");}
 
 		system.selectMeal("Raclette", 3);
 		
 		system.saveOrder();
-		Assert.assertEquals((int) system.getOrder(1).getQuantityMeal(system.getMeal("Raclette")), 3);
+		Assert.assertEquals((int)  (system.getOrder(1).getQuantityMeal(system.getMeal("Raclette")) ), 3);
 	}
 	@Test
 	public void addInfo(){
@@ -216,7 +219,7 @@ public class EYMSTest {
 		system.saveMeal();
 		
 		system.putInSpecialOffer("Raclette", 15);
-		Meal raclette = system.getCurrentMeal();
+		Meal raclette = system.getMeal("Raclette");
 		Assert.assertTrue(raclette.isSpecial());
 	
 	}
@@ -233,7 +236,7 @@ public class EYMSTest {
 		system.putInSpecialOffer("Raclette", 15);
 		system.removeFromSpecialOffer("Raclette");
 		
-		Meal raclette = system.getCurrentMeal();
+		Meal raclette = system.getMeal("Raclette");
 		Assert.assertTrue(!raclette.isSpecial());
 	}
 	@Test
@@ -265,7 +268,7 @@ public class EYMSTest {
 		
 		system.login("bobred2", "123456");
 		Client bob = (Client) system.getCurrentUser();
-		assertEquals("There is a new special offer ! Enjoy Your Meal offers you "
+		assertEquals("Bob Red's notification wall : "+System.lineSeparator() +"There is a new special offer ! Enjoy Your Meal offers you "
 				+ "a tasty discount on the meal : " + "Raclette" + ". " + "The best Raclette in the world !"
 				, bob.getNotificationWall());
 	}
@@ -287,7 +290,7 @@ public class EYMSTest {
 		
 		system.login("bobred2", "123456");
 		Client bob = (Client) system.getCurrentUser();
-		assertEquals(""
+		assertEquals("Bob Red's notification wall : "
 				, bob.getNotificationWall());
 	}
 	
@@ -298,17 +301,18 @@ public class EYMSTest {
 		system.register("Bob", "Red", "bobred", "123456", UserRole.Chef);
 		
 		system.login("bobred2", "123456");
-		system.addBirthday("1994/03/20");
+		system.addBirthday("10/04/1994");
 		system.login("bobred", "123456");
 		system.createMeal("Raclette", 17);
 		system.addIngredient("Cheese", "50g");
 		system.saveMeal();	
 		
+		system.setDate("10/04/2016");
 		system.notifyBirthday();
 		
 		system.login("bobred2", "123456");
 		Client bob = (Client) system.getCurrentUser();
-		assertEquals("It's your birthday ! Enjoy Your Meal offers you "
+		assertEquals("Bob Red's notification wall : "+System.lineSeparator() + "It's your birthday ! Enjoy Your Meal offers you "
 				+ "a tasty discount on your next order !"
 				, bob.getNotificationWall());
 		
