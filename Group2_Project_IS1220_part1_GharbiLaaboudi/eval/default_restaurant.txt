@@ -1,6 +1,8 @@
+// inserting the Chef and login
 insertChef (Gordon, Ramsey, grams, 123456)
 login (grams, 123456)
 
+/ Creating 20 meals
 
 createMeal (Raclette, 17)
 addIngredient (cheese, 90g)
@@ -102,6 +104,7 @@ addIngredient (chicken, 120g)
 addIngredient (bagel, bread 30g)
 saveMeal ()
 
+// Registering five different clients
 
 registerClient (Barack, Obama, bobama, POTUS)
 registerClient (Vladimir, Poutine, vladine, russiaForever)
@@ -109,6 +112,7 @@ registerClient (Michael, Jordan, airJordan, dunker)
 registerClient (Arsene, Wenger, awenger, arsenal)
 registerClient (Alan, Turing, aturing, 01010101)
 
+// First login of these five clients
 
 login (bobama, POTUS)
 email, barack@obama.nia
@@ -127,6 +131,6 @@ email, arsenal@gmail.com
 22/10/1949
 
 login (aturing, 01010101)
-email, alan.turing@gmail.com
+phone, 0601010101
 23/06/1912
 

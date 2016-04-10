@@ -104,15 +104,16 @@ addIngredient (chicken, 120g)
 addIngredient (bagel, bread 30g)
 saveMeal ()
 
-// -- The client Mario wants to make an order
-
 listIngredients (Raclette)
+
+// registering the client  
+
 registerClient (Mario, Rossi, Mario, 345678)
 associateCard (Mario, Basic)
 associateAgreement (Mario, YesToAll)
 login (Mario, 345678)
 
-// In our implementation, these information are given on the first login
+// In our implementation, these information have to be given on the first login
 
 email, mario@itsme.mario
 18/05/1995
@@ -121,16 +122,36 @@ addContactInfo (phone, 0699562366, yes)
 listIngredients (Raclette)
 personalizeMeal (Raclette, cheese, 100g)
 
-// In order to modify twice a meal, the second command has to specify "Modified MealName"
+// In order to modify twice a meal, the second command has to specify
+// "Modified MealName"
 
 personalizeMeal (Modified Raclette, ham, 0g)
 selectMeal (Modified Raclette, 1)
 selectMeal (Raclette, 2)
+
+// We can notice that both the original and the modified raclettes are in the
+// order
+
 saveOrder ()
+
+// The chef 
 login (bobred, 123456)
 setdate (18/05/2016)
 notifyBirthday ()
+
+// We set the date twice to make sure that there will not be two notifications
+// the same day
+
+setdate (18/05/2016)
+notifyBirthday ()
+
+
 putInSpecialOffer (Raclette, 15)
+notifyAd (The best Raclette in the world !, Raclette, 15)
+
+// We put the meal in special offer twice to make sure that there will not be 
+// two notifications the same day
+
 notifyAd (The best Raclette in the world !, Raclette, 15)
 
 // We can see that he recieved the notifications

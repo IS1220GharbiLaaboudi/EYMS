@@ -88,7 +88,11 @@ public class Order {
 	 * @param n Number of this kind of meal in this order
 	 */
 	public void setNumberOfMeal(Meal meal, Integer n ){
-		mealMap.put(meal, n);	
+		if (n>0){
+			mealMap.put(meal, n);	
+		}else{
+			mealMap.remove(meal);
+		}
 	}
 	
 	/**

@@ -36,8 +36,11 @@ public class BirthdayOffer extends Observable implements Offer {
 	 * from the previous one.
 	 * @param date Usually the date of the system
 	 */
+	@SuppressWarnings("deprecation")
 	public void setDate(Date date) {
-		if (this.date != date){
+		if (this.date.getDate() != date.getDate() 
+				|| this.date.getMonth() != date.getMonth()
+				|| this.date.getYear() != date.getYear() ){
 			this.deleteObservers();
 			this.setChanged();
 		}

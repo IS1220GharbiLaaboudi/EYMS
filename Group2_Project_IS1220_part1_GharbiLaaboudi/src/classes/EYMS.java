@@ -625,8 +625,10 @@ public class EYMS {
 	}
 	
 	/**
-	 * Add a quantity of meal to the current order. If no order is currently being made, a new order will be created.
-	 * 
+	 * Add a quantity of meal to the current order. If no order is currently being made, a new order will be
+	 * created.
+	 * If the meal had already been ordered, the quantity with which it had been ordered will be changed.
+	 * If the quantity is set to 0, the meal will be deleted from the order.
 	 * @param mealName the name of the meal
 	 * @param quantity the quantity of the meal
 	 * @return true if the meal name corresponds to an actual meal,
