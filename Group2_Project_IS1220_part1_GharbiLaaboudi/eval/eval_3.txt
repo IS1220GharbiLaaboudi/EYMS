@@ -59,3 +59,5 @@ saveOrder ()
 selectMeal (Raclette, 1)
 saveOrder ()
 // He will get a 10% discount
+
+q

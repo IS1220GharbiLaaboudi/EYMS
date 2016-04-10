@@ -1,0 +1,2308 @@
+*****************
+Welcome on EYMS !
+*****************
+You're not logged in. You can login or register with the proper commands. Type h for the command list.
+Press < h > for help or < q > to exit the system.
+importfile (eval_3)
+The file have been successfully imported
+
+
+
+
+
+
+You're not logged in. You can login or register with the proper commands. Type h for the command list.
+Press < h > for help or < q > to exit the system.
+-- Executing command : importfile (default_restaurant)
+The file have been successfully imported
+
+
+
+
+
+
+You're not logged in. You can login or register with the proper commands. Type h for the command list.
+Press < h > for help or < q > to exit the system.
+-- Executing command : insertChef (Gordon, Ramsey, grams, 123456)
+Your account was correctly added. You can login now with the proper command.
+
+
+
+
+
+
+You're not logged in. You can login or register with the proper commands. Type h for the command list.
+Press < h > for help or < q > to exit the system.
+-- Executing command : login (grams, 123456)
+You've been correctly connected.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : / Creating 20 meals
+Unknown command, type h for the list of the commands. Don't forget to put a space between the command and the arguments
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : createMeal (Raclette, 17)
+Meal correctly added
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Raclette: Ingredients = {}, Price = 17.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (cheese, 90g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Raclette: Ingredients = {cheese=90g}, Price = 17.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (ham ,40g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Raclette: Ingredients = {ham=40g, cheese=90g}, Price = 17.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (potatoes, 50g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Raclette: Ingredients = {potatoes=50g, ham=40g, cheese=90g}, Price = 17.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : currentMeal ()
+[ Raclette: Ingredients = {potatoes=50g, ham=40g, cheese=90g}, Price = 17.0 ]
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Raclette: Ingredients = {potatoes=50g, ham=40g, cheese=90g}, Price = 17.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveMeal ()
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : createMeal (Burger, 8)
+Meal correctly added
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Burger: Ingredients = {}, Price = 8.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (cheese, 90g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Burger: Ingredients = {cheese=90g}, Price = 8.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (meat ,140g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Burger: Ingredients = {meat=140g, cheese=90g}, Price = 8.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (tomato, 50g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Burger: Ingredients = {meat=140g, tomato=50g, cheese=90g}, Price = 8.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveMeal ()
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : createMeal (Lemon Cake ,5)
+Meal correctly added
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Lemon Cake: Ingredients = {}, Price = 5.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (lemon, 60g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Lemon Cake: Ingredients = {lemon=60g}, Price = 5.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (sugar, 40g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Lemon Cake: Ingredients = {lemon=60g, sugar=40g}, Price = 5.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveMeal ()
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : createMeal (Gyu Cheese, 6)
+Meal correctly added
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Gyu Cheese: Ingredients = {}, Price = 6.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (cheese, 90g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Gyu Cheese: Ingredients = {cheese=90g}, Price = 6.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (beef, 90g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Gyu Cheese: Ingredients = {beef=90g, cheese=90g}, Price = 6.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (teriaki sauce, 10ml)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Gyu Cheese: Ingredients = {teriaki sauce=10ml, beef=90g, cheese=90g}, Price = 6.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveMeal ()
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : createMeal (Suchi, 2)
+Meal correctly added
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Suchi: Ingredients = {}, Price = 2.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (rice, 80g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Suchi: Ingredients = {rice=80g}, Price = 2.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (salmon, 80g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Suchi: Ingredients = {salmon=80g, rice=80g}, Price = 2.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveMeal ()
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : createMeal (Apple Pie, 3)
+Meal correctly added
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Apple Pie: Ingredients = {}, Price = 3.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (apple, 80g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Apple Pie: Ingredients = {apple=80g}, Price = 3.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (sugar, 20g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Apple Pie: Ingredients = {apple=80g, sugar=20g}, Price = 3.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (cream, 50g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Apple Pie: Ingredients = {apple=80g, cream=50g, sugar=20g}, Price = 3.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveMeal ()
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : createMeal (Chocolate Cake, 5)
+Meal correctly added
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Chocolate Cake: Ingredients = {}, Price = 5.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (chocolate, 80g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Chocolate Cake: Ingredients = {chocolate=80g}, Price = 5.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (sugar, 10g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Chocolate Cake: Ingredients = {sugar=10g, chocolate=80g}, Price = 5.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveMeal ()
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : createMeal (Tajine, 12)
+Meal correctly added
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Tajine: Ingredients = {}, Price = 12.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (chiken, 80g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Tajine: Ingredients = {chiken=80g}, Price = 12.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (potato, 120g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Tajine: Ingredients = {potato=120g, chiken=80g}, Price = 12.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (olive ,30g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Tajine: Ingredients = {olive=30g, potato=120g, chiken=80g}, Price = 12.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveMeal ()
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : createMeal (Couscous ,16)
+Meal correctly added
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Couscous: Ingredients = {}, Price = 16.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (meat ,120g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Couscous: Ingredients = {meat=120g}, Price = 16.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (carrot, 120g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Couscous: Ingredients = {meat=120g, carrot=120g}, Price = 16.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (semoulina ,150g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Couscous: Ingredients = {meat=120g, semoulina=150g, carrot=120g}, Price = 16.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveMeal ()
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : createMeal (Sweet Sour Chicken, 11)
+Meal correctly added
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Sweet Sour Chicken: Ingredients = {}, Price = 11.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (chicken, 120g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Sweet Sour Chicken: Ingredients = {chicken=120g}, Price = 11.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (pineapple, 120g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Sweet Sour Chicken: Ingredients = {chicken=120g, pineapple=120g}, Price = 11.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (rice ,120g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Sweet Sour Chicken: Ingredients = {chicken=120g, pineapple=120g, rice=120g}, Price = 11.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (soy sauce ,20ml)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Sweet Sour Chicken: Ingredients = {chicken=120g, pineapple=120g, soy sauce=20ml, rice=120g}, Price = 11.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveMeal ()
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : createMeal (Milka Chocolate Bar, 3)
+Meal correctly added
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Milka Chocolate Bar: Ingredients = {}, Price = 3.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (chocolate, 220g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Milka Chocolate Bar: Ingredients = {chocolate=220g}, Price = 3.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveMeal ()
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : createMeal (Pizza 4 cheeses, 4)
+Meal correctly added
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Pizza 4 cheeses: Ingredients = {}, Price = 4.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (mozzarella ,50g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Pizza 4 cheeses: Ingredients = {mozzarella=50g}, Price = 4.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (gouda ,40g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Pizza 4 cheeses: Ingredients = {gouda=40g, mozzarella=50g}, Price = 4.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (roquefort,20g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Pizza 4 cheeses: Ingredients = {gouda=40g, mozzarella=50g, roquefort=20g}, Price = 4.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (camembert ,30g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Pizza 4 cheeses: Ingredients = {gouda=40g, mozzarella=50g, camembert=30g, roquefort=20g}, Price = 4.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveMeal ()
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : createMeal (Pizza royal, 3)
+Meal correctly added
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Pizza royal: Ingredients = {}, Price = 3.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (tomato ,30g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Pizza royal: Ingredients = {tomato=30g}, Price = 3.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (mozzarella, 50g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Pizza royal: Ingredients = {mozzarella=50g, tomato=30g}, Price = 3.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (ham ,60g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Pizza royal: Ingredients = {ham=60g, mozzarella=50g, tomato=30g}, Price = 3.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveMeal ()
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : createMeal (Lasagna, 6)
+Meal correctly added
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Lasagna: Ingredients = {}, Price = 6.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (tomato ,30g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Lasagna: Ingredients = {tomato=30g}, Price = 6.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (béchamel sauce, 30 ml)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Lasagna: Ingredients = {béchamel sauce=30 ml, tomato=30g}, Price = 6.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (meat, 60g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Lasagna: Ingredients = {béchamel sauce=30 ml, meat=60g, tomato=30g}, Price = 6.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveMeal ()
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : createMeal (Spaghetti bolognese, 3)
+Meal correctly added
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Spaghetti bolognese: Ingredients = {}, Price = 3.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (tomato, 30g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Spaghetti bolognese: Ingredients = {tomato=30g}, Price = 3.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (spaghetti, 100g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Spaghetti bolognese: Ingredients = {spaghetti=100g, tomato=30g}, Price = 3.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (meat, 60g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Spaghetti bolognese: Ingredients = {spaghetti=100g, meat=60g, tomato=30g}, Price = 3.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveMeal ()
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : createMeal (Kebab, 3.50)
+Meal correctly added
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Kebab: Ingredients = {}, Price = 3.5 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (tomato, 50g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Kebab: Ingredients = {tomato=50g}, Price = 3.5 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (onion, 30g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Kebab: Ingredients = {onion=30g, tomato=50g}, Price = 3.5 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (salad, 10g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Kebab: Ingredients = {salad=10g, onion=30g, tomato=50g}, Price = 3.5 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (samurai sauce, 5.5g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Kebab: Ingredients = {salad=10g, onion=30g, tomato=50g, samurai sauce=5.5g}, Price = 3.5 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (meat, 125g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Kebab: Ingredients = {salad=10g, onion=30g, meat=125g, tomato=50g, samurai sauce=5.5g}, Price = 3.5 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveMeal ()
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : createMeal (Spaghetti Pesto, 4)
+Meal correctly added
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Spaghetti Pesto: Ingredients = {}, Price = 4.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (spaghetti, 100g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Spaghetti Pesto: Ingredients = {spaghetti=100g}, Price = 4.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (pesto, 45g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Spaghetti Pesto: Ingredients = {pesto=45g, spaghetti=100g}, Price = 4.0 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveMeal ()
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : createMeal (Curry Chiken, 6.5)
+Meal correctly added
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Curry Chiken: Ingredients = {}, Price = 6.5 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (chicken, 126g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Curry Chiken: Ingredients = {chicken=126g}, Price = 6.5 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (curry, 15g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Curry Chiken: Ingredients = {chicken=126g, curry=15g}, Price = 6.5 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveMeal ()
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : createMeal (Strawberry Smoothie, 2.3)
+Meal correctly added
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Strawberry Smoothie: Ingredients = {}, Price = 2.3 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (strawberry, 34.5g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Strawberry Smoothie: Ingredients = {strawberry=34.5g}, Price = 2.3 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (milk, 45cl)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Strawberry Smoothie: Ingredients = {strawberry=34.5g, milk=45cl}, Price = 2.3 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveMeal ()
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : createMeal (Bagel, 5.8)
+Meal correctly added
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Bagel: Ingredients = {}, Price = 5.8 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (tomato, 50g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Bagel: Ingredients = {tomato=50g}, Price = 5.8 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (onion, 30g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Bagel: Ingredients = {onion=30g, tomato=50g}, Price = 5.8 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (salad, 10g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Bagel: Ingredients = {salad=10g, onion=30g, tomato=50g}, Price = 5.8 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (chicken, 120g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Bagel: Ingredients = {chicken=120g, salad=10g, onion=30g, tomato=50g}, Price = 5.8 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : addIngredient (bagel, bread 30g)
+Ingredient correctly added to the current meal.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Bagel: Ingredients = {chicken=120g, salad=10g, onion=30g, tomato=50g, bagel=bread 30g}, Price = 5.8 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveMeal ()
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : registerClient (Barack, Obama, bobama, POTUS)
+Your account was correctly added. You can login now with the proper command.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : registerClient (Vladimir, Poutine, vladine, russiaForever)
+Your account was correctly added. You can login now with the proper command.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : registerClient (Michael, Jordan, airJordan, dunker)
+Your account was correctly added. You can login now with the proper command.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : registerClient (Arsene, Wenger, awenger, arsenal)
+Your account was correctly added. You can login now with the proper command.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : registerClient (Alan, Turing, aturing, 01010101)
+Your account was correctly added. You can login now with the proper command.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : login (bobama, POTUS)
+You've been correctly connected.
+
+
+
+
+
+
+Hello Barack !
+-------------------------
+Barack Obama ( Client )
+-------------------------
+Latest notifications : Barack Obama's notification wall : 
+-------------------------
+Contact info : null
+-------------------------
+Press < h > for help or < q > to exit the system.
+You dont have any favorite information contact. Please insert your contact information like so :
+typeOfContact, value
+Example : email, johnred@eyms.org
+-- Executing command : email, barack@obama.nia
+Thank you for your cooperation.
+You did not specify your birthday date yet. Please enter it following this format
+DD/MM/YYYY
+-- Executing command : 04/08/1961
+Thank you for your cooperation.
+-- Executing command : login (vladine, russiaForever)
+You've been correctly connected.
+
+
+
+
+
+
+Hello Vladimir !
+-------------------------
+Vladimir Poutine ( Client )
+-------------------------
+Latest notifications : Vladimir Poutine's notification wall : 
+-------------------------
+Contact info : null
+-------------------------
+Press < h > for help or < q > to exit the system.
+You dont have any favorite information contact. Please insert your contact information like so :
+typeOfContact, value
+Example : email, johnred@eyms.org
+-- Executing command : email, myemail@vladimir.poutine
+Thank you for your cooperation.
+You did not specify your birthday date yet. Please enter it following this format
+DD/MM/YYYY
+-- Executing command : 22/10/1952
+Thank you for your cooperation.
+-- Executing command : login (airJordan, dunker)
+You've been correctly connected.
+
+
+
+
+
+
+Hello Michael !
+-------------------------
+Michael Jordan ( Client )
+-------------------------
+Latest notifications : Michael Jordan's notification wall : 
+-------------------------
+Contact info : null
+-------------------------
+Press < h > for help or < q > to exit the system.
+You dont have any favorite information contact. Please insert your contact information like so :
+typeOfContact, value
+Example : email, johnred@eyms.org
+-- Executing command : email, michael.jordan@gmail.com
+Thank you for your cooperation.
+You did not specify your birthday date yet. Please enter it following this format
+DD/MM/YYYY
+-- Executing command : 17/02/1963
+Thank you for your cooperation.
+-- Executing command : login (awenger, arsenal)
+You've been correctly connected.
+
+
+
+
+
+
+Hello Arsene !
+-------------------------
+Arsene Wenger ( Client )
+-------------------------
+Latest notifications : Arsene Wenger's notification wall : 
+-------------------------
+Contact info : null
+-------------------------
+Press < h > for help or < q > to exit the system.
+You dont have any favorite information contact. Please insert your contact information like so :
+typeOfContact, value
+Example : email, johnred@eyms.org
+-- Executing command : email, arsenal@gmail.com
+Thank you for your cooperation.
+You did not specify your birthday date yet. Please enter it following this format
+DD/MM/YYYY
+-- Executing command : 22/10/1949
+Thank you for your cooperation.
+-- Executing command : login (aturing, 01010101)
+You've been correctly connected.
+
+
+
+
+
+
+Hello Alan !
+-------------------------
+Alan Turing ( Client )
+-------------------------
+Latest notifications : Alan Turing's notification wall : 
+-------------------------
+Contact info : null
+-------------------------
+Press < h > for help or < q > to exit the system.
+You dont have any favorite information contact. Please insert your contact information like so :
+typeOfContact, value
+Example : email, johnred@eyms.org
+-- Executing command : phone, 0601010101
+Thank you for your cooperation.
+You did not specify your birthday date yet. Please enter it following this format
+DD/MM/YYYY
+-- Executing command : 23/06/1912
+Thank you for your cooperation.
+-- Executing command : associateAgreement (vladine, notoall)
+The agreement was correctly associated to the specified client account.
+
+
+
+
+
+
+Hello Alan !
+-------------------------
+Alan Turing ( Client )
+-------------------------
+Latest notifications : Alan Turing's notification wall : 
+-------------------------
+Contact info : phone
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : associateCard (vladine, point)
+The new card has successfly been associated to your account
+
+
+
+
+
+
+Hello Alan !
+-------------------------
+Alan Turing ( Client )
+-------------------------
+Latest notifications : Alan Turing's notification wall : 
+-------------------------
+Contact info : phone
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : login (grams, 123456)
+You've been correctly connected.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : setdate (17/02/2016)
+The date has been successfully changed
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : notifyBirthday ()
+Birthday notifications correctly sent.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : insertOffer (Big Tasty, 6.50)
+New special offer meal created. Please add ingredients with the proper command.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Big Tasty: Ingredients = {}, Price = 6.5 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : notifyAd (The classical Raclette is now on discount ! ,Raclette, 16)
+Notification sent to all the users
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+Current meal : [ Big Tasty: Ingredients = {}, Price = 6.5 ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : login (vladine, russiaForever)
+You've been correctly connected.
+
+
+
+
+
+
+Hello Vladimir !
+-------------------------
+Vladimir Poutine ( Client )
+-------------------------
+Latest notifications : Vladimir Poutine's notification wall : 
+-------------------------
+Contact info : email
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : selectMeal (Raclette, 10)
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Vladimir !
+-------------------------
+Vladimir Poutine ( Client )
+-------------------------
+Latest notifications : Vladimir Poutine's notification wall : 
+-------------------------
+Contact info : email
+-------------------------
+Current order : [ OrderId = 1; Meals Selected ={[ Raclette: Ingredients = {potatoes=50g, ham=40g, cheese=90g}, Regular Price = 17.0, Special Price = 16.0 ]=10} ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveOrder ()
+Your card has reached 17 points.
+10 [ Raclette: Ingredients = {potatoes=50g, ham=40g, cheese=90g}, Regular Price = 17.0, Special Price = 16.0 ]
+The order have been successfully saved. The amount you have to pay is 170.0 euros
+Enjoy your meal !
+
+
+
+
+
+
+Hello Vladimir !
+-------------------------
+Vladimir Poutine ( Client )
+-------------------------
+Latest notifications : Vladimir Poutine's notification wall : 
+-------------------------
+Contact info : email
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : login (grams, 123456)
+You've been correctly connected.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : setdate (22/10/2016)
+The date has been successfully changed
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : notifyBirthday ()
+Birthday notifications correctly sent.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : login (vladine, russiaForever)
+You've been correctly connected.
+
+
+
+
+
+
+Hello Vladimir !
+-------------------------
+Vladimir Poutine ( Client )
+-------------------------
+Latest notifications : Vladimir Poutine's notification wall : 
+-------------------------
+Contact info : email
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : selectMeal (Raclette, 10)
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Vladimir !
+-------------------------
+Vladimir Poutine ( Client )
+-------------------------
+Latest notifications : Vladimir Poutine's notification wall : 
+-------------------------
+Contact info : email
+-------------------------
+Current order : [ OrderId = 2; Meals Selected ={[ Raclette: Ingredients = {potatoes=50g, ham=40g, cheese=90g}, Regular Price = 17.0, Special Price = 16.0 ]=10} ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveOrder ()
+It's your birthday ! Enjoy a 50.0% on your order !
+Your card has reached 34 points.
+10 [ Raclette: Ingredients = {potatoes=50g, ham=40g, cheese=90g}, Regular Price = 17.0, Special Price = 16.0 ]
+The order have been successfully saved. The amount you have to pay is 85.0 euros
+Enjoy your meal !
+
+
+
+
+
+
+Hello Vladimir !
+-------------------------
+Vladimir Poutine ( Client )
+-------------------------
+Latest notifications : Vladimir Poutine's notification wall : 
+-------------------------
+Contact info : email
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : login (grams, 123456)
+You've been correctly connected.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : setdate (23/10/2016)
+The date has been successfully changed
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : notifyBirthday ()
+Birthday notifications correctly sent.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : login (vladine, russiaForever)
+You've been correctly connected.
+
+
+
+
+
+
+Hello Vladimir !
+-------------------------
+Vladimir Poutine ( Client )
+-------------------------
+Latest notifications : Vladimir Poutine's notification wall : 
+-------------------------
+Contact info : email
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : selectMeal (Couscous, 10)
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Vladimir !
+-------------------------
+Vladimir Poutine ( Client )
+-------------------------
+Latest notifications : Vladimir Poutine's notification wall : 
+-------------------------
+Contact info : email
+-------------------------
+Current order : [ OrderId = 3; Meals Selected ={[ Couscous: Ingredients = {meat=120g, semoulina=150g, carrot=120g}, Price = 16.0 ]=10} ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveOrder ()
+Your card has reached 50 points.
+10 [ Couscous: Ingredients = {meat=120g, semoulina=150g, carrot=120g}, Price = 16.0 ]
+The order have been successfully saved. The amount you have to pay is 160.0 euros
+Enjoy your meal !
+
+
+
+
+
+
+Hello Vladimir !
+-------------------------
+Vladimir Poutine ( Client )
+-------------------------
+Latest notifications : Vladimir Poutine's notification wall : 
+-------------------------
+Contact info : email
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : selectMeal (Sweet Sour Chicken, 10)
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Vladimir !
+-------------------------
+Vladimir Poutine ( Client )
+-------------------------
+Latest notifications : Vladimir Poutine's notification wall : 
+-------------------------
+Contact info : email
+-------------------------
+Current order : [ OrderId = 4; Meals Selected ={[ Sweet Sour Chicken: Ingredients = {chicken=120g, pineapple=120g, soy sauce=20ml, rice=120g}, Price = 11.0 ]=10} ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveOrder ()
+Your card has reached 61 points.
+10 [ Sweet Sour Chicken: Ingredients = {chicken=120g, pineapple=120g, soy sauce=20ml, rice=120g}, Price = 11.0 ]
+The order have been successfully saved. The amount you have to pay is 110.0 euros
+Enjoy your meal !
+
+
+
+
+
+
+Hello Vladimir !
+-------------------------
+Vladimir Poutine ( Client )
+-------------------------
+Latest notifications : Vladimir Poutine's notification wall : 
+-------------------------
+Contact info : email
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : login (grams, 123456)
+You've been correctly connected.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : setdate (17/02/2017)
+The date has been successfully changed
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : notifyBirthday ()
+Birthday notifications correctly sent.
+
+
+
+
+
+
+Hello Gordon !
+-------------------------
+Gordon Ramsey ( Chef )
+-------------------------
+No current meal you're working on.
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : login (vladine, russiaForever)
+You've been correctly connected.
+
+
+
+
+
+
+Hello Vladimir !
+-------------------------
+Vladimir Poutine ( Client )
+-------------------------
+Latest notifications : Vladimir Poutine's notification wall : 
+-------------------------
+Contact info : email
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : selectMeal (Couscous, 31)
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Vladimir !
+-------------------------
+Vladimir Poutine ( Client )
+-------------------------
+Latest notifications : Vladimir Poutine's notification wall : 
+-------------------------
+Contact info : email
+-------------------------
+Current order : [ OrderId = 5; Meals Selected ={[ Couscous: Ingredients = {meat=120g, semoulina=150g, carrot=120g}, Price = 16.0 ]=31} ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveOrder ()
+Your card has reached 100 points.
+31 [ Couscous: Ingredients = {meat=120g, semoulina=150g, carrot=120g}, Price = 16.0 ]
+The order have been successfully saved. The amount you have to pay is 496.0 euros
+Enjoy your meal !
+
+
+
+
+
+
+Hello Vladimir !
+-------------------------
+Vladimir Poutine ( Client )
+-------------------------
+Latest notifications : Vladimir Poutine's notification wall : 
+-------------------------
+Contact info : email
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : selectMeal (Raclette, 1)
+Current meal was well added to the meals list
+
+
+
+
+
+
+Hello Vladimir !
+-------------------------
+Vladimir Poutine ( Client )
+-------------------------
+Latest notifications : Vladimir Poutine's notification wall : 
+-------------------------
+Contact info : email
+-------------------------
+Current order : [ OrderId = 6; Meals Selected ={[ Raclette: Ingredients = {potatoes=50g, ham=40g, cheese=90g}, Regular Price = 17.0, Special Price = 16.0 ]=1} ]
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : saveOrder ()
+Congratulation you have reached 100 points ! This order has a 10.0% dicount !
+1 [ Raclette: Ingredients = {potatoes=50g, ham=40g, cheese=90g}, Regular Price = 17.0, Special Price = 16.0 ]
+The order have been successfully saved. The amount you have to pay is 15.3 euros
+Enjoy your meal !
+
+
+
+
+
+
+Hello Vladimir !
+-------------------------
+Vladimir Poutine ( Client )
+-------------------------
+Latest notifications : Vladimir Poutine's notification wall : 
+-------------------------
+Contact info : email
+-------------------------
+Press < h > for help or < q > to exit the system.
+-- Executing command : q
+
+
+
+
+
