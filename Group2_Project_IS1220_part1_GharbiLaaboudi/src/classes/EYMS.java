@@ -176,7 +176,7 @@ public class EYMS {
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date date1 = dateFormat.parse(dateString);
 		this.date = date1;
-		offers[0] = new BirthdayOffer(date);
+		((BirthdayOffer) offers[0]).setDate(date);
 	}
 
 
@@ -284,18 +284,19 @@ public class EYMS {
 			currentUser = order.getClient();
 			mapUsers.put(currentUser.getUserName(), currentUser); // in order to store his card chages (points..)
 			for(Meal meal : order.getSetMeal()){
-				System.out.println(order.getQuantityMeal(meal)+" "+meal);
 				int n = order.getQuantityMeal(meal);
-				if(meal.isOnlySpecial() || meal.isSpecial())
-					meal.incrementOrderCounter("OnSale", n);
-				else
-					meal.incrementOrderCounter("NotOnSale", n);
+				System.out.println(n+" "+meal);
+				Meal mealNotModified;
 				if(meal.isModified()){
-					Meal mealNotModified = getMeal(meal.getName().substring("Modified ".length()));
+					mealNotModified = getMeal(meal.getName().substring("Modified ".length()));
 					mealNotModified.incrementOrderCounter("Modified", n);
-				}
-				else
+				} else
+					mealNotModified = meal;
 					meal.incrementOrderCounter("NotModified", n);
+				if(meal.isOnlySpecial() || meal.isSpecial())
+					mealNotModified.incrementOrderCounter("OnSale", n);
+				else
+					mealNotModified.incrementOrderCounter("NotOnSale", n);
 			}
 			mapOrders.put(order.getId(), order);
 			System.out.println("The order have been successfully saved. The amount you have to pay is "+ finalPrice + " euros");
@@ -409,14 +410,14 @@ public class EYMS {
 		if (orderingCriteria == OrderingCriteria.JustOnSale){
 			for(Order order : mapOrders.values()){ //to get only what was ordered
 				for(Meal meal : order.getSetMeal()){
-					if(meal.getOrderCounter("OnSale") != 0 && meal.getOrderCounter("NotOnSale") == 0 )
+					if(meal.getOrderCounter("OnSale") != 0 && meal.getOrderCounter("NotOnSale") == 0 && !meal.isModified())
 						orderedSet.add(meal);
 				}
 			}
 		} else if (orderingCriteria == OrderingCriteria.MostlyModified){
 			for(Order order : mapOrders.values()){ //to get only what was ordered
 				for(Meal meal : order.getSetMeal()){
-					if(meal.getOrderCounter("Modified") > meal.getOrderCounter("NotModified") )
+					if(meal.getOrderCounter("Modified") > meal.getOrderCounter("NotModified") && !meal.isModified())
 						orderedSet.add(meal);
 				}
 			}
@@ -534,7 +535,7 @@ public class EYMS {
 		Meal meal = mapMeal.get(mealName);
 		if(meal != null && currentUser != null && currentUser.getRole() == UserRole.Chef){
 			if (meal.isOnlySpecial()){
-				mapMeal.remove(meal);
+				mapMeal.remove(meal.getName());
 			}else{
 				meal.setSpecialPrice(meal.getPrice());
 				meal.setSpecial(false);

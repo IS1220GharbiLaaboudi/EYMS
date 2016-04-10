@@ -32,6 +32,19 @@ public class BirthdayOffer extends Observable implements Offer {
 	}
 	
 	/**
+	 * Ordinary setter, will also clear the observers list and set the observable to changed if the date is different
+	 * from the previous one.
+	 * @param date Usually the date of the system
+	 */
+	public void setDate(Date date) {
+		if (this.date != date){
+			this.deleteObservers();
+			this.setChanged();
+		}
+		this.date = date;
+	}
+
+	/**
 	 * Returns the discounted price from an order.
 	 *  
 	 * @param order The order for which the offer may apply.
