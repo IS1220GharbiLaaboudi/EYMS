@@ -1,0 +1,5 @@
+Hello,
+As marked in the project report, DiagrammeGlobal is not a Diagramme containing all the methods, but is only here to have a global view of the project's structure.
+Also, the different diagrams contain only the required methods and attributes needed for the part that they cover as it is clearer and easier to read.
+Finally we used the free and cross-platform Violet UML-Editor to make our diagrams.
+Thank you for your understanding.
